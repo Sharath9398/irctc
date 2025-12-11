@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IRCTC Users Management</title>
+    <link rel="stylesheet" href="../styles/users.css" />
+  </head>
+  <body>
+    <div class="container" role="application" aria-label="IRCTC Users Management">
+      <div class="header">
+        <div class="title">IRCTC USERS MANAGEMENT</div>
+      </div>
+
+      <div class="form">
+        <p>Username</p>
+        <input id="name" class="input-username" placeholder="Username" />
+        <p>Password</p>
+        <input id="password" class="input-password" placeholder="Password" type="password" />
+        <p>PIN *</p>
+        <input id="pin" class="input-pin" placeholder="4-digit PIN" type="password" maxlength="4" required />
+        <button id="btnAdd" class="btn">ADD</button>
+        <button id="btnBulk" class="btn btn-bulk">BULK ADD</button>
+      </div>
+
+      <div id="list" class="list"></div>
+     
+    </div>
+
+    <script src="user-renderer.js"></script>
+  </body>
+</html>

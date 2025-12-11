@@ -1,0 +1,2846 @@
+[
+  {
+    "Station Name": "ABU ROAD",
+    "Code": "ABR"
+  },
+  {
+    "Station Name": "ADILABAD",
+    "Code": "ADB"
+  },
+  {
+    "Station Name": "ADONI",
+    "Code": "AD"
+  },
+  {
+    "Station Name": "ADRA",
+    "Code": "ADRA"
+  },
+  {
+    "Station Name": "AGARTALA",
+    "Code": "AGTL"
+  },
+  {
+    "Station Name": "AGRA FORT",
+    "Code": "AF"
+  },
+  {
+    "Station Name": "AGRA CANTT.",
+    "Code": "AGC"
+  },
+  {
+    "Station Name": "AHMADNAGAR",
+    "Code": "ANG"
+  },
+  {
+    "Station Name": "AHMEDABAD",
+    "Code": "ADI"
+  },
+  {
+    "Station Name": "AJMER",
+    "Code": "AII"
+  },
+  {
+    "Station Name": "AJNI",
+    "Code": "AJNI"
+  },
+  {
+    "Station Name": "AKOLA",
+    "Code": "AK"
+  },
+  {
+    "Station Name": "ALIGARH",
+    "Code": "ALJN"
+  },
+  {
+    "Station Name": "ALIPURDUAR Jn.",
+    "Code": "APDJ"
+  },
+  {
+    "Station Name": "ALLAHABAD",
+    "Code": "ALD"
+  },
+  {
+    "Station Name": "ALAPPUZHA",
+    "Code": "ALLP"
+  },
+  {
+    "Station Name": "ALNAWAR Jn.",
+    "Code": "LWR"
+  },
+  {
+    "Station Name": "ALUVA",
+    "Code": "AWY"
+  },
+  {
+    "Station Name": "ALWAR",
+    "Code": "AWR"
+  },
+  {
+    "Station Name": "AMALNER",
+    "Code": "AN"
+  },
+  {
+    "Station Name": "AMB ANDAVRA",
+    "Code": "AADR"
+  },
+  {
+    "Station Name": "AMBALA CANTT.",
+    "Code": "UMB"
+  },
+  {
+    "Station Name": "AMBIKAPUR",
+    "Code": "ABKP"
+  },
+  {
+    "Station Name": "AMLA",
+    "Code": "AMLA"
+  },
+  {
+    "Station Name": "AMRITSAR",
+    "Code": "ASR"
+  },
+  {
+    "Station Name": "ANAKAPALLE",
+    "Code": "AKP"
+  },
+  {
+    "Station Name": "ANAND",
+    "Code": "ANND"
+  },
+  {
+    "Station Name": "ANAND NAGAR",
+    "Code": "ANDN"
+  },
+  {
+    "Station Name": "ANAND VIHAR TERMINUS",
+    "Code": "ANVT"
+  },
+  {
+    "Station Name": "ANANTAPUR",
+    "Code": "ATP"
+  },
+  {
+    "Station Name": "ANGUL",
+    "Code": "ANGL"
+  },
+  {
+    "Station Name": "ANNAVARAM",
+    "Code": "ANV"
+  },
+  {
+    "Station Name": "ANUPPUR",
+    "Code": "APR"
+  },
+  {
+    "Station Name": "ARA",
+    "Code": "ARA"
+  },
+  {
+    "Station Name": "ARAKKONAM",
+    "Code": "AJJ"
+  },
+  {
+    "Station Name": "ARSIKERE",
+    "Code": "ASK"
+  },
+  {
+    "Station Name": "ASANSOL",
+    "Code": "ASN"
+  },
+  {
+    "Station Name": "AUNRIHAR",
+    "Code": "ARJ"
+  },
+  {
+    "Station Name": "AURANGABAD",
+    "Code": "AWB"
+  },
+  {
+    "Station Name": "AYODHYA",
+    "Code": "AY"
+  },
+  {
+    "Station Name": "AZAMGARH",
+    "Code": "AMH"
+  },
+  {
+    "Station Name": "AZIMGANJ Jn.",
+    "Code": "AZ"
+  },
+  {
+    "Station Name": "BADARPUR",
+    "Code": "BPB"
+  },
+  {
+    "Station Name": "BADNERA Jn.",
+    "Code": "BD"
+  },
+  {
+    "Station Name": "BAGALKOT",
+    "Code": "BGK"
+  },
+  {
+    "Station Name": "BAGHPAT ROAD",
+    "Code": "BPM"
+  },
+  {
+    "Station Name": "BAIDYANATHDHAM",
+    "Code": "BDME"
+  },
+  {
+    "Station Name": "BAKTHIYARPUR",
+    "Code": "BKP"
+  },
+  {
+    "Station Name": "BALASORE",
+    "Code": "BLS"
+  },
+  {
+    "Station Name": "BALAGHAT",
+    "Code": "BTC"
+  },
+  {
+    "Station Name": "BALANGIR",
+    "Code": "BLGR"
+  },
+  {
+    "Station Name": "BALUGAON",
+    "Code": "BALU"
+  },
+  {
+    "Station Name": "BALURGHAT",
+    "Code": "BLGT"
+  },
+  {
+    "Station Name": "BALHARSHAH",
+    "Code": "BPQ"
+  },
+  {
+    "Station Name": "BALLIA",
+    "Code": "BUI"
+  },
+  {
+    "Station Name": "BANARHAT",
+    "Code": "BNQ"
+  },
+  {
+    "Station Name": "BANDA Jn.",
+    "Code": "BNDA"
+  },
+  {
+    "Station Name": "BANDEL Jn.",
+    "Code": "BDC"
+  },
+  {
+    "Station Name": "BANDIKUI Jn.",
+    "Code": "BKI"
+  },
+  {
+    "Station Name": "BANDRA (T)",
+    "Code": "BDTS"
+  },
+  {
+    "Station Name": "BANGALORE CITY",
+    "Code": "SBC"
+  },
+  {
+    "Station Name": "BANGALORE CANTT.",
+    "Code": "BNC"
+  },
+  {
+    "Station Name": "BANGARAPET",
+    "Code": "BWT"
+  },
+  {
+    "Station Name": "BANGRIPOSI",
+    "Code": "BGY"
+  },
+  {
+    "Station Name": "BANKURA",
+    "Code": "BQA"
+  },
+  {
+    "Station Name": "BANMANKHI",
+    "Code": "BNKI"
+  },
+  {
+    "Station Name": "BAPATLA",
+    "Code": "BPP"
+  },
+  {
+    "Station Name": "BARABANKI Jn.",
+    "Code": "BBK"
+  },
+  {
+    "Station Name": "BARABIL",
+    "Code": "BBN"
+  },
+  {
+    "Station Name": "BARAN",
+    "Code": "BAZ"
+  },
+  {
+    "Station Name": "BARAUNI Jn.",
+    "Code": "BJU"
+  },
+  {
+    "Station Name": "BARAUT",
+    "Code": "BTU"
+  },
+  {
+    "Station Name": "BARAPALLI",
+    "Code": "BRPL"
+  },
+  {
+    "Station Name": "BARDDHAMAN Jn.",
+    "Code": "BWN"
+  },
+  {
+    "Station Name": "BAREILLY",
+    "Code": "BE"
+  },
+  {
+    "Station Name": "BARGARH ROAD",
+    "Code": "BRGA"
+  },
+  {
+    "Station Name": "BARHNI",
+    "Code": "BNY"
+  },
+  {
+    "Station Name": "BARKAKANA",
+    "Code": "BRKA"
+  },
+  {
+    "Station Name": "BARMER",
+    "Code": "BME"
+  },
+  {
+    "Station Name": "BAROG",
+    "Code": "BOF"
+  },
+  {
+    "Station Name": "BARSOI",
+    "Code": "BOE"
+  },
+  {
+    "Station Name": "BARWADIH",
+    "Code": "BRWD"
+  },
+  {
+    "Station Name": "BASAR",
+    "Code": "BSX"
+  },
+  {
+    "Station Name": "BASTI",
+    "Code": "BST"
+  },
+  {
+    "Station Name": "BATHINDA Jn..",
+    "Code": "BTI"
+  },
+  {
+    "Station Name": "BAYANA",
+    "Code": "BXN"
+  },
+  {
+    "Station Name": "BEAS",
+    "Code": "BEAS"
+  },
+  {
+    "Station Name": "BEAWAR",
+    "Code": "BER"
+  },
+  {
+    "Station Name": "BELAPUR",
+    "Code": "BAP"
+  },
+  {
+    "Station Name": "BELGAUM",
+    "Code": "BGM"
+  },
+  {
+    "Station Name": "BELLARY Jn.",
+    "Code": "BAY"
+  },
+  {
+    "Station Name": "BETTIAH",
+    "Code": "BTH"
+  },
+  {
+    "Station Name": "BETUL",
+    "Code": "BZU"
+  },
+  {
+    "Station Name": "BHADOHI",
+    "Code": "BOY"
+  },
+  {
+    "Station Name": "BHADRAK",
+    "Code": "BHC"
+  },
+  {
+    "Station Name": "BHAGALPUR",
+    "Code": "BGP"
+  },
+  {
+    "Station Name": "BHAGAT KI KOTHI",
+    "Code": "BGKI"
+  },
+  {
+    "Station Name": "BHARATPUR",
+    "Code": "BTE"
+  },
+  {
+    "Station Name": "BHARUCH",
+    "Code": "BH"
+  },
+  {
+    "Station Name": "BHATAPARA",
+    "Code": "BYT"
+  },
+  {
+    "Station Name": "BHATKAL",
+    "Code": "BTJL"
+  },
+  {
+    "Station Name": "BHATNI",
+    "Code": "BTT"
+  },
+  {
+    "Station Name": "BHAVNAGAR (T)",
+    "Code": "BVC"
+  },
+  {
+    "Station Name": "BHAWANIPATNA",
+    "Code": "BWPI"
+  },
+  {
+    "Station Name": "BHILWARA",
+    "Code": "BHL"
+  },
+  {
+    "Station Name": "BHIMAVARAM Jn.",
+    "Code": "BVRM"
+  },
+  {
+    "Station Name": "BHIMAVARAM TOWN",
+    "Code": "BVRT"
+  },
+  {
+    "Station Name": "BHIND",
+    "Code": "BIX"
+  },
+  {
+    "Station Name": "BHIWANI",
+    "Code": "BNW"
+  },
+  {
+    "Station Name": "BHOPAL",
+    "Code": "BPL"
+  },
+  {
+    "Station Name": "BHUBANESWAR",
+    "Code": "BBS"
+  },
+  {
+    "Station Name": "BHUJ",
+    "Code": "BHUJ"
+  },
+  {
+    "Station Name": "BHUSAVAL",
+    "Code": "BSL"
+  },
+  {
+    "Station Name": "BIJAPUR",
+    "Code": "BJP"
+  },
+  {
+    "Station Name": "BIJNOR",
+    "Code": "BJO"
+  },
+  {
+    "Station Name": "BIKANER",
+    "Code": "BKN"
+  },
+  {
+    "Station Name": "BILASPUR Jn.",
+    "Code": "BSP"
+  },
+  {
+    "Station Name": "BINA",
+    "Code": "BINA"
+  },
+  {
+    "Station Name": "BINNAGURI",
+    "Code": "BNV"
+  },
+  {
+    "Station Name": "BIRUR",
+    "Code": "RRB"
+  },
+  {
+    "Station Name": "BITRAGUNTA",
+    "Code": "BTTR"
+  },
+  {
+    "Station Name": "BIYAVARA RAJGARH",
+    "Code": "BRRG"
+  },
+  {
+    "Station Name": "BOBBILI",
+    "Code": "VBL"
+  },
+  {
+    "Station Name": "BOINDA",
+    "Code": "BONA"
+  },
+  {
+    "Station Name": "BARAPALLI",
+    "Code": "BRPL"
+  },
+  {
+    "Station Name": "BAGHBAHAR",
+    "Code": "BGBR"
+  },
+  {
+    "Station Name": "BOKARO STEEL CITY",
+    "Code": "BKSC"
+  },
+  {
+    "Station Name": "BOLPUR SHANTINIKETAN",
+    "Code": "BHP"
+  },
+  {
+    "Station Name": "BORIVALI",
+    "Code": "BVI"
+  },
+  {
+    "Station Name": "BOTAD",
+    "Code": "BTD"
+  },
+  {
+    "Station Name": "BUDAUN",
+    "Code": "BEM"
+  },
+  {
+    "Station Name": "BUNDI",
+    "Code": "BUDI"
+  },
+  {
+    "Station Name": "BURHANPUR",
+    "Code": "BAU"
+  },
+  {
+    "Station Name": "BURHWAL",
+    "Code": "BUW"
+  },
+  {
+    "Station Name": "BUXAR",
+    "Code": "BXR"
+  },
+  {
+    "Station Name": "CANACONA",
+    "Code": "CNO"
+  },
+  {
+    "Station Name": "CHAKΙΑ",
+    "Code": "CAA"
+  },
+  {
+    "Station Name": "CHAKKI BANK",
+    "Code": "CHKB"
+  },
+  {
+    "Station Name": "CHAKRADHARPUR",
+    "Code": "CKP"
+  },
+  {
+    "Station Name": "CHALISGAON",
+    "Code": "CSN"
+  },
+  {
+    "Station Name": "CHAMPA",
+    "Code": "CPH"
+  },
+  {
+    "Station Name": "CHANDAUSI",
+    "Code": "CH"
+  },
+  {
+    "Station Name": "CHANDERIYA",
+    "Code": "CNA"
+  },
+  {
+    "Station Name": "CHANDIGARH",
+    "Code": "CDG"
+  },
+  {
+    "Station Name": "CHANDIL",
+    "Code": "CNI"
+  },
+  {
+    "Station Name": "CHANDRAPUR",
+    "Code": "CD"
+  },
+  {
+    "Station Name": "CHANDRAPURA",
+    "Code": "CRP"
+  },
+  {
+    "Station Name": "CHAPARMUKH",
+    "Code": "CPK"
+  },
+  {
+    "Station Name": "CHATRAPUR",
+    "Code": "CAP"
+  },
+  {
+    "Station Name": "CHENGALPATTU Jn.",
+    "Code": "CGL"
+  },
+  {
+    "Station Name": "CHENGANNUR",
+    "Code": "CNGR"
+  },
+  {
+    "Station Name": "CHENNAI CENTRAL",
+    "Code": "MAS"
+  },
+  {
+    "Station Name": "CHENNAI EGMORE",
+    "Code": "MS"
+  },
+  {
+    "Station Name": "CHHAPRA",
+    "Code": "CPR"
+  },
+  {
+    "Station Name": "CHHINDWARA",
+    "Code": "CWA"
+  },
+  {
+    "Station Name": "CHIDAMBARAM",
+    "Code": "CDM"
+  },
+  {
+    "Station Name": "CHIKJAJUR",
+    "Code": "JRU"
+  },
+  {
+    "Station Name": "CHIPLUN",
+    "Code": "CHI"
+  },
+  {
+    "Station Name": "CHIRALA",
+    "Code": "CLX"
+  },
+  {
+    "Station Name": "CHITRAKOOTDHAM KARVI",
+    "Code": "CKTD"
+  },
+  {
+    "Station Name": "CHITTARANJAN",
+    "Code": "CRJ"
+  },
+  {
+    "Station Name": "CHITTAURGARH",
+    "Code": "COR"
+  },
+  {
+    "Station Name": "CHITTOOR",
+    "Code": "CTO"
+  },
+  {
+    "Station Name": "CHOPAN",
+    "Code": "CPU"
+  },
+  {
+    "Station Name": "CHUNAR",
+    "Code": "CAR"
+  },
+  {
+    "Station Name": "CHURU",
+    "Code": "CUR"
+  },
+  {
+    "Station Name": "COIMBATORE JN.",
+    "Code": "CBE"
+  },
+  {
+    "Station Name": "COONOOR",
+    "Code": "ONR"
+  },
+  {
+    "Station Name": "CUDDALORE PORT",
+    "Code": "CUPJ"
+  },
+  {
+    "Station Name": "CUDDAPAH",
+    "Code": "HX"
+  },
+  {
+    "Station Name": "CUTTACK",
+    "Code": "CTC"
+  },
+  {
+    "Station Name": "DADAR",
+    "Code": "DR"
+  },
+  {
+    "Station Name": "DAHANU ROAD",
+    "Code": "DRD"
+  },
+  {
+    "Station Name": "DAHOD",
+    "Code": "DHD"
+  },
+  {
+    "Station Name": "DALGAON",
+    "Code": "DLO"
+  },
+  {
+    "Station Name": "DALTONGANJ",
+    "Code": "DTO"
+  },
+  {
+    "Station Name": "DALLIRAJHARA",
+    "Code": "DRZ"
+  },
+  {
+    "Station Name": "DAMOH",
+    "Code": "DMO"
+  },
+  {
+    "Station Name": "DANAPUR",
+    "Code": "DNR"
+  },
+  {
+    "Station Name": "HALDIA",
+    "Code": "HLZ"
+  },
+  {
+    "Station Name": "DARBHANGA",
+    "Code": "DBG"
+  },
+  {
+    "Station Name": "HALDIBARI",
+    "Code": "HDB"
+  },
+  {
+    "Station Name": "DAUND",
+    "Code": "DD"
+  },
+  {
+    "Station Name": "HAMILTONGANJ",
+    "Code": "HOJ"
+  },
+  {
+    "Station Name": "DAVANGERE",
+    "Code": "DVG"
+  },
+  {
+    "Station Name": "HANUMANGARH",
+    "Code": "HMH"
+  },
+  {
+    "Station Name": "DEHRADUN",
+    "Code": "DDN"
+  },
+  {
+    "Station Name": "HAPA",
+    "Code": "HAPA"
+  },
+  {
+    "Station Name": "DEHRI-ON-SONE",
+    "Code": "DOS"
+  },
+  {
+    "Station Name": "HAPUR",
+    "Code": "HPU"
+  },
+  {
+    "Station Name": "DELHI",
+    "Code": "DLI"
+  },
+  {
+    "Station Name": "HARDA",
+    "Code": "HD"
+  },
+  {
+    "Station Name": "NEW DELHI",
+    "Code": "NDLS"
+  },
+  {
+    "Station Name": "HARIDWAR",
+    "Code": "HW"
+  },
+  {
+    "Station Name": "DELHI CANTT.",
+    "Code": "DEC"
+  },
+  {
+    "Station Name": "HARIHAR",
+    "Code": "HRR"
+  },
+  {
+    "Station Name": "DELHI SARAI ROHILLA",
+    "Code": "DEE"
+  },
+  {
+    "Station Name": "HARPALPUR",
+    "Code": "HPP"
+  },
+  {
+    "Station Name": "DELHI SHAHDARA",
+    "Code": "DSA"
+  },
+  {
+    "Station Name": "HASIMARA",
+    "Code": "HSA"
+  },
+  {
+    "Station Name": "DEORIASADAR",
+    "Code": "DEOS"
+  },
+  {
+    "Station Name": "HATΙΑ",
+    "Code": "HTE"
+  },
+  {
+    "Station Name": "DEVLALI",
+    "Code": "DVL"
+  },
+  {
+    "Station Name": "HAZUR SAHIB NANDED",
+    "Code": "NED"
+  },
+  {
+    "Station Name": "DHAMANGAON",
+    "Code": "DMN"
+  },
+  {
+    "Station Name": "HILSA",
+    "Code": "HIL"
+  },
+  {
+    "Station Name": "DHANBAD",
+    "Code": "DHN"
+  },
+  {
+    "Station Name": "HIMMAT NAGAR",
+    "Code": "HMT"
+  },
+  {
+    "Station Name": "DHARMABAD",
+    "Code": "DAB"
+  },
+  {
+    "Station Name": "HINDUPUR",
+    "Code": "HUP"
+  },
+  {
+    "Station Name": "DHARMANAGAR",
+    "Code": "DMR"
+  },
+  {
+    "Station Name": "HINGOLI",
+    "Code": "HNL"
+  },
+  {
+    "Station Name": "DHARMAPURI",
+    "Code": "DPJ"
+  },
+  {
+    "Station Name": "HISAR",
+    "Code": "HSR"
+  },
+  {
+    "Station Name": "DHARMAVARAM",
+    "Code": "DMM"
+  },
+  {
+    "Station Name": "HOSHANGABAD",
+    "Code": "HBD"
+  },
+  {
+    "Station Name": "DHARWAD",
+    "Code": "DWR"
+  },
+  {
+    "Station Name": "HOSPET",
+    "Code": "HPT"
+  },
+  {
+    "Station Name": "DHRANGADHRA",
+    "Code": "DHASA"
+  },
+  {
+    "Station Name": "HOSUR",
+    "Code": "HSRA"
+  },
+  {
+    "Station Name": "DHAULPUR",
+    "Code": "DHO"
+  },
+  {
+    "Station Name": "HOWBADH",
+    "Code": "HBG"
+  },
+  {
+    "Station Name": "DHENUANAL",
+    "Code": "DNUL"
+  },
+  {
+    "Station Name": "HOWRAH",
+    "Code": "HWH"
+  },
+  {
+    "Station Name": "DHOLA",
+    "Code": "DLJ"
+  },
+  {
+    "Station Name": "HUBLI",
+    "Code": "UBL"
+  },
+  {
+    "Station Name": "DHONE",
+    "Code": "DHNE"
+  },
+  {
+    "Station Name": "HYDERABAD",
+    "Code": "HYB"
+  },
+  {
+    "Station Name": "DHUBRI",
+    "Code": "DBB"
+  },
+  {
+    "Station Name": "IGATPURI",
+    "Code": "IGP"
+  },
+  {
+    "Station Name": "DHURI",
+    "Code": "DUI"
+  },
+  {
+    "Station Name": "INDARA",
+    "Code": "JAA"
+  },
+  {
+    "Station Name": "DIBRUGARH",
+    "Code": "DBRG"
+  },
+  {
+    "Station Name": "INDORE",
+    "Code": "INDB"
+  },
+  {
+    "Station Name": "DIBRUGARH TOWN",
+    "Code": "DBRT"
+  },
+  {
+    "Station Name": "ISLAMPUR",
+    "Code": "IPR"
+  },
+  {
+    "Station Name": "DIGHA",
+    "Code": "DGHA"
+  },
+  {
+    "Station Name": "ITARSI",
+    "Code": "ET"
+  },
+  {
+    "Station Name": "DILDARNAGAR",
+    "Code": "DLN"
+  },
+  {
+    "Station Name": "JABALPUR",
+    "Code": "JBP"
+  },
+  {
+    "Station Name": "DIMAPUR",
+    "Code": "DMV"
+  },
+  {
+    "Station Name": "JAGDALPUR",
+    "Code": "JDB"
+  },
+  {
+    "Station Name": "DINDIGUL Jn.",
+    "Code": "DG"
+  },
+  {
+    "Station Name": "JAIPUR",
+    "Code": "JP"
+  },
+  {
+    "Station Name": "DONGARGARH",
+    "Code": "DGG"
+  },
+  {
+    "Station Name": "JAYPUR",
+    "Code": "JYP"
+  },
+  {
+    "Station Name": "DORNAKAL",
+    "Code": "DKJ"
+  },
+  {
+    "Station Name": "JAISALMER",
+    "Code": "JSM"
+  },
+  {
+    "Station Name": "DUNGARPUR",
+    "Code": "DNRP"
+  },
+  {
+    "Station Name": "JAJPUR KEONJHAR ROAD",
+    "Code": "JJKR"
+  },
+  {
+    "Station Name": "DURG",
+    "Code": "DURG"
+  },
+  {
+    "Station Name": "JAKHAL",
+    "Code": "JHL"
+  },
+  {
+    "Station Name": "DURGAPUR",
+    "Code": "DGR"
+  },
+  {
+    "Station Name": "JALAMB",
+    "Code": "JM"
+  },
+  {
+    "Station Name": "DUVVADA",
+    "Code": "DVD"
+  },
+  {
+    "Station Name": "JALANDHAR CANTT.",
+    "Code": "JRC"
+  },
+  {
+    "Station Name": "DWARKA",
+    "Code": "DWK"
+  },
+  {
+    "Station Name": "JALANDHAR CITY",
+    "Code": "JUC"
+  },
+  {
+    "Station Name": "ELURU",
+    "Code": "EE"
+  },
+  {
+    "Station Name": "JALGAON",
+    "Code": "JL"
+  },
+  {
+    "Station Name": "ERNAKULAM Jn.",
+    "Code": "ERS"
+  },
+  {
+    "Station Name": "JALNA",
+    "Code": "J"
+  },
+  {
+    "Station Name": "ERNAKULAM TOWN",
+    "Code": "ERN"
+  },
+  {
+    "Station Name": "JALPAIGURI",
+    "Code": "JPG"
+  },
+  {
+    "Station Name": "ERODE",
+    "Code": "ED"
+  },
+  {
+    "Station Name": "JAMALPUR",
+    "Code": "JMP"
+  },
+  {
+    "Station Name": "ETAWAH",
+    "Code": "ETW"
+  },
+  {
+    "Station Name": "JAMMU TAWI",
+    "Code": "JAT"
+  },
+  {
+    "Station Name": "FAIZABAD",
+    "Code": "FD"
+  },
+  {
+    "Station Name": "JAMNAGAR",
+    "Code": "JAM"
+  },
+  {
+    "Station Name": "FARIDABAD",
+    "Code": "FDB"
+  },
+  {
+    "Station Name": "JANGHAI",
+    "Code": "JNH"
+  },
+  {
+    "Station Name": "FARRUKHABAD",
+    "Code": "FBD"
+  },
+  {
+    "Station Name": "JASIDIH",
+    "Code": "JSME"
+  },
+  {
+    "Station Name": "FATEHABAD CHAND",
+    "Code": "FTD"
+  },
+  {
+    "Station Name": "JAUNPUR Jn.",
+    "Code": "JNU"
+  },
+  {
+    "Station Name": "FATEHPUR",
+    "Code": "FTP"
+  },
+  {
+    "Station Name": "JAYNAGAR",
+    "Code": "JYG"
+  },
+  {
+    "Station Name": "FATUHA",
+    "Code": "FUT"
+  },
+  {
+    "Station Name": "JETALSAR",
+    "Code": "JLR"
+  },
+  {
+    "Station Name": "FAZILKA",
+    "Code": "FKA"
+  },
+  {
+    "Station Name": "JHAJHA",
+    "Code": "JAJ"
+  },
+  {
+    "Station Name": "FIROZABAD",
+    "Code": "FZD"
+  },
+  {
+    "Station Name": "JHANSI",
+    "Code": "JHS"
+  },
+  {
+    "Station Name": "FIROZPUR CITY",
+    "Code": "FZP"
+  },
+  {
+    "Station Name": "JHARGRAM",
+    "Code": "JGM"
+  },
+  {
+    "Station Name": "FIROZPUR CANTT",
+    "Code": "FZR"
+  },
+  {
+    "Station Name": "JHARSUGUDA",
+    "Code": "JSG"
+  },
+  {
+    "Station Name": "FORBESGANJ",
+    "Code": "FBG"
+  },
+  {
+    "Station Name": "JIND",
+    "Code": "JIND"
+  },
+  {
+    "Station Name": "FURKATING",
+    "Code": "FKG"
+  },
+  {
+    "Station Name": "JODHPUR",
+    "Code": "JU"
+  },
+  {
+    "Station Name": "GADAG",
+    "Code": "GDG"
+  },
+  {
+    "Station Name": "JOGBANI",
+    "Code": "JBN"
+  },
+  {
+    "Station Name": "GAJRAULA",
+    "Code": "GJL"
+  },
+  {
+    "Station Name": "JOLARPETTAI",
+    "Code": "JTJ"
+  },
+  {
+    "Station Name": "GANDHIDHAM",
+    "Code": "GIM"
+  },
+  {
+    "Station Name": "JORHAT",
+    "Code": "JT"
+  },
+  {
+    "Station Name": "GANDHINAGAR",
+    "Code": "GADJ"
+  },
+  {
+    "Station Name": "JUNAGARH Jn.",
+    "Code": "JND"
+  },
+  {
+    "Station Name": "GANGAPUR CITY",
+    "Code": "GGC"
+  },
+  {
+    "Station Name": "KACHEGUDA",
+    "Code": "KCG"
+  },
+  {
+    "Station Name": "GARWA ROAD",
+    "Code": "GHD"
+  },
+  {
+    "Station Name": "KALCHINI",
+    "Code": "KCF"
+  },
+  {
+    "Station Name": "GAYA",
+    "Code": "GAYA"
+  },
+  {
+    "Station Name": "KAKINADA PORT",
+    "Code": "COA"
+  },
+  {
+    "Station Name": "GEVRA ROAD",
+    "Code": "GAD"
+  },
+  {
+    "Station Name": "KALKA",
+    "Code": "KLK"
+  },
+  {
+    "Station Name": "GHATSILA",
+    "Code": "GTS"
+  },
+  {
+    "Station Name": "KALOL",
+    "Code": "KLL"
+  },
+  {
+    "Station Name": "GHAZIABAD",
+    "Code": "GZB"
+  },
+  {
+    "Station Name": "KALYAN",
+    "Code": "KYN"
+  },
+  {
+    "Station Name": "GOALPARA TOWN",
+    "Code": "GLPT"
+  },
+  {
+    "Station Name": "KAMAKHYA",
+    "Code": "KYQ"
+  },
+  {
+    "Station Name": "GODHRA",
+    "Code": "GDA"
+  },
+  {
+    "Station Name": "KANCHIPURAM",
+    "Code": "CJ"
+  },
+  {
+    "Station Name": "GOLA GOKARANNATH",
+    "Code": "GK"
+  },
+  {
+    "Station Name": "KANDHLA",
+    "Code": "KQL"
+  },
+  {
+    "Station Name": "GONDA",
+    "Code": "GD"
+  },
+  {
+    "Station Name": "KANNIYAKUMARI",
+    "Code": "CAPE"
+  },
+  {
+    "Station Name": "GONDIA",
+    "Code": "G"
+  },
+  {
+    "Station Name": "KANNUR",
+    "Code": "CAN"
+  },
+  {
+    "Station Name": "GORAKHPUR",
+    "Code": "GKP"
+  },
+  {
+    "Station Name": "KANPUR CENTRAL",
+    "Code": "CNB"
+  },
+  {
+    "Station Name": "GOSSAINGAON HAT",
+    "Code": "GOGH"
+  },
+  {
+    "Station Name": "KANPUR ANWARGANJ",
+    "Code": "CPA"
+  },
+  {
+    "Station Name": "GOOTY",
+    "Code": "GY"
+  },
+  {
+    "Station Name": "KAPTANGANJ",
+    "Code": "CPJ"
+  },
+  {
+    "Station Name": "GUDIVADA",
+    "Code": "GDV"
+  },
+  {
+    "Station Name": "KARAIKAL",
+    "Code": "KIK"
+  },
+  {
+    "Station Name": "GUDUR",
+    "Code": "GDR"
+  },
+  {
+    "Station Name": "KARAIKKUDI JN.",
+    "Code": "KKDI"
+  },
+  {
+    "Station Name": "GULBARGA",
+    "Code": "GR"
+  },
+  {
+    "Station Name": "KARIMGANJ",
+    "Code": "KXJ"
+  },
+  {
+    "Station Name": "GUNA",
+    "Code": "GUNA"
+  },
+  {
+    "Station Name": "KARNAL",
+    "Code": "KUN"
+  },
+  {
+    "Station Name": "GUNTAKAL",
+    "Code": "GTL"
+  },
+  {
+    "Station Name": "KARUR",
+    "Code": "KRR"
+  },
+  {
+    "Station Name": "GUNTUR",
+    "Code": "GNT"
+  },
+  {
+    "Station Name": "KARWAR",
+    "Code": "KAWR"
+  },
+  {
+    "Station Name": "GURGAON",
+    "Code": "GGN"
+  },
+  {
+    "Station Name": "KASARAGOD",
+    "Code": "KGQ"
+  },
+  {
+    "Station Name": "GURUVAYUR",
+    "Code": "GUV"
+  },
+  {
+    "Station Name": "KASGANJ",
+    "Code": "KSJ"
+  },
+  {
+    "Station Name": "GUWAHATI",
+    "Code": "GHY"
+  },
+  {
+    "Station Name": "KATHGODAM",
+    "Code": "KGM"
+  },
+  {
+    "Station Name": "GWALIOR",
+    "Code": "GWL"
+  },
+  {
+    "Station Name": "KATIHAR",
+    "Code": "KIR"
+  },
+  {
+    "Station Name": "GYANPUR ROAD",
+    "Code": "GYN"
+  },
+  {
+    "Station Name": "KATNI",
+    "Code": "KTE"
+  },
+  {
+    "Station Name": "HABIBGANJ",
+    "Code": "HBJ"
+  },
+  {
+    "Station Name": "KATNI MURWARA",
+    "Code": "KMZ"
+  },
+  {
+    "Station Name": "HAJIPUR",
+    "Code": "HJP"
+  },
+  {
+    "Station Name": "KATPADI",
+    "Code": "KPD"
+  },
+  {
+    "Station Name": "KATWA",
+    "Code": "KWAE"
+  },
+  {
+    "Station Name": "KAZIPET",
+    "Code": "KZJ"
+  },
+  {
+    "Station Name": "MORADABAD",
+    "Code": "MB"
+  },
+  {
+    "Station Name": "PUDUKΟΤΤΑΙ",
+    "Code": "PDKT"
+  },
+  {
+    "Station Name": "SILCHAR",
+    "Code": "SCL"
+  },
+  {
+    "Station Name": "KESINGA",
+    "Code": "KSNG"
+  },
+  {
+    "Station Name": "MOTIHARI",
+    "Code": "MKI"
+  },
+  {
+    "Station Name": "PULGAON",
+    "Code": "PLO"
+  },
+  {
+    "Station Name": "SILGHAT",
+    "Code": "SHTT"
+  },
+  {
+    "Station Name": "KENDUJHARGARH",
+    "Code": "KDJR"
+  },
+  {
+    "Station Name": "MUDKHED",
+    "Code": "MUE"
+  },
+  {
+    "Station Name": "PUNE Jn.",
+    "Code": "PUNE"
+  },
+  {
+    "Station Name": "SILIGURI",
+    "Code": "SGUJ"
+  },
+  {
+    "Station Name": "KHAGARIA",
+    "Code": "KGG"
+  },
+  {
+    "Station Name": "MUGHALSARAI",
+    "Code": "MGS"
+  },
+  {
+    "Station Name": "PURANPUR",
+    "Code": "PP"
+  },
+  {
+    "Station Name": "SILIGURI TOWN",
+    "Code": "SGUT"
+  },
+  {
+    "Station Name": "KHALILABAD",
+    "Code": "KLD"
+  },
+  {
+    "Station Name": "MUMBAI CENTRAL",
+    "Code": "BCT"
+  },
+  {
+    "Station Name": "PURI",
+    "Code": "PURI"
+  },
+  {
+    "Station Name": "SIMALUGURI",
+    "Code": "SLGR"
+  },
+  {
+    "Station Name": "KHAMMAM",
+    "Code": "KMT"
+  },
+  {
+    "Station Name": "MUMBAI CST",
+    "Code": "CSTM"
+  },
+  {
+    "Station Name": "PURNA",
+    "Code": "PAU"
+  },
+  {
+    "Station Name": "SINGRAULI",
+    "Code": "SGRL"
+  },
+  {
+    "Station Name": "KHANDWA",
+    "Code": "KNW"
+  },
+  {
+    "Station Name": "MUNIGUDA",
+    "Code": "MNGD"
+  },
+  {
+    "Station Name": "PURNIA",
+    "Code": "PRNA"
+  },
+  {
+    "Station Name": "SIRPUR KAGAZNAGAR",
+    "Code": "SKZR"
+  },
+  {
+    "Station Name": "KHARAGPUR",
+    "Code": "KGP"
+  },
+  {
+    "Station Name": "MURI",
+    "Code": "MURI"
+  },
+  {
+    "Station Name": "PURULIA",
+    "Code": "PRR"
+  },
+  {
+    "Station Name": "SIRSA",
+    "Code": "SSA"
+  },
+  {
+    "Station Name": "KHEKRA",
+    "Code": "KEX"
+  },
+  {
+    "Station Name": "MURKEONGSELEK",
+    "Code": "MZS"
+  },
+  {
+    "Station Name": "RADHIKAPUR",
+    "Code": "RDP"
+  },
+  {
+    "Station Name": "SISWA BAZAR",
+    "Code": "SBZ"
+  },
+  {
+    "Station Name": "KHURDA ROAD",
+    "Code": "KUR"
+  },
+  {
+    "Station Name": "MURTAJAPUR",
+    "Code": "MZR"
+  },
+  {
+    "Station Name": "RAE BARELI",
+    "Code": "RBL"
+  },
+  {
+    "Station Name": "SITAMARHI",
+    "Code": "SMI"
+  },
+  {
+    "Station Name": "KHURJA",
+    "Code": "KRJ"
+  },
+  {
+    "Station Name": "MUZAFFAR NAGAR",
+    "Code": "MOZ"
+  },
+  {
+    "Station Name": "RAICHUR",
+    "Code": "RC"
+  },
+  {
+    "Station Name": "SITAPUR CITY",
+    "Code": "SPC"
+  },
+  {
+    "Station Name": "KISHANGANJ",
+    "Code": "KNE"
+  },
+  {
+    "Station Name": "MUZAFFARPUR",
+    "Code": "MFP"
+  },
+  {
+    "Station Name": "RAIGARH",
+    "Code": "RIG"
+  },
+  {
+    "Station Name": "SITAPUR CANTT.",
+    "Code": "SCC"
+  },
+  {
+    "Station Name": "KISHANGARH",
+    "Code": "KSG"
+  },
+  {
+    "Station Name": "MYSORE",
+    "Code": "MYS"
+  },
+  {
+    "Station Name": "RAIPUR",
+    "Code": "RJY"
+  },
+  {
+    "Station Name": "SIURI",
+    "Code": "SURI"
+  },
+  {
+    "Station Name": "KIUL",
+    "Code": "KIUL"
+  },
+  {
+    "Station Name": "NABADWIPDHAM",
+    "Code": "NDAE"
+  },
+  {
+    "Station Name": "RAJAHMUNDRY",
+    "Code": "NDAE"
+  },
+  {
+    "Station Name": "SIWAN",
+    "Code": "SV"
+  },
+  {
+    "Station Name": "KOCHUVELI",
+    "Code": "KCVL"
+  },
+  {
+    "Station Name": "NADIAD",
+    "Code": "ND"
+  },
+  {
+    "Station Name": "RAJA-KA-SAHASPUR",
+    "Code": "RJK"
+  },
+  {
+    "Station Name": "SOJAT ROAD",
+    "Code": "SOD"
+  },
+  {
+    "Station Name": "KODAIKANAL ROAD",
+    "Code": "KON"
+  },
+  {
+    "Station Name": "NADIKUDI",
+    "Code": "NDKD"
+  },
+  {
+    "Station Name": "RAJA-KI-MANDI",
+    "Code": "RKM"
+  },
+  {
+    "Station Name": "SOLAN",
+    "Code": "SOL"
+  },
+  {
+    "Station Name": "KOLKATA",
+    "Code": "KOAA"
+  },
+  {
+    "Station Name": "NAGAPPATTINAM",
+    "Code": "NGT"
+  },
+  {
+    "Station Name": "RAJENDRANAGAR",
+    "Code": "RJQ"
+  },
+  {
+    "Station Name": "SOLAPUR",
+    "Code": "SUR"
+  },
+  {
+    "Station Name": "KOLLAM",
+    "Code": "QLN"
+  },
+  {
+    "Station Name": "NAGARKATA",
+    "Code": "NKB"
+  },
+  {
+    "Station Name": "RAJGIR",
+    "Code": "RGD"
+  },
+  {
+    "Station Name": "SOMNATH",
+    "Code": "SMNH"
+  },
+  {
+    "Station Name": "KOPERGAON",
+    "Code": "KPG"
+  },
+  {
+    "Station Name": "NAGARSOL",
+    "Code": "NSL"
+  },
+  {
+    "Station Name": "RAJKOT",
+    "Code": "RJT"
+  },
+  {
+    "Station Name": "SOMPEΤΑ",
+    "Code": "SPT"
+  },
+  {
+    "Station Name": "KORAPUT",
+    "Code": "KRPU"
+  },
+  {
+    "Station Name": "NAGBHIR",
+    "Code": "NAB"
+  },
+  {
+    "Station Name": "RAJNANDGAON",
+    "Code": "RJN"
+  },
+  {
+    "Station Name": "SONPUR",
+    "Code": "SEE"
+  },
+  {
+    "Station Name": "KORBA",
+    "Code": "KRBA"
+  },
+  {
+    "Station Name": "NAGDA",
+    "Code": "NAD"
+  },
+  {
+    "Station Name": "RAJPURA",
+    "Code": "RPJ"
+  },
+  {
+    "Station Name": "SRI CHHATRAPATI SHAHU MAHARAJ (T)",
+    "Code": "CSMT"
+  },
+  {
+    "Station Name": "KOTA",
+    "Code": "KOTA"
+  },
+  {
+    "Station Name": "NAGERCOIL Jn.",
+    "Code": "NCJ"
+  },
+  {
+    "Station Name": "RAMAGUNDAM",
+    "Code": "RDM"
+  },
+  {
+    "Station Name": "SRI DUNGARGARH",
+    "Code": "SDGH"
+  },
+  {
+    "Station Name": "KOTDWARA",
+    "Code": "KTW"
+  },
+  {
+    "Station Name": "NAGORE",
+    "Code": "NGP"
+  },
+  {
+    "Station Name": "RAMANATHAPURAM",
+    "Code": "RMD"
+  },
+  {
+    "Station Name": "SRIGANGA NAGAR",
+    "Code": "SGNR"
+  },
+  {
+    "Station Name": "KOT KAPURA",
+    "Code": "KKP"
+  },
+  {
+    "Station Name": "NAGPUR",
+    "Code": "NAGPUR"
+  },
+  {
+    "Station Name": "RAMESWARAM",
+    "Code": "RMM"
+  },
+  {
+    "Station Name": "SRIKAKULAM ROAD",
+    "Code": "CHE"
+  },
+  {
+    "Station Name": "KOTTAYAM",
+    "Code": "KTYM"
+  },
+  {
+    "Station Name": "NAGRAKATA",
+    "Code": "NKB"
+  },
+  {
+    "Station Name": "RAMNAGAR",
+    "Code": "RMR"
+  },
+  {
+    "Station Name": "SRI SATHYASAI PRASHANTI NILAYAM",
+    "Code": "SSPN"
+  },
+  {
+    "Station Name": "KOZHIKODE",
+    "Code": "CLT"
+  },
+  {
+    "Station Name": "NAINPUR",
+    "Code": "NIR"
+  },
+  {
+    "Station Name": "RAMPUR JN.",
+    "Code": "RMU"
+  },
+  {
+    "Station Name": "SUJANGARH",
+    "Code": "SUJH"
+  },
+  {
+    "Station Name": "KRISHNANAGAR CITY",
+    "Code": "KNJ"
+  },
+  {
+    "Station Name": "NAJIBABAD",
+    "Code": "NBD"
+  },
+  {
+    "Station Name": "RAMPURHAT",
+    "Code": "RPH"
+  },
+  {
+    "Station Name": "SULTANPUR",
+    "Code": "SLN"
+  },
+  {
+    "Station Name": "KRISHNARAJAPURAM",
+    "Code": "KJM"
+  },
+  {
+    "Station Name": "NALANDA",
+    "Code": "NLD"
+  },
+  {
+    "Station Name": "RANAGHAT",
+    "Code": "RHA"
+  },
+  {
+    "Station Name": "RANCHI",
+    "Code": "RNC"
+  },
+  {
+    "Station Name": "SURAT",
+    "Code": "ST"
+  },
+  {
+    "Station Name": "KUMARGHAT",
+    "Code": "KUGT"
+  },
+  {
+    "Station Name": "NALGONDA",
+    "Code": "NLDA"
+  },
+  {
+    "Station Name": "RANGAPARA NORTH",
+    "Code": "RPAN"
+  },
+  {
+    "Station Name": "SURATGARH",
+    "Code": "SOG"
+  },
+  {
+    "Station Name": "KUMBAKONAM",
+    "Code": "KMU"
+  },
+  {
+    "Station Name": "NAMAKKAL",
+    "Code": "NMKL"
+  },
+  {
+    "Station Name": "RANGIYA",
+    "Code": "RNY"
+  },
+  {
+    "Station Name": "SURATHKAL",
+    "Code": "SL"
+  },
+  {
+    "Station Name": "KUNDAPURA",
+    "Code": "KUDA"
+  },
+  {
+    "Station Name": "NANDALUR",
+    "Code": "NRE"
+  },
+  {
+    "Station Name": "RANINAGAR",
+    "Code": "ROJ"
+  },
+  {
+    "Station Name": "SURENDRA NAGAR",
+    "Code": "SUNR"
+  },
+  {
+    "Station Name": "KURDUWADI",
+    "Code": "KWV"
+  },
+  {
+    "Station Name": "NANDGAON",
+    "Code": "NGN"
+  },
+  {
+    "Station Name": "RATANGARH",
+    "Code": "RTGH"
+  },
+  {
+    "Station Name": "TADEPALLIGUDEM",
+    "Code": "TDD"
+  },
+  {
+    "Station Name": "KURNOOL TOWN",
+    "Code": "KRNT"
+  },
+  {
+    "Station Name": "NANDURBAR",
+    "Code": "NDB"
+  },
+  {
+    "Station Name": "RATLAM",
+    "Code": "RTM"
+  },
+  {
+    "Station Name": "TAMBARAM",
+    "Code": "TBM"
+  },
+  {
+    "Station Name": "KURUKSHETRA",
+    "Code": "KKDE"
+  },
+  {
+    "Station Name": "NANDYAL",
+    "Code": "NDL"
+  },
+  {
+    "Station Name": "RATNAGIRI",
+    "Code": "RN"
+  },
+  {
+    "Station Name": "TATANAGAR",
+    "Code": "TATA"
+  },
+  {
+    "Station Name": "LAKHIMPUR",
+    "Code": "LMP"
+  },
+  {
+    "Station Name": "NANGAL DAM",
+    "Code": "NLDM"
+  },
+  {
+    "Station Name": "RAWATGAN.J",
+    "Code": "RJ"
+  },
+  {
+    "Station Name": "THALASSERY",
+    "Code": "TLY"
+  },
+  {
+    "Station Name": "LAKSAR",
+    "Code": "LRJ"
+  },
+  {
+    "Station Name": "NARKATIAGANJ",
+    "Code": "NKE"
+  },
+  {
+    "Station Name": "RAXAUL",
+    "Code": "RXL"
+  },
+  {
+    "Station Name": "TENALI",
+    "Code": "TEL"
+  },
+  {
+    "Station Name": "LALGARH",
+    "Code": "LGH"
+  },
+  {
+    "Station Name": "NARASAPUR",
+    "Code": "NS"
+  },
+  {
+    "Station Name": "RAYAGADA",
+    "Code": "RGDA"
+  },
+  {
+    "Station Name": "TENKASI",
+    "Code": "TS"
+  },
+  {
+    "Station Name": "LALGOLA",
+    "Code": "LGL"
+  },
+  {
+    "Station Name": "NARSINGPUR",
+    "Code": "NU"
+  },
+  {
+    "Station Name": "RENIGUNTA",
+    "Code": "RU"
+  },
+  {
+    "Station Name": "TEZPUR",
+    "Code": "TZTB"
+  },
+  {
+    "Station Name": "LALITPUR",
+    "Code": "LAR"
+  },
+  {
+    "Station Name": "NARWANA",
+    "Code": "NRW"
+  },
+  {
+    "Station Name": "REWA",
+    "Code": "REWA"
+  },
+  {
+    "Station Name": "THANJAVUR",
+    "Code": "TJ"
+  },
+  {
+    "Station Name": "LALKUAN JN.",
+    "Code": "LKU"
+  },
+  {
+    "Station Name": "NASIK ROAD",
+    "Code": "NK"
+  },
+  {
+    "Station Name": "REWARI",
+    "Code": "RE"
+  },
+  {
+    "Station Name": "THIRUVARUR.",
+    "Code": "TVR"
+  },
+  {
+    "Station Name": "LATUR",
+    "Code": "LUR"
+  },
+  {
+    "Station Name": "NAUGARH",
+    "Code": "NUH"
+  },
+  {
+    "Station Name": "RINGUS",
+    "Code": "RGS"
+  },
+  {
+    "Station Name": "TIRUCHCHIRAPPALLI Jn.",
+    "Code": "TPJ"
+  },
+  {
+    "Station Name": "LEDO",
+    "Code": "LEDO"
+  },
+  {
+    "Station Name": "NELLORE",
+    "Code": "NLR"
+  },
+  {
+    "Station Name": "ROHTAK",
+    "Code": "ROK"
+  },
+  {
+    "Station Name": "TIRUCHENDUR",
+    "Code": "TCN"
+  },
+  {
+    "Station Name": "LOHARU",
+    "Code": "LHU"
+  },
+  {
+    "Station Name": "NETAJI SUBHASH CHANDRA BOSE GOMOH",
+    "Code": "GMO"
+  },
+  {
+    "Station Name": "TIRUNELVELI",
+    "Code": "TEN"
+  },
+  {
+    "Station Name": "ROORKEE",
+    "Code": "RK"
+  },
+  {
+    "Station Name": "LOKMANYA TILAK (T)",
+    "Code": "LTT"
+  },
+  {
+    "Station Name": "NEW ALIPURDUAR",
+    "Code": "NOQ"
+  },
+  {
+    "Station Name": "ROURKELA",
+    "Code": "ROU"
+  },
+  {
+    "Station Name": "TIRUPATI",
+    "Code": "TPTY"
+  },
+  {
+    "Station Name": "LONAVLA",
+    "Code": "LNL"
+  },
+  {
+    "Station Name": "NEW BONGAIGAON",
+    "Code": "NBQ"
+  },
+  {
+    "Station Name": "SADULPUR",
+    "Code": "SDLP"
+  },
+  {
+    "Station Name": "TIRUPPUR",
+    "Code": "TUP"
+  },
+  {
+    "Station Name": "LONDA",
+    "Code": "LD"
+  },
+  {
+    "Station Name": "NEW COOCHBEHAR",
+    "Code": "NCB"
+  },
+  {
+    "Station Name": "SAGAR JAMBAGARU",
+    "Code": "SRF"
+  },
+  {
+    "Station Name": "TIRUR",
+    "Code": "TIR"
+  },
+  {
+    "Station Name": "LOWER HALFLONG",
+    "Code": "LFG"
+  },
+  {
+    "Station Name": "NEW DELHI",
+    "Code": "NDLS"
+  },
+  {
+    "Station Name": "SAGAULI",
+    "Code": "SGL"
+  },
+  {
+    "Station Name": "TITLAGARH",
+    "Code": "TIG"
+  },
+  {
+    "Station Name": "LUCKNOW",
+    "Code": "LJN/LKO"
+  },
+  {
+    "Station Name": "NEW FARAKKA",
+    "Code": "NFK"
+  },
+  {
+    "Station Name": "SAGOUR",
+    "Code": "SGO"
+  },
+  {
+    "Station Name": "THRISUR",
+    "Code": "TCR"
+  },
+  {
+    "Station Name": "LUDHIANA",
+    "Code": "LDH"
+  },
+  {
+    "Station Name": "NEW JALPAIGURI",
+    "Code": "NJP"
+  },
+  {
+    "Station Name": "SAHARANPUR",
+    "Code": "SRE"
+  },
+  {
+    "Station Name": "THIRUVANANTHAPURAM",
+    "Code": "TVC"
+  },
+  {
+    "Station Name": "LUMDING",
+    "Code": "LMG"
+  },
+  {
+    "Station Name": "NEWMAL Jn.",
+    "Code": "NMZ"
+  },
+  {
+    "Station Name": "SAHARSA",
+    "Code": "SHC"
+  },
+  {
+    "Station Name": "TIRUVANNAMALAI",
+    "Code": "TNM"
+  },
+  {
+    "Station Name": "LUNI",
+    "Code": "LUNI"
+  },
+  {
+    "Station Name": "NEW TINSUKIA",
+    "Code": "NTSK"
+  },
+  {
+    "Station Name": "SAHIBGANJ",
+    "Code": "SBG"
+  },
+  {
+    "Station Name": "TUMSAR ROAD",
+    "Code": "TMR"
+  },
+  {
+    "Station Name": "MACHILIPATNAM",
+    "Code": "MTM"
+  },
+  {
+    "Station Name": "NIDADAVOLU",
+    "Code": "NDD"
+  },
+  {
+    "Station Name": "SAI NAGAR SHIRDI",
+    "Code": "SNSI"
+  },
+  {
+    "Station Name": "TUNDLA",
+    "Code": "TDL"
+  },
+  {
+    "Station Name": "MADARIHAT",
+    "Code": "MDT"
+  },
+  {
+    "Station Name": "NIDAMANGALAM",
+    "Code": "NMJ"
+  },
+  {
+    "Station Name": "SALEM",
+    "Code": "SA"
+  },
+  {
+    "Station Name": "TUNI",
+    "Code": "TUNI"
+  },
+  {
+    "Station Name": "MADDUR",
+    "Code": "MAD"
+  },
+  {
+    "Station Name": "NIDUBROLU",
+    "Code": "NDO"
+  },
+  {
+    "Station Name": "SALEMPUR",
+    "Code": "SRU"
+  },
+  {
+    "Station Name": "TUTICORIN",
+    "Code": "TN"
+  },
+  {
+    "Station Name": "MADGAON (GOA)",
+    "Code": "MAO"
+  },
+  {
+    "Station Name": "NIMACH",
+    "Code": "NMH"
+  },
+  {
+    "Station Name": "SAMALKOT",
+    "Code": "SLO"
+  },
+  {
+    "Station Name": "UDAIPUR CITY",
+    "Code": "UDZ"
+  },
+  {
+    "Station Name": "MADHUBANI",
+    "Code": "MBI"
+  },
+  {
+    "Station Name": "NIZAMABAD",
+    "Code": "NZB"
+  },
+  {
+    "Station Name": "SAMASTIPUR",
+    "Code": "SPJ"
+  },
+  {
+    "Station Name": "UDHAMPUR",
+    "Code": "UHP"
+  },
+  {
+    "Station Name": "MADHUPUR",
+    "Code": "MDP"
+  },
+  {
+    "Station Name": "NIZAMUDDIN",
+    "Code": "NZM"
+  },
+  {
+    "Station Name": "SAMBALPUR",
+    "Code": "SBP"
+  },
+  {
+    "Station Name": "UDHNA",
+    "Code": "UDN"
+  },
+  {
+    "Station Name": "MADURAI Jn.",
+    "Code": "MDU"
+  },
+  {
+    "Station Name": "NOLI",
+    "Code": "NOLI"
+  },
+  {
+    "Station Name": "SAMBALPUR CITY",
+    "Code": "SBPY"
+  },
+  {
+    "Station Name": "UDUPI",
+    "Code": "UD"
+  },
+  {
+    "Station Name": "MAHASAMUND",
+    "Code": "MSMD"
+  },
+  {
+    "Station Name": "NORTH LAKHIMPUR",
+    "Code": "NLP"
+  },
+  {
+    "Station Name": "SAMDARI",
+    "Code": "SMR"
+  },
+  {
+    "Station Name": "UJJAIN",
+    "Code": "UJN"
+  },
+  {
+    "Station Name": "MAHBUBNAGAR",
+    "Code": "MBNR"
+  },
+  {
+    "Station Name": "ODLABARI",
+    "Code": "ODB"
+  },
+  {
+    "Station Name": "SAMUKTALA ROAD",
+    "Code": "AMTA"
+  },
+  {
+    "Station Name": "UNA",
+    "Code": "UNA"
+  },
+  {
+    "Station Name": "MAHUVA",
+    "Code": "MHV"
+  },
+  {
+    "Station Name": "OKHA",
+    "Code": "OKHA"
+  },
+  {
+    "Station Name": "SANGLI",
+    "Code": "SLI"
+  },
+  {
+    "Station Name": "UNCHAHAR",
+    "Code": "UCR"
+  },
+  {
+    "Station Name": "MAHESANA",
+    "Code": "MSH"
+  },
+  {
+    "Station Name": "ONGOLE",
+    "Code": "OGL"
+  },
+  {
+    "Station Name": "SANTRAGACHI",
+    "Code": "SRC"
+  },
+  {
+    "Station Name": "UNNAO",
+    "Code": "ON"
+  },
+  {
+    "Station Name": "MAHOBA",
+    "Code": "MBA"
+  },
+  {
+    "Station Name": "ORAI",
+    "Code": "ORAI"
+  },
+  {
+    "Station Name": "SARNATH",
+    "Code": "SRNT"
+  },
+  {
+    "Station Name": "VADAKARA",
+    "Code": "BDJ"
+  },
+  {
+    "Station Name": "MAILANI",
+    "Code": "MLN"
+  },
+  {
+    "Station Name": "PACHORA",
+    "Code": "PC"
+  },
+  {
+    "Station Name": "SATARA",
+    "Code": "STR"
+  },
+  {
+    "Station Name": "VADODARA",
+    "Code": "BRC"
+  },
+  {
+    "Station Name": "MAKSI",
+    "Code": "MKC"
+  },
+  {
+    "Station Name": "PALANI",
+    "Code": "PLNI"
+  },
+  {
+    "Station Name": "SATNA",
+    "Code": "STA"
+  },
+  {
+    "Station Name": "VALSAD",
+    "Code": "BL"
+  },
+  {
+    "Station Name": "MALDA TOWN",
+    "Code": "MLDT"
+  },
+  {
+    "Station Name": "PALANPUR",
+    "Code": "PNU"
+  },
+  {
+    "Station Name": "SATTENAPALLE",
+    "Code": "SAP"
+  },
+  {
+    "Station Name": "VANCHI MANIYACHCHI Jn.",
+    "Code": "MEJ"
+  },
+  {
+    "Station Name": "MANAMADURAI",
+    "Code": "MNM"
+  },
+  {
+    "Station Name": "PALASA",
+    "Code": "PSA"
+  },
+  {
+    "Station Name": "SAWAIMADHOPUR",
+    "Code": "SWM"
+  },
+  {
+    "Station Name": "VARANASI",
+    "Code": "BSB"
+  },
+  {
+    "Station Name": "MANDUADIH",
+    "Code": "MUV"
+  },
+  {
+    "Station Name": "PALAKKAD",
+    "Code": "PGT"
+  },
+  {
+    "Station Name": "SAWANTWADI ROAD",
+    "Code": "SWV"
+  },
+  {
+    "Station Name": "VARKALA",
+    "Code": "VAK"
+  },
+  {
+    "Station Name": "MANGALORE CENTRAL",
+    "Code": "MAQ"
+  },
+  {
+    "Station Name": "PALAKKAD TOWN",
+    "Code": "PGTN"
+  },
+  {
+    "Station Name": "SEALDAH",
+    "Code": "SDAH"
+  },
+  {
+    "Station Name": "VASAI ROAD",
+    "Code": "BSR"
+  },
+  {
+    "Station Name": "MANGALORE JN..",
+    "Code": "MAJN"
+  },
+  {
+    "Station Name": "PALIAKALAN",
+    "Code": "PLK"
+  },
+  {
+    "Station Name": "SECUNDERABAD",
+    "Code": "SC"
+  },
+  {
+    "Station Name": "VASCO--",
+    "Code": "VSG"
+  },
+  {
+    "Station Name": "MANIKPUR",
+    "Code": "MKP"
+  },
+  {
+    "Station Name": "PANDHARAPUR",
+    "Code": "PVR"
+  },
+  {
+    "Station Name": "SENGOTΤΑΙ",
+    "Code": "SCT"
+  },
+  {
+    "Station Name": "VELANKANNI",
+    "Code": "VLKN"
+  },
+  {
+    "Station Name": "MANKAPUR",
+    "Code": "MUR"
+  },
+  {
+    "Station Name": "PANIPAT",
+    "Code": "PNP"
+  },
+  {
+    "Station Name": "SENSOA",
+    "Code": "SCF"
+  },
+  {
+    "Station Name": "VERAVAL",
+    "Code": "VRL"
+  },
+  {
+    "Station Name": "MANMAD",
+    "Code": "MMR"
+  },
+  {
+    "Station Name": "PARADEEP",
+    "Code": "PRDP"
+  },
+  {
+    "Station Name": "SEWAGRAM",
+    "Code": "SEGM"
+  },
+  {
+    "Station Name": "VIDISHA",
+    "Code": "BHS"
+  },
+  {
+    "Station Name": "MANNARGUDI",
+    "Code": "MQ"
+  },
+  {
+    "Station Name": "PARASNATH.",
+    "Code": "PNME"
+  },
+  {
+    "Station Name": "SHAHABAD",
+    "Code": "SDB"
+  },
+  {
+    "Station Name": "VIJAYAWADA",
+    "Code": "BZA"
+  },
+  {
+    "Station Name": "MANSI",
+    "Code": "MNE"
+  },
+  {
+    "Station Name": "PANVEL",
+    "Code": "PNVL"
+  },
+  {
+    "Station Name": "SHAHGANJ",
+    "Code": "SHG"
+  },
+  {
+    "Station Name": "VILLUPURAM Jn.",
+    "Code": "VM"
+  },
+  {
+    "Station Name": "MANU",
+    "Code": "MANU"
+  },
+  {
+    "Station Name": "PARBHANI",
+    "Code": "PBN"
+  },
+  {
+    "Station Name": "SHAHJAHANPUR",
+    "Code": "SPN"
+  },
+  {
+    "Station Name": "VIRAMGAM",
+    "Code": "VG"
+  },
+  {
+    "Station Name": "MARIANI",
+    "Code": "MXN"
+  },
+  {
+    "Station Name": "PARVATIPURAM TOWN",
+    "Code": "PVPT"
+  },
+  {
+    "Station Name": "SHAHPUR PATOREE",
+    "Code": "SPP"
+  },
+  {
+    "Station Name": "VIRUDUNAGAR JN.",
+    "Code": "VPT"
+  },
+  {
+    "Station Name": "MARWAR .",
+    "Code": "MJ"
+  },
+  {
+    "Station Name": "PATHANKOT",
+    "Code": "PTK"
+  },
+  {
+    "Station Name": "SHAKTINAGAR",
+    "Code": "SKTN"
+  },
+  {
+    "Station Name": "VISAKHAPATNAM",
+    "Code": "VSKP"
+  },
+  {
+    "Station Name": "MATHURA",
+    "Code": "MTJ"
+  },
+  {
+    "Station Name": "PATIALA",
+    "Code": "PTA"
+  },
+  {
+    "Station Name": "SHALIMAR",
+    "Code": "SHM"
+  },
+  {
+    "Station Name": "VIZIANAGARAM",
+    "Code": "VZM"
+  },
+  {
+    "Station Name": "MAU",
+    "Code": "MAU"
+  },
+  {
+    "Station Name": "PATNA",
+    "Code": "PNBE"
+  },
+  {
+    "Station Name": "SHAMGARH",
+    "Code": "SGZ"
+  },
+  {
+    "Station Name": "VRIDDHACHALAM Jn.",
+    "Code": "VRI"
+  },
+  {
+    "Station Name": "MAYILADUTURAI Jn.",
+    "Code": "MV"
+  },
+  {
+    "Station Name": "PATNA SAHIB",
+    "Code": "PNC"
+  },
+  {
+    "Station Name": "SHAMLI",
+    "Code": "SMQL"
+  },
+  {
+    "Station Name": "MEERUT CITY",
+    "Code": "MTC"
+  },
+  {
+    "Station Name": "PHALODI",
+    "Code": "PLC"
+  },
+  {
+    "Station Name": "SHIKOHABAD",
+    "Code": "SKB"
+  },
+  {
+    "Station Name": "WADI",
+    "Code": "WADI"
+  },
+  {
+    "Station Name": "MERTA ROAD",
+    "Code": "MTD"
+  },
+  {
+    "Station Name": "PHAPHAMAU",
+    "Code": "PFM"
+  },
+  {
+    "Station Name": "SHIMLA",
+    "Code": "SML"
+  },
+  {
+    "Station Name": "WANKANER",
+    "Code": "WKR"
+  },
+  {
+    "Station Name": "METTUPALAYAM",
+    "Code": "MTP"
+  },
+  {
+    "Station Name": "PHULERA",
+    "Code": "FL"
+  },
+  {
+    "Station Name": "SHIMOGA TOWN",
+    "Code": "SMET"
+  },
+  {
+    "Station Name": "WARANGAL",
+    "Code": "WL"
+  },
+  {
+    "Station Name": "MIDNAPORE",
+    "Code": "MDN"
+  },
+  {
+    "Station Name": "PILIBHIT",
+    "Code": "PBE"
+  },
+  {
+    "Station Name": "SHIVPURI",
+    "Code": "SVPI"
+  },
+  {
+    "Station Name": "WARDHA Jn.",
+    "Code": "WR"
+  },
+  {
+    "Station Name": "MIRAJ",
+    "Code": "MRJ"
+  },
+  {
+    "Station Name": "PIPARIYA",
+    "Code": "PPI"
+  },
+  {
+    "Station Name": "SHORANUR JN.",
+    "Code": "SRR"
+  },
+  {
+    "Station Name": "MIRYALAGUDA",
+    "Code": "MRGA"
+  },
+  {
+    "Station Name": "PODANUR",
+    "Code": "PTJ"
+  },
+  {
+    "Station Name": "SHRI MAHABIRJI",
+    "Code": "SMBJ"
+  },
+  {
+    "Station Name": "YESVANTPUR",
+    "Code": "YPR"
+  },
+  {
+    "Station Name": "MIRZAPUR",
+    "Code": "MZP"
+  },
+  {
+    "Station Name": "PORBANDAR",
+    "Code": "PBR"
+  },
+  {
+    "Station Name": "SIHOR GUJARAT",
+    "Code": "SOJN"
+  },
+  {
+    "Station Name": "ZAFARABAD",
+    "Code": "ZBD"
+  },
+  {
+    "Station Name": "MOGA",
+    "Code": "MOF"
+  },
+  {
+    "Station Name": "PRATAPGARH",
+    "Code": "PBH"
+  },
+  {
+    "Station Name": "SIKAR",
+    "Code": "SIKR"
+  },
+  {
+    "Station Name": "MOKAMA",
+    "Code": "MKA"
+  },
+  {
+    "Station Name": "PUDUCHERRY",
+    "Code": "PDY"
+  }
+]

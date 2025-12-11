@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mobile Automation</title>
+    <link rel="stylesheet" href="../styles/automation.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">MOBILE AUTOMATION</div>
+      </div>
+
+      <div class="selection-form">
+        <div class="form-group">
+          <label>Select User:</label>
+          <select id="userSelect" class="select-field">
+            <option value="">Loading users...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Select Ticket:</label>
+          <select id="ticketSelect" class="select-field">
+            <option value="">Loading tickets...</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button id="startAutomationBtn" class="btn btn-start" disabled>START LOGIN</button>
+          <button id="refreshBtn" class="btn btn-secondary">REFRESH DATA</button>
+        </div>
+      </div>
+
+      <div class="selected-details">
+        <div class="detail-section">
+          <h3>Selected User:</h3>
+          <div id="selectedUser" class="detail-content">No user selected</div>
+        </div>
+
+        <div class="detail-section">
+          <h3>Selected Ticket:</h3>
+          <div id="selectedTicket" class="detail-content">No ticket selected</div>
+        </div>
+      </div>
+
+      <div class="status-section">
+        <h3>Login Status:</h3>
+        <div id="statusLog" class="status-log">Ready to start login...</div>
+      </div>
+    </div>
+
+    <script src="automation-renderer.js"></script>
+  </body>
+</html>

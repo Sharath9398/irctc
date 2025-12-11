@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Train Between</title>
+    <link rel="stylesheet" href="../styles/train-search.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">Train Between</div>
+        <button class="close-btn" onclick="window.close()">×</button>
+      </div>
+
+      <div class="search-section">
+        <div class="search-row">
+          <label>From:</label>
+          <input id="fromStation" class="input-text" readonly />
+          <label>To:</label>
+          <input id="toStation" class="input-text" readonly />
+          <button id="searchTrains" class="btn">Search Trains</button>
+        </div>
+        <div class="search-row">
+          <label>Quota:</label>
+          <select id="quota" class="input-select">
+            <option value="GN">GN</option>
+            <option value="TQ">TQ</option>
+            <option value="PT">PT</option>
+          </select>
+          <label>Date:</label>
+          <input id="travelDate" class="input-text" type="date" />
+        </div>
+      </div>
+
+      <div class="trains-section">
+        <div id="trainsContainer" class="trains-container">
+          <div class="loading">Loading trains...</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="train-search-renderer.js"></script>
+  </body>
+</html>

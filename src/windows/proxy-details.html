@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Proxy IP Setting</title>
+    <link rel="stylesheet" href="../styles/proxy-details.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">ADD PRIVATE IP</div>
+      </div>
+
+      <div class="form">
+        <div class="form-row">
+          <label>IP:</label>
+          <input id="proxyIp" class="input-text" placeholder="" />
+          <label>Port:</label>
+          <input id="proxyPort" class="input-text-small" placeholder="" />
+          <label>Username:</label>
+          <input id="proxyUsername" class="input-text" placeholder="" />
+          <label>Password:</label>
+          <input id="proxyPassword" class="input-text" placeholder="" />
+        </div>
+        <div class="form-row">
+          <label>
+            <input type="checkbox" id="checkIrctc" /> Check IRCTC
+          </label>
+          <button id="btnSave" class="btn btn-save">Save</button>
+        </div>
+      </div>
+
+      <div class="proxy-section">
+        <div class="form-row">
+          <label>Proxy IP:</label>
+          <select id="proxySelect" class="input-select">
+            <option value="">Select Proxy</option>
+          </select>
+          <button id="btnCheck" class="btn btn-check">Check</button>
+          <button id="btnDelete" class="btn btn-delete">Delete</button>
+        </div>
+      </div>
+
+      <div class="bulk-section">
+        <textarea id="bulkInput" class="bulk-textarea" placeholder="IP:PORT:USERNAME:PASS IP:PORT:USERNAME:PASS"></textarea>
+        <button id="btnBulkAdd" class="btn btn-bulk">Ok</button>
+      </div>
+
+      <div id="list" class="list"></div>
+    </div>
+
+    <script src="proxy-details.renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Payment Details Management</title>
+    <link rel="stylesheet" href="../styles/payment-details.css" />
+  </head>
+  <body>
+    <div class="container" role="application" aria-label="Payment Details Management">
+      <div class="header">
+        <div class="title">ADD PAYMENT</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="bank">BANK</button>
+        <button class="tab-btn" data-tab="debit">DEBIT CARD</button>
+        <button class="tab-btn" data-tab="credit">CREDIT CARD</button>
+      </div>
+
+      <div class="tab-content">
+        <div id="bank-tab" class="tab-panel active">
+          <div class="form">
+            <div class="form-row">
+              <label>Gateway:</label>
+              <select id="gateway" class="input-select">
+                <option value="PAYTM">PAYTM</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>UPI Id:</label>
+              <input id="upiId" class="input-text" placeholder="" />
+            </div>
+            <button id="btnAdd" class="btn">Add</button>
+          </div>
+          <div id="bank-list" class="list"></div>
+        </div>
+        
+        <div id="debit-tab" class="tab-panel">
+          <div class="form">
+            <div class="form-row">
+              <label>Gateway:</label>
+              <select id="debitGateway" class="input-select">
+                <option value="HDFCDC">HDFCDC</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Card Type:</label>
+              <select id="debitCardType" class="input-select">
+                <option value="Visa">Visa</option>
+                <option value="Master">Master</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Card No.:</label>
+              <input id="debitCardNo" class="input-text" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>Valid Thru/Expiry Date:</label>
+              <select id="debitExpiryMonth" class="input-select-small">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select id="debitExpiryYear" class="input-select-small">
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Name on Card:</label>
+              <input id="debitNameOnCard" class="input-text" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>Visa/Master Pin:</label>
+              <input id="debitPin" class="input-text-small" placeholder="" />
+              <label>CVV:</label>
+              <input id="debitCvv" class="input-text-small" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>3D Password:</label>
+              <input id="debit3dPassword" class="input-text" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>Name to Save:</label>
+              <input id="debitNameToSave" class="input-text" placeholder="" />
+            </div>
+            <button id="btnAddDebit" class="btn">Add</button>
+          </div>
+          <div id="debit-list" class="list"></div>
+        </div>
+        
+        <div id="credit-tab" class="tab-panel">
+          <div class="form">
+            <div class="form-row">
+              <label>Gateway:</label>
+              <select id="creditGateway" class="input-select">
+                <option value="HDFCDC">HDFCDC</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Card Type:</label>
+              <select id="creditCardType" class="input-select">
+                <option value="Visa">Visa</option>
+                <option value="Master">Master</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Card No.:</label>
+              <input id="creditCardNo" class="input-text" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>Valid Thru/Expiry Date:</label>
+              <select id="creditExpiryMonth" class="input-select-small">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select id="creditExpiryYear" class="input-select-small">
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Name on Card:</label>
+              <input id="creditNameOnCard" class="input-text" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>Visa/Master Pin:</label>
+              <input id="creditPin" class="input-text-small" placeholder="" />
+              <label>CVV:</label>
+              <input id="creditCvv" class="input-text-small" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>3D Password:</label>
+              <input id="credit3dPassword" class="input-text" placeholder="" />
+            </div>
+            <div class="form-row">
+              <label>Name to Save:</label>
+              <input id="creditNameToSave" class="input-text" placeholder="" />
+            </div>
+            <button id="btnAddCredit" class="btn">Add</button>
+          </div>
+          <div id="credit-list" class="list"></div>
+        </div>
+      </div>
+     
+    </div>
+
+    <script src="payment-details-renderer.js"></script>
+  </body>
+</html>

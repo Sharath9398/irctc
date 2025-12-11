@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>New Ticket</title>
+    <link rel="stylesheet" href="../styles/new-ticket.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">NEW TICKET</div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-row">
+          <label>Source:</label>
+          <div>
+            <input id="source" class="input-text" placeholder="Type station name or code" />
+          </div>
+          <label>Destination:</label>
+          <div>
+            <input id="destination" class="input-text" placeholder="Type station name or code" />
+          </div>
+          <label>Find Train:</label>
+          <button id="btnFindTrain" class="btn">Find</button>
+        </div>
+        
+        <div class="form-row">
+          <label>Train No.:</label>
+          <input id="trainNo" class="input-text" placeholder="" />
+          <label>Class:</label>
+          <select id="trainClass" class="input-select">
+            <option value="3A">3A</option>
+            <option value="2A">2A</option>
+            <option value="1A">1A</option>
+            <option value="SL">SL</option>
+          </select>
+          <label>Quota:</label>
+          <select id="quota" class="input-select">
+            <option value="GN">GN</option>
+            <option value="TQ">TQ</option>
+            <option value="PT">PT</option>
+          </select>
+        </div>
+        
+        <div class="form-row">
+          <label>Date:</label>
+          <input id="travelDate" class="input-text" type="date" />
+          <label>Mob No.:</label>
+          <input id="mobNo" class="input-text" placeholder="" />
+          <label>Email:</label>
+          <input id="email" class="input-text" placeholder="" />
+        </div>
+      </div>
+
+      <div class="passenger-section">
+        <div class="passenger-header">
+          <span>Name</span>
+          <span>Age</span>
+          <span>Gender</span>
+          <span>Berth Choice</span>
+          <span>Food Choice</span>
+        </div>
+        <div id="passengerList" class="passenger-list">
+          <div class="passenger-row">
+            <input class="passenger-name" placeholder="Name" />
+            <input class="passenger-age" placeholder="Age" />
+            <select class="passenger-gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <select class="passenger-berth">
+              <option value="No Preference">No Preference</option>
+              <option value="Lower">Lower</option>
+              <option value="Middle">Middle</option>
+              <option value="Upper">Upper</option>
+            </select>
+            <select class="passenger-food">
+              <option value="No Preference">No Preference</option>
+              <option value="Veg">Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
+            </select>
+          </div>
+          <div class="passenger-row">
+            <input class="passenger-name" placeholder="Name" />
+            <input class="passenger-age" placeholder="Age" />
+            <select class="passenger-gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <select class="passenger-berth">
+              <option value="No Preference">No Preference</option>
+              <option value="Lower">Lower</option>
+              <option value="Middle">Middle</option>
+              <option value="Upper">Upper</option>
+            </select>
+            <select class="passenger-food">
+              <option value="No Preference">No Preference</option>
+              <option value="Veg">Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
+            </select>
+          </div>
+          <div class="passenger-row">
+            <input class="passenger-name" placeholder="Name" />
+            <input class="passenger-age" placeholder="Age" />
+            <select class="passenger-gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <select class="passenger-berth">
+              <option value="No Preference">No Preference</option>
+              <option value="Lower">Lower</option>
+              <option value="Middle">Middle</option>
+              <option value="Upper">Upper</option>
+            </select>
+            <select class="passenger-food">
+              <option value="No Preference">No Preference</option>
+              <option value="Veg">Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
+            </select>
+          </div>
+          <div class="passenger-row">
+            <input class="passenger-name" placeholder="Name" />
+            <input class="passenger-age" placeholder="Age" />
+            <select class="passenger-gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <select class="passenger-berth">
+              <option value="No Preference">No Preference</option>
+              <option value="Lower">Lower</option>
+              <option value="Middle">Middle</option>
+              <option value="Upper">Upper</option>
+            </select>
+            <select class="passenger-food">
+              <option value="No Preference">No Preference</option>
+              <option value="Veg">Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
+            </select>
+          </div>
+          <div class="passenger-row">
+            <input class="passenger-name" placeholder="Name" />
+            <input class="passenger-age" placeholder="Age" />
+            <select class="passenger-gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <select class="passenger-berth">
+              <option value="No Preference">No Preference</option>
+              <option value="Lower">Lower</option>
+              <option value="Middle">Middle</option>
+              <option value="Upper">Upper</option>
+            </select>
+            <select class="passenger-food">
+              <option value="No Preference">No Preference</option>
+              <option value="Veg">Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
+            </select>
+          </div>
+          <div class="passenger-row">
+            <input class="passenger-name" placeholder="Name" />
+            <input class="passenger-age" placeholder="Age" />
+            <select class="passenger-gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <select class="passenger-berth">
+              <option value="No Preference">No Preference</option>
+              <option value="Lower">Lower</option>
+              <option value="Middle">Middle</option>
+              <option value="Upper">Upper</option>
+            </select>
+            <select class="passenger-food">
+              <option value="No Preference">No Preference</option>
+              <option value="Veg">Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="options-section">
+        <label><input type="checkbox" id="considerAutoUpgrade" /> Consider Auto upgradation</label>
+        <label><input type="checkbox" id="bookOnlyIfConfirm" /> Book only if Confirm Berth Allocated</label>
+      </div>
+
+      <div class="bottom-section">
+        <div class="form-row">
+          <label>Ticket Name:</label>
+          <input id="ticketName" class="input-text" placeholder="" />
+          <label>PT Fare Limit:</label>
+          <input id="ptFareLimit" class="input-text" placeholder="" />
+        </div>
+        
+        <div class="form-row">
+          <label>IRCTC ID:</label>
+          <select id="irctcId" class="input-select">
+            <option value="">Select IRCTC ID</option>
+          </select>
+          <label>Payment:</label>
+          <select id="payment" class="input-select">
+            <option value="">Select Payment</option>
+          </select>
+        </div>
+        
+        <button id="btnSaveTicket" class="btn btn-save">Save Ticket</button>
+      </div>
+    </div>
+
+    <script src="new-ticket-renderer.js"></script>
+  </body>
+</html>

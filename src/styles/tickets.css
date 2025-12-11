@@ -1,0 +1,99 @@
+/* Tickets List Styles */
+.tickets-list {
+  padding: 20px;
+}
+
+.ticket-item {
+  border: 1px solid #475569;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ticket-header h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 18px;
+}
+
+.ticket-id {
+  color: #94a3b8;
+  font-size: 12px;
+  background: rgba(102, 126, 234, 0.2);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.ticket-details {
+  margin-bottom: 15px;
+}
+
+.route {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.train-info, .passengers {
+  color: #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.ticket-actions {
+  text-align: right;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #667eea, #5a6fd8);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+}
+
+.btn-edit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+.loading, .error, .empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+.error {
+  color: #f87171;
+}

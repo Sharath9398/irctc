@@ -1,0 +1,23 @@
+{
+  "name": "irctc-tatkal-automator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "sqlite3": "^5.1.7",
+    "webdriverio": "^9.21.0",
+    "@wdio/appium-service": "^9.0.0"
+  },
+  "devDependencies": {
+    "appium": "^3.1.2",
+    "electron": "^39.2.4"
+  }
+}

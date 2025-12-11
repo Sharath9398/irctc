@@ -1,0 +1,37 @@
+{
+  "appium": {
+    "server": {
+      "host": "localhost",
+      "port": 4723,
+      "path": "/"
+    },
+    "capabilities": {
+      "platformName": "Android",
+      "automationName": "UiAutomator2",
+      "deviceName": "Android Device",
+      "noReset": true,
+      "fullReset": false,
+      "newCommandTimeout": 300,
+      "appPackage": "cris.org.in.prs.sarathi",
+      "appActivity": "cris.org.in.prs.sarathi.MainActivity"
+    },
+    "selectors": {
+      "username": [
+        "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout",
+        "//android.widget.EditText[1]",
+        "android=new UiSelector().className(\"android.widget.EditText\").instance(0)"
+      ],
+      "password": [
+        "//android.widget.LinearLayout[@resource-id=\"cris.org.in.prs.ima:id/til_password\"]//android.widget.EditText",
+        "//android.widget.LinearLayout[@resource-id=\"cris.org.in.prs.ima:id/til_password\"]",
+        "//android.widget.EditText[2]"
+      ],
+      "loginButton": [
+        "android=new UiSelector().resourceId(\"cris.org.in.prs.sarathi:id/btnLogin\")",
+        "android=new UiSelector().text(\"LOGIN\")",
+        "android=new UiSelector().text(\"Log In\")",
+        "android=new UiSelector().className(\"android.widget.Button\")"
+      ]
+    }
+  }
+}
