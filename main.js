@@ -10,6 +10,8 @@ const dbModule = require('./lib/database');
 const MobileAutomation = require('./lib/mobile-automation');
 const mobileBot = new MobileAutomation();
 
+
+
 const isDev = process.env.NODE_ENV === 'development';
 
 let mainWin = null;
@@ -575,5 +577,7 @@ ipcMain.handle('mobile:loginWithCaptcha', async (event, credentials) => {
     return { success: false, error: err.message || String(err) };
   }
 });
+
+
 
 

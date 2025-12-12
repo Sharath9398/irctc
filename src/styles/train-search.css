@@ -175,32 +175,46 @@ html, body {
 }
 
 .class-btn {
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  min-width: 40px;
+  min-width: 50px;
   text-align: center;
+  line-height: 1.2;
 }
 
-.class-available {
-  background: var(--success);
+.class-btn.available {
+  background: #22c55e;
   color: white;
 }
 
-.class-waiting {
-  background: var(--warning);
-  color: black;
-}
-
-.class-unavailable {
-  background: var(--error);
+.class-btn.waiting {
+  background: #f59e0b;
   color: white;
 }
 
-.class-not-available {
-  background: #6b7280;
+.class-btn.unavailable {
+  background: #ef4444;
   color: white;
+}
+
+.class-btn small {
+  display: block;
+  font-size: 9px;
+  margin-top: 2px;
+}
+
+.train-timing {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.train-days {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 4px;
 }
