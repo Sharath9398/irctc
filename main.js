@@ -578,6 +578,21 @@ ipcMain.handle('mobile:loginWithCaptcha', async (event, credentials) => {
   }
 });
 
+// Complete automation flow
+ipcMain.handle('automation:startBooking', async (event, data) => {
+  try {
+    if (!data || !data.credentials || !data.ticketData) {
+      throw new Error('Missing credentials or ticket data');
+    }
+    
+    const result = await mobileBot.completeBookingFlow(data.credentials, data.ticketData);
+    return result;
+  } catch (err) {
+    console.error('automation:startBooking error:', err);
+    return { success: false, error: err.message || String(err) };
+  }
+});
+
 
 
 

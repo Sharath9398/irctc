@@ -117,21 +117,26 @@
 
   // Update start button state
   function updateStartButton() {
-    startAutomationBtn.disabled = !selectedUser;
+    startAutomationBtn.disabled = !selectedUser || !selectedTicket;
   }
 
-  // Start automation process - LOGIN ONLY
+  // Start automation process - COMPLETE FLOW
   async function startAutomation() {
     if (!selectedUser) {
       alert('Please select a user');
       return;
     }
+    
+    if (!selectedTicket) {
+      alert('Please select a ticket');
+      return;
+    }
 
     try {
       startAutomationBtn.disabled = true;
-      startAutomationBtn.textContent = 'LOGGING IN...';
+      startAutomationBtn.textContent = 'AUTOMATING...';
       
-      statusLog.textContent = 'Starting mobile login...\n';
+      statusLog.textContent = 'Starting automation...\n';
       
       // Step 1: Connect to mobile device
       appendToLog('Connecting to mobile device...');
@@ -143,29 +148,38 @@
       
       appendToLog('Connected to mobile device');
       
-      // Step 2: Login with captcha handling
-      appendToLog(`Starting login for user: ${selectedUser.name}`);
-      appendToLog('Entering credentials and waiting for captcha...');
-      const loginResult = await window.api.invoke('mobile:loginWithCaptcha', {
-        username: selectedUser.name,
-        password: selectedUser.password,
-        pin: selectedUser.pin
+      // Step 2: Start complete automation flow
+      appendToLog(`Starting automation for user: ${selectedUser.name}`);
+      appendToLog(`Ticket: ${selectedTicket.source} → ${selectedTicket.destination}`);
+      
+      const automationResult = await window.api.invoke('automation:startBooking', {
+        credentials: {
+          username: selectedUser.name,
+          password: selectedUser.password,
+          pin: selectedUser.pin
+        },
+        ticketData: {
+          fromStation: selectedTicket.source,
+          toStation: selectedTicket.destination,
+          travelDate: selectedTicket.travel_date,
+          trainNumber: selectedTicket.train_no,
+          trainClass: selectedTicket.train_class
+        }
       });
       
-      if (!loginResult.success) {
-        throw new Error('Login failed: ' + loginResult.error);
+      if (!automationResult.success) {
+        throw new Error('Automation failed: ' + automationResult.error);
       }
       
-      appendToLog('✓ Login completed successfully!');
-      appendToLog('Ready for next steps...');
+      appendToLog('✓ Automation completed successfully!');
       
     } catch (error) {
       console.error('Automation error:', error);
-      appendToLog('✗ Login failed: ' + error.message);
-      alert('Login failed: ' + error.message);
+      appendToLog('✗ Automation failed: ' + error.message);
+      alert('Automation failed: ' + error.message);
     } finally {
       startAutomationBtn.disabled = false;
-      startAutomationBtn.textContent = 'START LOGIN';
+      startAutomationBtn.textContent = 'START AUTOMATION';
     }
   }
 
