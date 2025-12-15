@@ -585,7 +585,7 @@ ipcMain.handle('automation:startBooking', async (event, data) => {
       throw new Error('Missing credentials or ticket data');
     }
     
-    const result = await mobileBot.completeBookingFlow(data.credentials, data.ticketData);
+    const result = await mobileBot.completeBookingFlow(data.credentials, data.ticketData, true);
     return result;
   } catch (err) {
     console.error('automation:startBooking error:', err);
