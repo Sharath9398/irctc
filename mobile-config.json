@@ -8,7 +8,6 @@
     "capabilities": {
       "platformName": "Android",
       "automationName": "UiAutomator2",
-      "deviceName": "Android Device",
       "noReset": true,
       "fullReset": false,
       "newCommandTimeout": 300,
