@@ -1,4 +1,15 @@
 // main.js
+// Polyfill for ReadableStream to fix WebDriverIO compatibility
+if (typeof global.ReadableStream === 'undefined') {
+  global.ReadableStream = require('stream/web').ReadableStream;
+}
+if (typeof global.WritableStream === 'undefined') {
+  global.WritableStream = require('stream/web').WritableStream;
+}
+if (typeof global.TransformStream === 'undefined') {
+  global.TransformStream = require('stream/web').TransformStream;
+}
+
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -185,6 +196,28 @@ function createTicketsWindow() {
   }
 
   ticketsWin.loadFile(path.join(__dirname, 'src', 'windows', 'tickets.html'));
+
+  ticketsWin.webContents.setWindowOpenHandler((details) => {
+    const url = new URL(details.url);
+    if (url.pathname.endsWith('new-ticket.html')) {
+      return {
+        action: 'allow',
+        overrideBrowserWindowOptions: {
+          width: 1100,
+          height: 700,
+          parent: ticketsWin,
+          modal: false,
+          webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: false,
+            contextIsolation: true,
+          },
+        },
+      };
+    }
+    // Deny all other window open requests.
+    return { action: 'deny' };
+  });
 
   return ticketsWin;
 }

@@ -10,14 +10,6 @@
   let stations = [];
   let editingTicketId = null;
 
-  // Check if editing existing ticket
-  const urlParams = new URLSearchParams(window.location.search);
-  const editId = urlParams.get('editId');
-  if (editId) {
-    editingTicketId = parseInt(editId);
-    loadTicketForEdit(editingTicketId);
-  }
-
   async function loadTicketForEdit(id) {
     try {
       const res = await window.api.invoke("db:getTickets");
@@ -391,4 +383,16 @@
   // Setup station dropdowns
   setupStationInput(sourceInput);
   setupStationInput(destinationInput);
+
+  // Check if editing existing ticket
+  const urlParams = new URLSearchParams(window.location.search);
+  const editId = urlParams.get('editId');
+  if (editId) {
+    editingTicketId = parseInt(editId);
+    document.title = "Edit Ticket";
+    if (document.querySelector(".title")) {
+      document.querySelector(".title").textContent = "EDIT TICKET";
+    }
+    await loadTicketForEdit(editingTicketId);
+  }
 })();

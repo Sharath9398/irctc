@@ -95,18 +95,45 @@
   }
 
   // Handle ticket selection
-  function handleTicketSelection() {
+  async function handleTicketSelection() {
     const ticketId = parseInt(ticketSelect.value);
     selectedTicket = tickets.find(t => t.id === ticketId);
     
     if (selectedTicket) {
+      // Get payment details if payment_id exists
+      let paymentInfo = 'Not specified';
+      let upiId = null;
+      if (selectedTicket.payment_id) {
+        try {
+          const paymentResult = await window.api.invoke('db:getPaymentDetails');
+          if (paymentResult.success) {
+            const payment = paymentResult.rows.find(p => p.id === selectedTicket.payment_id);
+            if (payment) {
+              paymentInfo = `${payment.type} (${payment.gateway})`;
+              selectedTicket.payment_type = payment.type; // Add payment type to ticket
+              selectedTicket.payment_gateway = payment.gateway; // Store gateway for automation
+              
+              // Extract UPI ID from payment details
+              upiId = payment.upi_id || payment.upiId || payment.account_number || payment.details;
+              if (upiId) {
+                selectedTicket.upi_id = upiId;
+              }
+            }
+          }
+        } catch (e) {
+          console.error('Failed to get payment details:', e);
+        }
+      }
+      
       selectedTicketDiv.innerHTML = `
         <strong>Route:</strong> ${selectedTicket.source} → ${selectedTicket.destination}<br>
         <strong>Train:</strong> ${selectedTicket.train_no}<br>
         <strong>Class:</strong> ${selectedTicket.train_class || 'Not specified'}<br>
         <strong>Date:</strong> ${selectedTicket.travel_date}<br>
         <strong>Mobile:</strong> ${selectedTicket.mob_no || 'Not specified'}<br>
-        <strong>Email:</strong> ${selectedTicket.email || 'Not specified'}
+        <strong>Email:</strong> ${selectedTicket.email || 'Not specified'}<br>
+        <strong>Payment:</strong> ${paymentInfo}<br>
+        <strong>Auto Upgrade:</strong> ${selectedTicket.consider_auto_upgrade ? 'Yes' : 'No'}
       `;
     } else {
       selectedTicketDiv.textContent = 'No ticket selected';
@@ -163,7 +190,13 @@
           toStation: selectedTicket.destination,
           travelDate: selectedTicket.travel_date,
           trainNumber: selectedTicket.train_no,
-          trainClass: selectedTicket.train_class
+          trainClass: selectedTicket.train_class,
+          passengers: selectedTicket.passengers,
+          consider_auto_upgrade: selectedTicket.consider_auto_upgrade,
+          payment_id: selectedTicket.payment_id,
+          payment_type: selectedTicket.payment_type,
+          payment_gateway: selectedTicket.payment_gateway,
+          upi_id: selectedTicket.upi_id
         }
       });
       
