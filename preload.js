@@ -56,16 +56,20 @@ contextBridge.exposeInMainWorld('api', {
       'app:bulkImportUsers',
       'automation:startBooking',
       'mobile:connect',
-      'mobile:disconnect', 
+      'mobile:disconnect',
       'mobile:login',
+      'mobile:loginWithCaptcha',
       'app:openAutomation',
-      'mobile:loginWithCaptcha'
+      'setup:start',
+      'setup:complete'
     ];
     if (!allowed.includes(channel)) {
       throw new Error(`Channel "${channel}" is not allowed`);
     }
     return ipcRenderer.invoke(channel, ...args);
   },
+
+  onSetupStatus: (callback) => ipcRenderer.on('setup:status', callback)
 
 
 });

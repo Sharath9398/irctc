@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Tatkal Automator Setup</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #333;
+      }
+      .container {
+        width: 600px;
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+      h1 { margin-top: 0; color: #2c3e50; }
+      .step { margin-bottom: 20px; padding: 15px; border: 1px solid #eee; border-radius: 8px; }
+      .step.active { border-color: #3498db; background: #eaf6fc; }
+      .step.done { border-color: #2ecc71; background: #edfcf2; }
+      .step-title { font-weight: 600; margin-bottom: 5px; }
+      .step-desc { font-size: 0.9em; color: #666; }
+      .progress-bar {
+        height: 6px;
+        background: #eee;
+        border-radius: 3px;
+        margin-top: 10px;
+        overflow: hidden;
+        display: none;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: #3498db;
+        transition: width 0.3s ease;
+      }
+      .btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .btn:disabled { background: #cbd5e0; cursor: not-allowed; }
+      .status-text { margin-top: 10px; font-size: 0.9em; text-align: center; color: #666; }
+      .error { color: #e74c3c; margin-top: 10px; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>First Run Setup</h1>
+      <p>Setting up the Android Automation Environment. This happens only once.</p>
+
+      <div id="step-prereq" class="step">
+        <div class="step-title">1. System Prerequisites</div>
+        <div class="step-desc">Checking for Java and Virtualization support...</div>
+      </div>
+
+      <div id="step-download" class="step">
+        <div class="step-title">2. Android SDK Tools</div>
+        <div class="step-desc">Downloading Command Line Tools...</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-download"></div></div>
+      </div>
+
+      <div id="step-install" class="step">
+        <div class="step-title">3. Components Installation</div>
+        <div class="step-desc">Installing Emulator and System Image (~2GB). This may take a while.</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-install"></div></div>
+      </div>
+
+      <div id="step-create" class="step">
+        <div class="step-title">4. Device Configuration</div>
+        <div class="step-desc">Creating 'IrctcBotAVD' virtual device...</div>
+      </div>
+
+      <div id="error-msg" class="error"></div>
+      <div id="status-text" class="status-text">Waiting to start...</div>
+      
+      <button id="startBtn" class="btn">Start Installation</button>
+    </div>
+
+    <script src="setup-renderer.js"></script>
+  </body>
+</html>

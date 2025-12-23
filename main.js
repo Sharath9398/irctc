@@ -245,24 +245,109 @@ function createAutomationWindow() {
 
   return automationWin;
 }
+// Modules
+const sdkInstaller = require('./lib/sdk-installer');
+const prerequisiteChecker = require('./lib/prerequisite-checker');
+
+let setupWin = null;
+
+function createSetupWindow() {
+  const preloadPath = path.join(__dirname, 'preload.js');
+  setupWin = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: preloadPath,
+      nodeIntegration: false,
+      contextIsolation: true
+    }
+  });
+
+  setupWin.loadFile(path.join(__dirname, 'src', 'windows', 'setup.html'));
+  if (isDev) setupWin.webContents.openDevTools({ mode: 'detach' });
+}
+
 app.whenReady().then(async () => {
   try {
     const userDataPath = app.getPath('userData');
+
+    // Initialize DB
     await dbModule.init(userDataPath);
     console.log("[DB PATH]", dbModule.getDbPath());
 
-    if (isDev) {
-      console.log('DB initialized at:', dbModule.getDbPath());
+    // Initialize SDK Installer path
+    sdkInstaller.init(userDataPath);
+
+    // CHECK ENVIRONMENT
+    const sdkStatus = await sdkInstaller.checkEnvironment();
+
+    if (sdkStatus.valid) {
+      console.log('[Main] Android Environment Valid. Starting Main Window.');
+      createMainWindow();
+    } else {
+      console.log('[Main] Android Environment Missing. Starting Setup Window.');
+      console.log('[Debug]', sdkStatus);
+      createSetupWindow();
     }
+
   } catch (err) {
-    console.error('Failed to initialize DB:', err);
+    console.error('Failed to initialize:', err);
   }
 
-  createMainWindow();
-
   app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
+    if (BrowserWindow.getAllWindows().length === 0) createMainWindow(); // Re-check? Ideally just open main
   });
+});
+
+/* Setup IPC Handlers */
+
+ipcMain.handle('setup:start', async (event) => {
+  const sender = event.sender;
+  const send = (data) => sender.send('setup:status', data);
+
+  try {
+    // 1. Prerequisite Check
+    send({ step: 'prereq', message: 'Checking System Prerequisites...' });
+    const prereq = await prerequisiteChecker.checkAll();
+
+    if (!prereq.success) {
+      throw new Error(prereq.java.message || prereq.virtualization.message);
+    }
+
+    // 2. Download Tools
+    send({ step: 'download', message: 'Downloading Android Command Line Tools...', progress: 0 });
+    await sdkInstaller.downloadCmdlineTools((downloaded, total) => {
+      const percentage = Math.round((downloaded / total) * 100);
+      send({ step: 'download', message: `Downloading... ${percentage}%`, progress: percentage });
+    });
+
+    // 3. Install Packages
+    send({ step: 'install', message: 'Installing Emulator & System Images (this takes time)...', progress: 0 });
+    await sdkInstaller.installPackagesWithLicenses((status) => {
+      send({ step: 'install', message: `Installing: ${status}` });
+    });
+
+    // 4. Create AVD
+    send({ step: 'create', message: 'Creating Virtual Device...' });
+    await sdkInstaller.createAvd();
+
+    // Done
+    send({ complete: true });
+    return { success: true };
+
+  } catch (err) {
+    console.error('Setup failed:', err);
+    send({ error: err.message });
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('setup:complete', () => {
+  if (setupWin) {
+    setupWin.close();
+    setupWin = null;
+  }
+  createMainWindow();
 });
 
 app.on('window-all-closed', async function () {
@@ -587,7 +672,7 @@ ipcMain.handle('mobile:login', async (event, credentials) => {
     if (!credentials || !credentials.username || !credentials.password) {
       throw new Error('Username and password are required');
     }
-    
+
     const result = await mobileBot.loginToIRCTC(credentials.username, credentials.password);
     return result;
   } catch (err) {
@@ -602,7 +687,7 @@ ipcMain.handle('mobile:loginWithCaptcha', async (event, credentials) => {
     if (!credentials || !credentials.username || !credentials.password) {
       throw new Error('Username and password are required');
     }
-    
+
     const result = await mobileBot.loginWithCaptcha(credentials.username, credentials.password, credentials.pin);
     return result;
   } catch (err) {
@@ -617,7 +702,7 @@ ipcMain.handle('automation:startBooking', async (event, data) => {
     if (!data || !data.credentials || !data.ticketData) {
       throw new Error('Missing credentials or ticket data');
     }
-    
+
     const result = await mobileBot.completeBookingFlow(data.credentials, data.ticketData, true);
     return result;
   } catch (err) {

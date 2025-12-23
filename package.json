@@ -13,6 +13,7 @@
   "type": "commonjs",
   "dependencies": {
     "@wdio/appium-service": "^9.0.0",
+    "adm-zip": "^0.5.16",
     "sharp": "^0.33.5",
     "sqlite3": "^5.1.7",
     "tesseract.js": "^5.1.1",
