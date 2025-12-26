@@ -46,7 +46,7 @@
         throw new Error('Failed to load tickets: ' + ticketsResult.error);
       }
 
-      statusLog.textContent = `Loaded ${users.length} users - Ready for login test`;
+      statusLog.textContent = `Loaded ${users.length} users - Ready for automation`;
     } catch (error) {
       console.error('Load data error:', error);
       statusLog.textContent = 'Error loading data: ' + error.message;
@@ -147,7 +147,7 @@
     startAutomationBtn.disabled = !selectedUser || !selectedTicket;
   }
 
-  // Start automation process - COMPLETE FLOW
+  // Start automation process - DUMMY IMPLEMENTATION
   async function startAutomation() {
     if (!selectedUser) {
       alert('Please select a user');
@@ -165,19 +165,15 @@
       
       statusLog.textContent = 'Starting automation...\n';
       
-      // Step 1: Connect to mobile device
-      appendToLog('Connecting to mobile device...');
-      const connectResult = await window.api.invoke('mobile:connect');
+      // Dummy automation flow
+      appendToLog('Initializing automation...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      if (!connectResult.success) {
-        throw new Error('Failed to connect to device: ' + connectResult.error);
-      }
+      appendToLog(`Processing user: ${selectedUser.name}`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      appendToLog('Connected to mobile device');
-      
-      // Step 2: Start complete automation flow
-      appendToLog(`Starting automation for user: ${selectedUser.name}`);
-      appendToLog(`Ticket: ${selectedTicket.source} → ${selectedTicket.destination}`);
+      appendToLog(`Processing ticket: ${selectedTicket.source} → ${selectedTicket.destination}`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       const automationResult = await window.api.invoke('automation:startBooking', {
         credentials: {
@@ -190,13 +186,7 @@
           toStation: selectedTicket.destination,
           travelDate: selectedTicket.travel_date,
           trainNumber: selectedTicket.train_no,
-          trainClass: selectedTicket.train_class,
-          passengers: selectedTicket.passengers,
-          consider_auto_upgrade: selectedTicket.consider_auto_upgrade,
-          payment_id: selectedTicket.payment_id,
-          payment_type: selectedTicket.payment_type,
-          payment_gateway: selectedTicket.payment_gateway,
-          upi_id: selectedTicket.upi_id
+          trainClass: selectedTicket.train_class
         }
       });
       

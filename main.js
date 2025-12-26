@@ -1,27 +1,14 @@
 // main.js
-// Polyfill for ReadableStream to fix WebDriverIO compatibility
-if (typeof global.ReadableStream === 'undefined') {
-  global.ReadableStream = require('stream/web').ReadableStream;
-}
-if (typeof global.WritableStream === 'undefined') {
-  global.WritableStream = require('stream/web').WritableStream;
-}
-if (typeof global.TransformStream === 'undefined') {
-  global.TransformStream = require('stream/web').TransformStream;
-}
-
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+const ipcMain = electron.ipcMain;
+const dialog = electron.dialog;
 const path = require('path');
 const fs = require('fs');
 
 // DB module
 const dbModule = require('./lib/database');
-
-// Mobile automation module
-const MobileAutomation = require('./lib/mobile-automation');
-const mobileBot = new MobileAutomation();
-
-
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -123,6 +110,7 @@ function createPaymentDetailsWindow() {
 
   return paymentDetailsWin;
 }
+
 function createProxyDetailsWindow() {
   const preloadPath = path.join(__dirname, 'preload.js');
 
@@ -215,7 +203,6 @@ function createTicketsWindow() {
         },
       };
     }
-    // Deny all other window open requests.
     return { action: 'deny' };
   });
 
@@ -245,27 +232,6 @@ function createAutomationWindow() {
 
   return automationWin;
 }
-// Modules
-const sdkInstaller = require('./lib/sdk-installer');
-const prerequisiteChecker = require('./lib/prerequisite-checker');
-
-let setupWin = null;
-
-function createSetupWindow() {
-  const preloadPath = path.join(__dirname, 'preload.js');
-  setupWin = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: preloadPath,
-      nodeIntegration: false,
-      contextIsolation: true
-    }
-  });
-
-  setupWin.loadFile(path.join(__dirname, 'src', 'windows', 'setup.html'));
-  if (isDev) setupWin.webContents.openDevTools({ mode: 'detach' });
-}
 
 app.whenReady().then(async () => {
   try {
@@ -275,79 +241,16 @@ app.whenReady().then(async () => {
     await dbModule.init(userDataPath);
     console.log("[DB PATH]", dbModule.getDbPath());
 
-    // Initialize SDK Installer path
-    sdkInstaller.init(userDataPath);
-
-    // CHECK ENVIRONMENT
-    const sdkStatus = await sdkInstaller.checkEnvironment();
-
-    if (sdkStatus.valid) {
-      console.log('[Main] Android Environment Valid. Starting Main Window.');
-      createMainWindow();
-    } else {
-      console.log('[Main] Android Environment Missing. Starting Setup Window.');
-      console.log('[Debug]', sdkStatus);
-      createSetupWindow();
-    }
+    // Start main window directly
+    createMainWindow();
 
   } catch (err) {
     console.error('Failed to initialize:', err);
   }
 
   app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createMainWindow(); // Re-check? Ideally just open main
+    if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
   });
-});
-
-/* Setup IPC Handlers */
-
-ipcMain.handle('setup:start', async (event) => {
-  const sender = event.sender;
-  const send = (data) => sender.send('setup:status', data);
-
-  try {
-    // 1. Prerequisite Check
-    send({ step: 'prereq', message: 'Checking System Prerequisites...' });
-    const prereq = await prerequisiteChecker.checkAll();
-
-    if (!prereq.success) {
-      throw new Error(prereq.java.message || prereq.virtualization.message);
-    }
-
-    // 2. Download Tools
-    send({ step: 'download', message: 'Downloading Android Command Line Tools...', progress: 0 });
-    await sdkInstaller.downloadCmdlineTools((downloaded, total) => {
-      const percentage = Math.round((downloaded / total) * 100);
-      send({ step: 'download', message: `Downloading... ${percentage}%`, progress: percentage });
-    });
-
-    // 3. Install Packages
-    send({ step: 'install', message: 'Installing Emulator & System Images (this takes time)...', progress: 0 });
-    await sdkInstaller.installPackagesWithLicenses((status) => {
-      send({ step: 'install', message: `Installing: ${status}` });
-    });
-
-    // 4. Create AVD
-    send({ step: 'create', message: 'Creating Virtual Device...' });
-    await sdkInstaller.createAvd();
-
-    // Done
-    send({ complete: true });
-    return { success: true };
-
-  } catch (err) {
-    console.error('Setup failed:', err);
-    send({ error: err.message });
-    return { success: false, error: err.message };
-  }
-});
-
-ipcMain.handle('setup:complete', () => {
-  if (setupWin) {
-    setupWin.close();
-    setupWin = null;
-  }
-  createMainWindow();
 });
 
 app.on('window-all-closed', async function () {
@@ -391,6 +294,7 @@ ipcMain.handle('app:openProxyDetails', async () => {
     return { success: false, error: err.message || String(err) };
   }
 });
+
 // Open payment details window
 ipcMain.handle('app:openPaymentDetails', async () => {
   try {
@@ -434,6 +338,7 @@ ipcMain.handle('app:openAutomation', async () => {
     return { success: false, error: err.message || String(err) };
   }
 });
+
 // DB: get users
 ipcMain.handle('db:getUsers', async () => {
   try {
@@ -610,7 +515,7 @@ ipcMain.handle('db:addTicket', async (event, ticket) => {
   }
 });
 
-// App: bulk import (main already had this)
+// App: bulk import
 ipcMain.handle('app:bulkImportPassengers', async (event, filePath) => {
   try {
     if (!filePath || typeof filePath !== 'string') throw new Error('filePath required');
@@ -640,77 +545,22 @@ ipcMain.handle('app:bulkImportPassengers', async (event, filePath) => {
   }
 });
 
-// Mobile Automation IPC Handlers
-
-// Connect to mobile device
-ipcMain.handle('mobile:connect', async () => {
-  try {
-    const result = await mobileBot.connect();
-    return result;
-  } catch (err) {
-    console.error('mobile:connect error:', err);
-    return { success: false, error: err.message || String(err) };
-  }
-});
-
-// Disconnect from mobile device
-ipcMain.handle('mobile:disconnect', async () => {
-  try {
-    const result = await mobileBot.disconnect();
-    return result;
-  } catch (err) {
-    console.error('mobile:disconnect error:', err);
-    return { success: false, error: err.message || String(err) };
-  }
-});
-
-
-
-// Login to IRCTC mobile app
-ipcMain.handle('mobile:login', async (event, credentials) => {
-  try {
-    if (!credentials || !credentials.username || !credentials.password) {
-      throw new Error('Username and password are required');
-    }
-
-    const result = await mobileBot.loginToIRCTC(credentials.username, credentials.password);
-    return result;
-  } catch (err) {
-    console.error('mobile:login error:', err);
-    return { success: false, error: err.message || String(err) };
-  }
-});
-
-// Login with manual captcha handling
-ipcMain.handle('mobile:loginWithCaptcha', async (event, credentials) => {
-  try {
-    if (!credentials || !credentials.username || !credentials.password) {
-      throw new Error('Username and password are required');
-    }
-
-    const result = await mobileBot.loginWithCaptcha(credentials.username, credentials.password, credentials.pin);
-    return result;
-  } catch (err) {
-    console.error('mobile:loginWithCaptcha error:', err);
-    return { success: false, error: err.message || String(err) };
-  }
-});
-
-// Complete automation flow
+// Automation: start booking (dummy implementation)
 ipcMain.handle('automation:startBooking', async (event, data) => {
   try {
     if (!data || !data.credentials || !data.ticketData) {
       throw new Error('Missing credentials or ticket data');
     }
 
-    const result = await mobileBot.completeBookingFlow(data.credentials, data.ticketData, true);
-    return result;
+    // Dummy implementation - just return success after delay
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    return { 
+      success: true, 
+      message: 'Automation completed successfully (dummy implementation)' 
+    };
   } catch (err) {
     console.error('automation:startBooking error:', err);
     return { success: false, error: err.message || String(err) };
   }
 });
-
-
-
-
