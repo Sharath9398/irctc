@@ -1,0 +1,214 @@
+----------------------------------------------------IRCTC ID------------------------------------------------------------------------------
+
+Username                Password
+
+rs9083954               Gs2001920@@@
+rammandal1998k          Blue@008
+MLGKK54                 Nisks@78
+
+
+------------------------------------------------ PROXY IP ---------------------------------------------------------------------------------
+
+203.174.22.185:3128:aws:aws
+103.82.72.41:3128:alam:alam1
+
+Note - If you need more proxy then you can create more proxy with the given login credentials, 
+       if not then you can tell me, I will create proxy for you, if not then I will tell you,
+       once you create proxy yourself then start and stop it as per your convenience.
+
+
+URL - https://iotamine.com/control/sign_in
+Username - diwakarmishra437@gmail.com
+Password - Diwakar@1998
+
+
+------------------------------------------- Captcha Api ----------------------------------------------------------------------------------
+
+Note- If you want to automate Captcha using a third party API, you can use 2captcha.com.
+      It is currently filling the fastest captchas, I am providing the login credentials below.
+      If you want to use 2captcha, let me know and I will recharge it.
+
+URL - https://2captcha.com/
+Username- diwakarmishra437@gmail.com
+Password - Diwakar@1998
+
+Note - you can automate the captcha through Tesseract OCR. This is the fastest way to read the captcha.
+       Currently, all the software is automating the captcha through this.
+
+
+---------------------------------------------Train Search and Seat Availability API Key/etrain.info -----------------------------------------------------
+
+
+fetch("https://etrain.info/ajax.php?q=page&v=3.4.11.0", {
+  "headers": {
+    "accept": "/",
+    "accept-language": "en-US,en;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "sec-ch-ua": "\"Microsoft Edge\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "none",
+    "sec-fetch-storage-access": "active",
+    "x-requested-with": "XMLHttpRequest"
+  },
+  "body": "page=%2Ftrains%2FBERHAMPORE CRT - BPC-to-SEALDAH - SDAH&reqID=0&reqCount=1&date=10/12/2025",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+
+------------------------------------------Train data -----------------------------------------------------------------------------------------
+
+{"data":{"udata":"<script>$(function(){ et.sortIndex = []; })<\/script><div class=\"trnlstcont borderbottom rnd5 bx1s\">\n\t\t\t\t\t\t<h4 class=\"coltitle rel\">&nbsp;<i class=\"icon-th-list\"><\/i><span id=\"trn1hcont\">Trains From Station - BERHAMPORE CRT (BPC) to SEALDAH (SDAH) <a class=\"smtext\" save=\"1\" style=\"position:absolute;top:4px;right:17px;\" id=\"ajaxlnk\" href=\"#\" name=\"page&page=notationav\"><i class=\"icon-info-circled\"><\/i>Know about Availability Notations<\/a><\/span><\/h4>\n\t\t\t\t\t\t\t<table class=\"trainhead_tbs nocps nolrborder\">\n\t\t\t\t\t\t\t\t\t\t\t\t<tr class=\"trhead\" style=\"height:14px;\"><td class=\"wd55\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Train Number\" name=\"0\">Train<br>Number<\/a><\/td><td class=\"wd282\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Train Name\" name=\"1\">Train Name<\/a><\/td><td class=\"wd51\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Departure Station\" name=\"2\">From<br>Station<\/a><\/td><td class=\"wd51\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Depart. Time\"name=\"3\">Depart.<br>Time<\/a><\/td><td class=\"wd51\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Arrival Station\" name=\"4\">To<br>Station<\/a><\/td><td class=\"wd51\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Arrival Time\" name=\"5\">Arrival<br>Time<\/a><\/td><td class=\"wd55\" rowspan=\"2\"><a href=\"#\" title=\"Click Here to Sort Train List by Travel Time\" name=\"6\">Travel<br>Time<\/a><\/td><td colspan=\"7\" class=\"dborder\">Running Days<\/td><td rowspan=\"2\" class=\"wd191\">Available Classes<\/td><\/tr>\n\t\t\t\t\t\t\t\t\t\t\t\t<tr class=\"trhead\" style=\"height:14px;\"><td class=\"wd22\"><a class=\"red\" href=\"#\" title=\"Sort Train List by Sunday\" name=\"7\">Su<\/a><\/td><td class=\"wd22\"><a href=\"#\" title=\"Sort Train List by Monday\" name=\"8\">Mo<\/a><\/td><td class=\"wd22\"><a href=\"#\" title=\"Sort Train List by Tuesday\" name=\"9\">Tu<\/a><\/td><td class=\"wd22\"><a href=\"#\" title=\"Sort Train List by Wednesday\" name=\"10\">We<\/a><\/td><td class=\"wd22\"><a href=\"#\" title=\"Sort Train List by Thursday\" name=\"11\">Th<\/a><\/td><td class=\"wd22\"><a href=\"#\" title=\"Sort Train List by Friday\" name=\"12\">Fr<\/a><\/td><td class=\"wd22\" style=\"border-right-width:1px !important\"><a href=\"#\" title=\"Sort Train List by Saturday\" name=\"13\">Sa<\/a><\/td><\/tr>\n\t\t\t\t\t\t\t\t\t\t\t<\/table>\n\t\t\t\t\t\t<div class=\"trainlist rnd5\" comb=\"0\" style=\"height:264px;\">\n\t\t\t\t\t\t\t<table class=\"myTable data nocps nolrborder bx1_brm\" contain=\"tbs\" comb=\"0\" style=\"color:#333;\">\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<tr data-train='{\"typ\":\"sf\",\"num\":\"13116\",\"name\":\"SDAH HUMSAFAR EXP\",\"s\":\"BPC\",\"st\":\"04:02\",\"d\":\"SDAH\",\"dt\":\"08:10\",\"tt\":\"04:08H\",\"dy\":\"1000000\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"sf\" href=\"\/train\/Sdah-Humsafar-Exp-13116\/schedule\">13116<\/a><\/td><td class=\"wd282 left rel\"><span class=\"abs\" style=\"top:2px;right:0px;\"><i class=\"icon-food h-link\" style=\"margin-right:2px;\" etitle=\"Pantry Available\"><\/i><\/span><a class=\"sf pdl3\" href=\"\/train\/Sdah-Humsafar-Exp-13116\/schedule\">SDAH HUMSAFAR EXP<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">04:02<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">08:10<\/td><td class=\"wd55\">04:08H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13116-BPC-SDAH&quot;,&quot;c&quot;:&quot;3A&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>AC 3 Tier<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13116-BPC-SDAH-3A\">3A<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13116-BPC-SDAH&quot;,&quot;c&quot;:&quot;SL&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Sleeper<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13116-BPC-SDAH-SL\">SL<\/a><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"63108\",\"name\":\"LGL SDAH MEMU\",\"s\":\"BPC\",\"st\":\"05:47\",\"d\":\"SDAH\",\"dt\":\"09:57\",\"tt\":\"04:10H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Sdah-Memu-63108\/schedule\">63108<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Sdah-Memu-63108\/schedule\">LGL SDAH MEMU<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">05:47<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">09:57<\/td><td class=\"wd55\">04:10H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><span class=\"bgraynb\">UNRESERVED<\/span><\/div><\/td><\/tr><tr data-train='{\"typ\":\"exp\",\"num\":\"13104\",\"name\":\"BHAGIRATHI EXP\",\"s\":\"BPC\",\"st\":\"06:48\",\"d\":\"SDAH\",\"dt\":\"10:25\",\"tt\":\"03:37H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"exp\" href=\"\/train\/Bhagirathi-Exp-13104\/schedule\">13104<\/a><\/td><td class=\"wd282 left rel\"><a class=\"exp pdl3\" href=\"\/train\/Bhagirathi-Exp-13104\/schedule\">BHAGIRATHI EXP<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">06:48<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">10:25<\/td><td class=\"wd55\">03:37H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13104-BPC-SDAH&quot;,&quot;c&quot;:&quot;CC&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Chair Car<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13104-BPC-SDAH-CC\">CC<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13104-BPC-SDAH&quot;,&quot;c&quot;:&quot;2S&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Second Seating<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13104-BPC-SDAH-2S\">2S<\/a><\/div><\/td><\/tr><tr data-train='{\"typ\":\"exp\",\"num\":\"13118\",\"name\":\"LGL KOAA EXPRESS\",\"s\":\"BPC\",\"st\":\"08:03\",\"d\":\"KOAA\",\"dt\":\"11:20\",\"tt\":\"03:17H\",\"dy\":\"0101011\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"exp\" href=\"\/train\/Lgl-Koaa-Express-13118\/schedule\">13118<\/a><\/td><td class=\"wd282 left rel\"><a class=\"exp pdl3\" href=\"\/train\/Lgl-Koaa-Express-13118\/schedule\">LGL KOAA EXPRESS<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">08:03<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">KOAA<\/td><td class=\"wd51\">11:20<\/td><td class=\"wd55\">03:17H<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13118-BPC-KOAA&quot;,&quot;c&quot;:&quot;CC&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Chair Car<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13118-BPC-KOAA-CC\">CC<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13118-BPC-KOAA&quot;,&quot;c&quot;:&quot;2S&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Second Seating<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13118-BPC-KOAA-2S\">2S<\/a><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"63176\",\"name\":\"LGL SDAH MEMU\",\"s\":\"BPC\",\"st\":\"08:26\",\"d\":\"SDAH\",\"dt\":\"12:45\",\"tt\":\"04:19H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Sdah-Memu-63176\/schedule\">63176<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Sdah-Memu-63176\/schedule\">LGL SDAH MEMU<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">08:26<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">12:45<\/td><td class=\"wd55\">04:19H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><span class=\"bgraynb\">UNRESERVED<\/span><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"63102\",\"name\":\"LGL KOAA MEMU\",\"s\":\"BPC\",\"st\":\"09:25\",\"d\":\"KOAA\",\"dt\":\"13:25\",\"tt\":\"04:00H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Koaa-Memu-63102\/schedule\">63102<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Koaa-Memu-63102\/schedule\">LGL KOAA MEMU<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">09:25<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">KOAA<\/td><td class=\"wd51\">13:25<\/td><td class=\"wd55\">04:00H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><span class=\"bgraynb\">UNRESERVED<\/span><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"53178\",\"name\":\"LGL SDAH PASSENGER\",\"s\":\"BPC\",\"st\":\"10:26\",\"d\":\"SDAH\",\"dt\":\"15:12\",\"tt\":\"04:46H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Sdah-Passenger-53178\/schedule\">53178<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Sdah-Passenger-53178\/schedule\">LGL SDAH PASSENGER<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">10:26<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">15:12<\/td><td class=\"wd55\">04:46H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;53178-BPC-SDAH&quot;,&quot;c&quot;:&quot;SL&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Sleeper<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#53178-BPC-SDAH-SL\">SL<\/a><\/div><\/td><\/tr><tr data-train='{\"typ\":\"exp\",\"num\":\"13126\",\"name\":\"SANG KOAA EXP\",\"s\":\"BPC\",\"st\":\"10:55\",\"d\":\"KOAA\",\"dt\":\"14:30\",\"tt\":\"03:35H\",\"dy\":\"0010011\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"exp\" href=\"\/train\/Sang-Koaa-Exp-13126\/schedule\">13126<\/a><\/td><td class=\"wd282 left rel\"><a class=\"exp pdl3\" href=\"\/train\/Sang-Koaa-Exp-13126\/schedule\">SANG KOAA EXP<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">10:55<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">KOAA<\/td><td class=\"wd51\">14:30<\/td><td class=\"wd55\">03:35H<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgraynb\">X<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13126-BPC-KOAA&quot;,&quot;c&quot;:&quot;2A&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>AC 2 Tier<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13126-BPC-KOAA-2A\">2A<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13126-BPC-KOAA&quot;,&quot;c&quot;:&quot;3A&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>AC 3 Tier<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13126-BPC-KOAA-3A\">3A<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13126-BPC-KOAA&quot;,&quot;c&quot;:&quot;3E&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>AC 3 Tier Economy<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13126-BPC-KOAA-3E\">3E<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13126-BPC-KOAA&quot;,&quot;c&quot;:&quot;SL&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Sleeper<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13126-BPC-KOAA-SL\">SL<\/a><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"63104\",\"name\":\"LGL SDAH MEMU\",\"s\":\"BPC\",\"st\":\"12:05\",\"d\":\"SDAH\",\"dt\":\"16:00\",\"tt\":\"03:55H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Sdah-Memu-63104\/schedule\">63104<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Sdah-Memu-63104\/schedule\">LGL SDAH MEMU<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">12:05<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">16:00<\/td><td class=\"wd55\">03:55H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><span class=\"bgraynb\">UNRESERVED<\/span><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"53180\",\"name\":\"LGL SDAH PASSENGER\",\"s\":\"BPC\",\"st\":\"15:38\",\"d\":\"SDAH\",\"dt\":\"20:10\",\"tt\":\"04:32H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Sdah-Passenger-53180\/schedule\">53180<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Sdah-Passenger-53180\/schedule\">LGL SDAH PASSENGER<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">15:38<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">20:10<\/td><td class=\"wd55\">04:32H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><span class=\"bgraynb\">UNRESERVED<\/span><\/div><\/td><\/tr><tr data-train='{\"typ\":\"exp\",\"num\":\"13114\",\"name\":\"HAZARDUARI EXP\",\"s\":\"BPC\",\"st\":\"17:35\",\"d\":\"KOAA\",\"dt\":\"21:25\",\"tt\":\"03:50H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"exp\" href=\"\/train\/Hazarduari-Exp-13114\/schedule\">13114<\/a><\/td><td class=\"wd282 left rel\"><a class=\"exp pdl3\" href=\"\/train\/Hazarduari-Exp-13114\/schedule\">HAZARDUARI EXP<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">17:35<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">KOAA<\/td><td class=\"wd51\">21:25<\/td><td class=\"wd55\">03:50H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13114-BPC-KOAA&quot;,&quot;c&quot;:&quot;CC&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Chair Car<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13114-BPC-KOAA-CC\">CC<\/a><a class=\"cavlink pdud2 mglr2\" data-ettav=\"{&quot;tsd&quot;:&quot;13114-BPC-KOAA&quot;,&quot;c&quot;:&quot;2S&quot;}\" etitle='<%et.ettAv(this,true)%><table width=\"220\" class=\"bx3_brm data nolrborder nocps\"><tr><td colspan=\"3\" align=\"center\"><b>Second Seating<\/b><br>Click to refresh Availability, Fare and Proceed for Booking<\/td><\/tr><\/table>' href=\"#13114-BPC-KOAA-2S\">2S<\/a><\/div><\/td><\/tr><tr data-train='{\"typ\":\"pass\",\"num\":\"63106\",\"name\":\"LGL SDAH MEMU\",\"s\":\"BPC\",\"st\":\"19:22\",\"d\":\"SDAH\",\"dt\":\"23:25\",\"tt\":\"04:03H\",\"dy\":\"1111111\",\"book\":\"1\",\"arp\":60}' book=\"1\" ar=\"60\" ><td class=\"wd55\"><a class=\"pass\" href=\"\/train\/Lgl-Sdah-Memu-63106\/schedule\">63106<\/a><\/td><td class=\"wd282 left rel\"><a class=\"pass pdl3\" href=\"\/train\/Lgl-Sdah-Memu-63106\/schedule\">LGL SDAH MEMU<\/a><\/td><td class=\"wd51\" etitle=\"<% stnname[$(this).text()]%>\">BPC<\/td><td class=\"wd51\">19:22<\/td><td class=\"wd51 bold\" etitle=\"<% stnname[$(this).text()]%><br><small><b>* Train terminates here<\/b><\/small>\">SDAH<\/td><td class=\"wd51\">23:25<\/td><td class=\"wd55\">04:03H<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"wd22 bgrn\">Y<\/td><td class=\"bold wd191\"><div class=\"flexRow f-hvcenter\"><span class=\"bgraynb\">UNRESERVED<\/span><\/div><\/td><\/tr>\n\t\t\t\t\t\t\t<\/table>\n\t\t\t\t\t\t<\/div><div class=\"trnfil\" comb=\"0\"><div class=\"minFilDiv\"><table class=\"mnFilTbl bx1_brd nocps fullw\"><tr><td class=\"filminlabel\"><i class=\"icon-list\"><\/i>No. of Trains (Listed: 12 \/ Found: 12)<\/td><td class=\"filmindate\"><button class=\"btn btn-success btn-small datefilbtn\" type=\"button\" style=\"width:170px;\"><i class=\"icon-check-empty\"><\/i>Trains for Selected Date<\/button><\/td><td class=\"filmintext center\"><i>No Filters Applied<\/i><\/td><td class=\"right\" style=\"padding-right:17px;\"><button type=\"button\" class=\"printData btn\"><i class=\"icon-print\"><\/i>Print List<\/button> <button id=\"showfil\" type=\"button\" class=\"btn\"><i class=\"icon-zoom-in\"><\/i>Show Filters<\/button><\/td><\/tr><\/table><\/div><\/div>\n\t\t\t\t\t<\/div>\n\t\t\t\t\t<script>\n\t\t\t\t\t\t$(function(){ \n\t\t\t\t\t\t\t$(\"input[name=station1]\").val(stnname[\"BPC\"]); $(\"input[name=stn1]\").val(\"BPC\");\n\t\t\t\t\t\t\t$(\"input[name=station2]\").val(stnname[\"SDAH\"]); $(\"input[name=stn2]\").val(\"SDAH\");\n              $(\"input[name=date]\").clearCalDate();\n\t\t\t\t\t\t\tif($(\".viastnrow\").is(\":visible\")) $(\".shstnvia\").trigger(\"click\");\n\t\t\t\t\t\t\tet.DFltr[0] = true; appFil(true,0);\n\t\t\t\t\t\t\tformatTable(\".myTable[comb=0]\", \"autoSortOrder,sort,resize,sortHighlight\", 3);\n              loadStaticAv();});\n\t\t\t\t\t<\/script>"},"desc":"There are 12 trains from BERHAMPORE CRT (BPC) to SEALDAH (SDAH) Railway Station. Check Availability, Prediction, Wailtlist Confirmation Chances and Fare Calculator for trains running from BERHAMPORE CRT (BPC) to SEALDAH (SDAH) Railway Station.","escript":"historyList(\"\/trains\/Berhampore-Crt-BPC-to-Sealdah-SDAH@<i class=\\\"icon-train-tunneled\\\"><\/i>BERHAMPORE.. <i class=\\\"icon-right-circled\\\"><\/i> <i class=\\\"icon-train-tunneled\\\"><\/i>SEALDAH@TBS\",true);","title":"Trains from BERHAMPORE CRT (BPC) to SEALDAH (SDAH) Railway Station with Availability, Wailtlist Confirmation Chances and Fare Calculator","dt":"ht"}
+
+
+----------------------------------------------------Direct irctc Train Search Api-----------------------------------------------------------------------------
+
+fetch("https://www.irctc.co.in/eticketing/protected/mapps1/avlFarenquiry/13104/20251210/BPC/SDAH/CC/GN/N", {
+  "headers": {
+    "accept": "/",
+    "accept-language": "en-US,en;q=0.9",
+    "content-type": "application/json; charset=UTF-8",
+    "greq": "1765281401857",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Microsoft Edge\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "none",
+    "sec-fetch-storage-access": "active"
+  },
+  "body": "{\"paymentFlag\":\"N\",\"concessionBooking\":false,\"ftBooking\":false,\"loyaltyRedemptionBooking\":false,\"classCode\":\"CC\",\"fromStnCode\":\"BPC\",\"journeyDate\":\"20251210\",\"moreThanOneDay\":true,\"quotaCode\":\"GN\",\"ticketType\":\"E\",\"toStnCode\":\"SDAH\",\"trainNumber\":\"13104\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+
+
+{
+    "trainName": "BHAGIRATHI EXP",
+    "distance": "186",
+    "reqEnqParam": "13104#BPC#SDAH#BPC#CC",
+    "quota": "GN",
+    "enqClass": "CC",
+    "from": "BPC",
+    "to": "SDAH",
+    "trainNo": "13104",
+    "baseFare": "279",
+    "reservationCharge": "40",
+    "superfastCharge": "0",
+    "fuelAmount": "0.0",
+    "totalConcession": "0",
+    "tatkalFare": "0",
+    "serviceTax": "16.0",
+    "otherCharge": "0",
+    "cateringCharge": "0",
+    "dynamicFare": "0",
+    "totalFare": "335",
+    "travelInsuranceCharge": "0.0",
+    "travelInsuranceServiceTax": "0.0",
+    "insuredPsgnCount": "0",
+    "nextEnqDate": "2025-12-16T00:00:00.000",
+    "preEnqDate": "2025-12-09T00:00:00.000",
+    "timeStamp": "2025-12-09T17:26:43.518",
+    "otpAuthenticationFlag": "0",
+    "cateringFlag": "A",
+    "totalCollectibleAmount": "335.0",
+    "avlDayList": [
+        {
+            "availablityDate": "10-12-2025",
+            "availablityStatus": "GNWL43/WL25",
+            "reasonType": "S",
+            "availablityType": "3",
+            "currentBkgFlag": "N",
+            "wlType": "9",
+            "delayFlag": "N",
+            "delay": "0"
+        },
+        {
+            "availablityDate": "11-12-2025",
+            "availablityStatus": "GNWL46/WL18",
+            "reasonType": "S",
+            "availablityType": "3",
+            "currentBkgFlag": "N",
+            "wlType": "9",
+            "delayFlag": "N",
+            "delay": "0"
+        },
+        {
+            "availablityDate": "12-12-2025",
+            "availablityStatus": "GNWL28/WL10",
+            "reasonType": "S",
+            "availablityType": "3",
+            "currentBkgFlag": "N",
+            "wlType": "9",
+            "delayFlag": "N",
+            "delay": "0"
+        },
+        {
+            "availablityDate": "13-12-2025",
+            "availablityStatus": "GNWL37/WL24",
+            "reasonType": "S",
+            "availablityType": "3",
+            "currentBkgFlag": "N",
+            "wlType": "9",
+            "delayFlag": "N",
+            "delay": "0"
+        },
+        {
+            "availablityDate": "14-12-2025",
+            "availablityStatus": "GNWL43/WL25",
+            "reasonType": "S",
+            "availablityType": "3",
+            "currentBkgFlag": "N",
+            "wlType": "9",
+            "delayFlag": "N",
+            "delay": "0"
+        },
+        {
+            "availablityDate": "15-12-2025",
+            "availablityStatus": "GNWL33/WL19",
+            "reasonType": "S",
+            "availablityType": "3",
+            "currentBkgFlag": "N",
+            "wlType": "9",
+            "delayFlag": "N",
+            "delay": "0"
+        }
+    ],
+    "informationMessage": [
+        {
+            "message": "* IR recovers only 57% of cost of travel on an average.\n* Rounding off  to next multiple of Rs. 5 is included in Base fare.\n* Final fare based on passenger(s) added will be displayed on REVIEW JOURNEY page including concessions / dynamic fare charges etc. whichever applicable.\n",
+            "popup": "false",
+            "paramName": "FARE_BREAKUP"
+        },
+        {
+            "message": "Forgo Concession Opted",
+            "popup": "false",
+            "paramName": "FORGO_CONC"
+        }
+    ],
+    "reTry": "false",
+    "altAvlEnabled": "false",
+    "altTrainEnabled": "false",
+    "altClsEnabled": "false",
+    "taRdsFlag": "false",
+    "upiRdsFlag": "false",
+    "rdsTxnPwdFlag": "false",
+    "ftBookingMsgFlag": "false"
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Note - And Please cick below given link you can get more information about train serach api seat Availability and many more.
+
+URL1 - https://easy-rail.onrender.com/index.html
+URL2 - https://github.com/RAJIV81205/Easy-Rail
+
+
+

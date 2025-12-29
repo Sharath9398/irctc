@@ -1,0 +1,22 @@
+Website Link - https://iotamine.com/control/sign_in
+Username - diwakarmishra437@gmail.com
+Password - Diwakar@1998
+
+Proxy Putty Code
+
+wget https://raw.githubusercontent.com/serverok/squid-proxy-installer/master/squid3-install.sh -O squid3-install.sh
+sudo bash squid3-install.sh
+
+squid-add-user
+
+
+
+
+Note- To create a proxy, please check the video, in which the entire process 
+      from proxy creation to creating the username and password of the proxy is given in the video.
+    
+     If you are using a proxy to access IRCTC but are unable to login properly, 
+     destroy that proxy and create another one. You can create multiple proxies. Stop the proxy once it is used.
+
+     While installing the proxy, its default username will be root and the password which you had created while creating 
+     the proxy will be the rest of the installation code. The full process is given in the video.

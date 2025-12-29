@@ -1,0 +1,716 @@
+
+
+# IRCTC Train Search Module - Developer Documentation
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Architecture](#architecture)
+3. [Prerequisites](#prerequisites)
+4. [Core Components](#core-components)
+5. [Key Features](#key-features)
+6. [Implementation Guide](#implementation-guide)
+7. [API Integration](#api-integration)
+8. [UI Components](#ui-components)
+9. [Error Handling](#error-handling)
+10. [Testing Guidelines](#testing-guidelines)
+
+---
+
+## Overview
+
+The IRCTC Train Search Module is a WPF-based application that provides comprehensive train searching functionality with station autocomplete, real-time train data fetching, and interactive result display using WebView2.
+
+### Key Capabilities
+- Station name/code autocomplete with dropdown suggestions
+- Real-time train schedule fetching from erail.in API
+- Interactive HTML-based result display
+- Train selection for booking workflow
+- Robust error handling and retry logic
+
+---
+
+## Architecture
+
+### Technology Stack
+- *Framework*: WPF (.NET)
+- *UI Rendering*: WebView2 (Microsoft.Web.WebView2.Wpf)
+- *HTTP Client*: System.Net.Http.HttpClient
+- *JSON Processing*: Newtonsoft.Json
+- *Data Storage*: JSON file-based station database
+
+### Design Pattern
+The module follows a *Model-View-ViewModel (MVVM)* inspired pattern with:
+- *Model*: TrainInfo, Station classes
+- *View*: XAML UI with WebView2 control
+- *Logic*: Event-driven handlers with async/await pattern
+
+---
+
+## Prerequisites
+
+### NuGet Packages Required
+xml
+<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.x" />
+<PackageReference Include="Newtonsoft.Json" Version="13.0.x" />
+
+
+### Project Structure
+
+ProjectRoot/
+├── TrainSearch.xaml         (UI Definition)
+├── TrainSearch.xaml.cs       (This code file)
+├── MainWindow.xaml.cs        (Parent window reference)
+└── trainData/
+    └── stationlist.json      (Station database)
+
+
+### Station Data Format (stationlist.json)
+json
+[
+  {
+    "name": "New Delhi",
+    "code": "NDLS"
+  },
+  {
+    "name": "Mumbai Central",
+    "code": "BCT"
+  }
+]
+
+
+---
+
+## Core Components
+
+### 1. TrainInfo Class
+Represents individual train details.
+
+csharp
+public class TrainInfo
+{
+    public string TrainNumber { get; set; }      // e.g., "12301"
+    public string TrainName { get; set; }        // e.g., "Rajdhani Express"
+    public string DepartureTime { get; set; }    // e.g., "16:55"
+    public string ArrivalTime { get; set; }      // e.g., "08:35"
+    public string Duration { get; set; }         // e.g., "15h 40m"
+    public string DepartureStation { get; set; } // Station code
+    public string ArrivalStation { get; set; }   // Station code
+    public string RunsOn { get; set; }           // e.g., "Daily" or "Mon, Wed, Fri"
+    public string AvailableClasses { get; set; } // e.g., "1A, 2A, 3A, SL"
+    public Dictionary<string, string> ClassAvailability { get; set; }
+}
+
+
+### 2. Station Class
+csharp
+public class Station
+{
+    public string name { get; set; }  // Full station name
+    public string code { get; set; }  // Station code (3-4 chars)
+}
+
+
+### 3. Key Member Variables
+csharp
+private bool isInitialized = false;                    // WebView2 init flag
+private readonly object initLock = new object();       // Thread safety
+private CancellationTokenSource? searchCancellationTokenSource; // Cancel searches
+private readonly HttpClient httpClient;                // API requests
+private List<Station> allStations;                     // Station database
+private Window? currentSuggestionWindow;               // Autocomplete popup
+
+
+---
+
+## Key Features
+
+### Feature 1: Station Autocomplete
+
+#### Implementation Flow
+1. User types in FromStationTextBox or ToStationTextBox
+2. TextChanged event fires → UpdateStationSuggestions()
+3. Filter stations by name/code (case-insensitive, minimum 2 chars)
+4. Show popup window with top 10 matches
+5. User selects station → Station code populates textbox
+
+#### Code Reference
+csharp
+private void UpdateStationSuggestions(string searchText, TextBox textBox)
+{
+    // Minimum 2 characters required
+    if (string.IsNullOrWhiteSpace(searchText) || searchText.Length < 2)
+        return;
+
+    // Filter stations (case-insensitive)
+    var filtered = allStations.Where(s =>
+        s.name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+        s.code.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
+    ).Take(10).ToList();
+
+    if (filtered.Count > 0)
+        ShowSuggestions(textBox, filtered);
+}
+
+
+#### Keyboard Navigation
+- *Down Arrow*: Move focus to suggestion list
+- *Enter*: Select highlighted station
+- *Escape*: Close suggestions
+- *Mouse Click*: Select station
+
+---
+
+### Feature 2: Train Data Fetching
+
+#### API Integration with erail.in
+
+*Endpoint*: https://erail.in/rail/getTrains.aspx
+
+*Method*: POST
+
+*Required Headers*:
+csharp
+accept: */*
+accept-language: en-US,en;q=0.9
+access-control-request-headers: content-type
+access-control-request-method: POST
+origin: https://erail.in
+referer: https://erail.in/
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)...
+
+
+*Query Parameters*:
+- Station_From: Source station code (e.g., NDLS)
+- Station_To: Destination station code (e.g., BCT)
+- DataSource: 0 (default)
+- Language: 0 (English)
+- Cache: false
+
+#### Retry Logic
+csharp
+const int maxRetries = 3;
+const int retryDelayMs = 1000;
+
+for (int attempt = 1; attempt <= maxRetries; attempt++)
+{
+    try {
+        // Make API request
+        var response = await httpClient.SendAsync(request, cancellationToken);
+        response.EnsureSuccessStatusCode();
+        // Process response
+        break;
+    }
+    catch (HttpRequestException) when (attempt < maxRetries) {
+        await Task.Delay(retryDelayMs, cancellationToken);
+        continue;
+    }
+}
+
+
+---
+
+### Feature 3: Response Parsing
+
+The API returns pipe-delimited (~) and caret-separated (^) data format:
+
+*Example Response*:
+
+12301~RAJDHANI EXPRESS~16.55~08.35~15.40~1111111~1A~2A~3A~SL^
+12302~DURONTO SF~18.25~09.15~14.50~0101010~2A~3A~SL^
+
+
+#### Parsing Strategy
+1. Split by ^ to get individual train records
+2. Split each record by ~ to get fields
+3. Use regex patterns to identify:
+   - Train number: \d{4,5} (4-5 digits)
+   - Times: \d{1,2}[:.]\d{2} (HH:MM format)
+   - Duration: \d{1,2}\.\d{2} (decimal hours)
+   - Runs on: [01]{7} (7-bit binary pattern for days)
+   - Classes: 1A|2A|3A|SL|2S|CC|FC|EC|3E
+
+#### Code Example
+csharp
+private TrainInfo? ParseSingleTrainRecord(string record)
+{
+    var fields = record.Split('~');
+    var train = new TrainInfo();
+
+    // Find train number (regex: 4-5 digits)
+    for (int i = 0; i < Math.Min(fields.Length, 5); i++)
+    {
+        if (Regex.IsMatch(fields[i], @"^\d{4,5}$"))
+        {
+            train.TrainNumber = fields[i];
+            train.TrainName = CleanTrainName(fields[i + 1]);
+            break;
+        }
+    }
+
+    // Extract times
+    var times = fields.Where(f => Regex.IsMatch(f, @"^\d{1,2}[:.]\d{2}$"))
+                     .Select(t => t.Replace('.', ':'))
+                     .ToList();
+    
+    train.DepartureTime = times.FirstOrDefault();
+    train.ArrivalTime = times.Skip(1).FirstOrDefault();
+
+    return train;
+}
+
+
+---
+
+### Feature 4: Interactive HTML Display
+
+#### HTML Generation
+The module generates rich, styled HTML with:
+- Gradient backgrounds
+- Responsive table layout
+- Train class badges with color coding
+- Interactive "Input" buttons for train selection
+
+#### Class Color Coding
+csharp
+var classColors = new Dictionary<string, string>
+{
+    ["1A"] = "#8B4513",  // Brown (First AC)
+    ["2A"] = "#4169E1",  // Blue (Second AC)
+    ["3A"] = "#32CD32",  // Green (Third AC)
+    ["SL"] = "#FF6347",  // Tomato (Sleeper)
+    ["2S"] = "#FF8C00",  // Orange (Second Sitting)
+    ["CC"] = "#9370DB",  // Purple (Chair Car)
+};
+
+
+#### JavaScript Communication
+*WebView2 → WPF Communication*:
+javascript
+// In HTML (JavaScript)
+function handleInputClick(button) {
+    var trainInfo = { 
+        number: '12301', 
+        name: 'Rajdhani', 
+        departure: '16:55' 
+    };
+    window.chrome.webview.postMessage(JSON.stringify(trainInfo));
+}
+
+
+csharp
+// In WPF (C#)
+webView.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
+
+private void OnWebMessageReceived(object? sender, CoreWebView2WebMessageReceivedEventArgs e)
+{
+    var message = e.TryGetWebMessageAsString();
+    var trainInfo = JsonConvert.DeserializeObject<dynamic>(message);
+    HandleTrainSelection(trainInfo);
+}
+
+
+---
+
+## Implementation Guide
+
+### Step 1: Initialize WebView2
+csharp
+private async Task InitializeWebViewAsync()
+{
+    await webView.EnsureCoreWebView2Async();
+    
+    // Configure settings
+    webView.CoreWebView2.Settings.IsGeneralAutofillEnabled = false;
+    webView.CoreWebView2.Settings.AreDevToolsEnabled = false;
+    webView.CoreWebView2.Settings.IsWebMessageEnabled = true;
+    
+    // Set up message handler
+    webView.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
+}
+
+
+### Step 2: Load Station Data
+csharp
+private void LoadStationData()
+{
+    string stationDataPath = Path.Combine(
+        AppDomain.CurrentDomain.BaseDirectory, 
+        "trainData", 
+        "stationlist.json"
+    );
+
+    if (File.Exists(stationDataPath))
+    {
+        string jsonContent = File.ReadAllText(stationDataPath);
+        var stationData = JsonConvert.DeserializeObject<List<dynamic>>(jsonContent);
+        
+        allStations = stationData.Select(item => new Station
+        {
+            name = item.name?.ToString() ?? "",
+            code = item.code?.ToString() ?? ""
+        }).OrderBy(s => s.name).ToList();
+    }
+}
+
+
+### Step 3: Configure HttpClient
+csharp
+httpClient = new HttpClient();
+httpClient.Timeout = TimeSpan.FromSeconds(30);
+
+
+### Step 4: Handle Search Button Click
+csharp
+private async void SearchButton_Click(object sender, RoutedEventArgs e)
+{
+    // Cancel any ongoing search
+    searchCancellationTokenSource?.Cancel();
+    searchCancellationTokenSource = new CancellationTokenSource();
+
+    // Validate inputs
+    if (string.IsNullOrWhiteSpace(FromStationTextBox?.Text) ||
+        string.IsNullOrWhiteSpace(ToStationTextBox?.Text))
+    {
+        MessageBox.Show("Please enter both stations.");
+        return;
+    }
+
+    // Update UI
+    SearchButton.Content = "Searching...";
+    
+    try
+    {
+        // Fetch trains
+        List<TrainInfo> trains = await GetTrainDataViaApiAsync(
+            FromStationTextBox.Text, 
+            ToStationTextBox.Text, 
+            searchCancellationTokenSource.Token
+        );
+
+        // Display results
+        if (trains.Any())
+        {
+            string htmlTable = CreateTrainTable(trains);
+            string completeHtml = CreateStyledHtml(htmlTable, ...);
+            webView.CoreWebView2.NavigateToString(completeHtml);
+        }
+    }
+    finally
+    {
+        SearchButton.Content = "🔍 Get Train Schedule";
+    }
+}
+
+
+---
+
+## API Integration
+
+### Complete API Request Example
+csharp
+private async Task<List<TrainInfo>> GetTrainDataViaApiAsync(
+    string fromStation, 
+    string toStation, 
+    CancellationToken cancellationToken)
+{
+    var request = new HttpRequestMessage(HttpMethod.Post,
+        $"https://erail.in/rail/getTrains.aspx?Station_From={fromStation}&Station_To={toStation}&DataSource=0&Language=0&Cache=false");
+
+    // Add required headers
+    request.Headers.Add("accept", "*/*");
+    request.Headers.Add("accept-language", "en-US,en;q=0.9");
+    request.Headers.Add("origin", "https://erail.in");
+    request.Headers.Add("referer", "https://erail.in/");
+    request.Headers.Add("user-agent", "Mozilla/5.0...");
+
+    var response = await httpClient.SendAsync(request, cancellationToken);
+    response.EnsureSuccessStatusCode();
+
+    string content = await response.Content.ReadAsStringAsync(cancellationToken);
+    return ParseApiResponse(content);
+}
+
+
+---
+
+## UI Components
+
+### XAML Requirements
+xml
+<Window x:Class="IRCTC.TrainSearch">
+    <Grid>
+        <!-- From Station -->
+        <TextBox x:Name="FromStationTextBox" />
+        
+        <!-- To Station -->
+        <TextBox x:Name="ToStationTextBox" />
+        
+        <!-- Journey Date -->
+        <DatePicker x:Name="JourneyDatePicker" />
+        
+        <!-- Search Button -->
+        <Button x:Name="SearchButton" Click="SearchButton_Click" />
+        
+        <!-- Swap Button -->
+        <Button Click="SwapButton_Click" />
+        
+        <!-- WebView2 for results -->
+        <wv2:WebView2 x:Name="webView" />
+    </Grid>
+</Window>
+
+
+---
+
+## Error Handling
+
+### Key Error Scenarios
+
+#### 1. WebView2 Not Initialized
+csharp
+lock (initLock)
+{
+    if (!isInitialized)
+    {
+        MessageBox.Show("Application is still initializing...");
+        return;
+    }
+}
+
+
+#### 2. Network Timeout
+csharp
+catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+{
+    // Implement retry logic
+    await Task.Delay(retryDelayMs, cancellationToken);
+}
+
+
+#### 3. Invalid Station Data
+csharp
+if (string.IsNullOrWhiteSpace(FromStationTextBox?.Text))
+{
+    MessageBox.Show("Please enter both stations.", "Input Required");
+    return;
+}
+
+
+#### 4. API Response Parsing Failure
+csharp
+private List<TrainInfo> ParseApiResponse(string response)
+{
+    try
+    {
+        if (response.Contains("~") && response.Contains("^"))
+            return ParsePipeDelimitedData(response);
+        else
+            return ParseHtmlTable(response);
+    }
+    catch (Exception ex)
+    {
+        System.Diagnostics.Debug.WriteLine($"Parse error: {ex.Message}");
+        return new List<TrainInfo>();
+    }
+}
+
+
+---
+
+## Testing Guidelines
+
+### Unit Testing Checklist
+
+#### 1. Station Autocomplete
+- ✅ Test with 1 character (should not show suggestions)
+- ✅ Test with 2+ characters (should show filtered results)
+- ✅ Test case-insensitive matching
+- ✅ Test code-based search
+- ✅ Test keyboard navigation (Down, Enter, Escape)
+
+#### 2. API Integration
+- ✅ Test successful API response
+- ✅ Test network timeout handling
+- ✅ Test retry logic (3 attempts)
+- ✅ Test cancellation token functionality
+- ✅ Test malformed response handling
+
+#### 3. Parsing Logic
+- ✅ Test pipe-delimited format parsing
+- ✅ Test HTML table format parsing
+- ✅ Test train number extraction (4-5 digits)
+- ✅ Test time extraction (HH:MM format)
+- ✅ Test duration extraction
+- ✅ Test runs-on pattern conversion (binary to days)
+- ✅ Test class extraction (1A, 2A, SL, etc.)
+
+#### 4. UI Interactions
+- ✅ Test swap button functionality
+- ✅ Test date picker default (today)
+- ✅ Test search button state changes
+- ✅ Test WebView2 message passing
+- ✅ Test train selection confirmation dialog
+
+### Integration Testing
+csharp
+[Test]
+public async Task EndToEnd_SearchTrains_Success()
+{
+    // Arrange
+    var trainSearch = new TrainSearch();
+    trainSearch.FromStationTextBox.Text = "NDLS";
+    trainSearch.ToStationTextBox.Text = "BCT";
+    
+    // Act
+    await trainSearch.SearchTrainsAsync();
+    
+    // Assert
+    Assert.That(trainSearch.webView.CoreWebView2.Source, Is.Not.Null);
+}
+
+
+---
+
+## Performance Optimization Tips
+
+### 1. Async/Await Best Practices
+- Use ConfigureAwait(false) for library code
+- Avoid blocking calls like .Result or .Wait()
+- Properly dispose CancellationTokenSource
+
+### 2. Memory Management
+csharp
+protected override void OnClosed(EventArgs e)
+{
+    HideSuggestions();
+    searchCancellationTokenSource?.Dispose();
+    httpClient?.Dispose();
+    base.OnClosed(e);
+}
+
+
+### 3. WebView2 Optimization
+csharp
+webView.CoreWebView2.Settings.AreDevToolsEnabled = false;
+webView.CoreWebView2.Settings.AreHostObjectsAllowed = false;
+
+
+### 4. Station Data Caching
+Load station list once at initialization, keep in memory.
+
+---
+
+## Common Issues & Solutions
+
+### Issue 1: WebView2 Runtime Not Found
+*Solution*: Install WebView2 Runtime from Microsoft
+
+https://developer.microsoft.com/microsoft-edge/webview2/
+
+
+### Issue 2: CORS Errors in API
+*Solution*: Ensure all headers match exactly as shown in API Integration section
+
+### Issue 3: Suggestion Window Not Closing
+*Solution*: Implement proper event handling for Deactivated and LostFocus
+
+### Issue 4: Train Selection Not Working
+*Solution*: Verify IsWebMessageEnabled = true in WebView2 settings
+
+---
+
+## Advanced Customization
+
+### Adding New Train Classes
+csharp
+// Update class colors dictionary
+var classColors = new Dictionary<string, string>
+{
+    ["1A"] = "#8B4513",
+    ["EV"] = "#00FF00",  // Add Executive Vistadome
+    // ... other classes
+};
+
+// Update regex pattern
+var classPatterns = new[] { 
+    @"\b1A\b", @"\bEV\b", /* new pattern */ 
+};
+
+
+### Customizing HTML Template
+Modify CreateHtmlTemplate() method to change:
+- Color schemes (gradients, badges)
+- Table layout (column order, widths)
+- Font styles (family, sizes, weights)
+- Responsive breakpoints
+
+### Extending Station Database
+Add more fields to Station class:
+csharp
+public class Station
+{
+    public string name { get; set; }
+    public string code { get; set; }
+    public string state { get; set; }      // NEW
+    public string zone { get; set; }       // NEW
+    public double latitude { get; set; }   // NEW
+    public double longitude { get; set; }  // NEW
+}
+
+
+---
+
+## Deployment Checklist
+
+- [ ] Install WebView2 Runtime on target machines
+- [ ] Include stationlist.json in build output
+- [ ] Set trainData folder to "Copy if newer"
+- [ ] Configure app manifest for WebView2 compatibility
+- [ ] Test on Windows 10/11 different versions
+- [ ] Verify network connectivity requirements
+- [ ] Include Newtonsoft.Json DLL in deployment
+- [ ] Test with different screen resolutions
+- [ ] Validate date picker localization
+- [ ] Test keyboard accessibility (Tab navigation)
+
+---
+
+## Support & Maintenance
+
+### Logging
+Use System.Diagnostics.Debug.WriteLine() for development logging:
+csharp
+System.Diagnostics.Debug.WriteLine($"Loaded {allStations.Count} stations");
+System.Diagnostics.Debug.WriteLine($"API request failed: {ex.Message}");
+
+
+### Monitoring API Changes
+The erail.in API may change. Monitor for:
+- Response format changes
+- New required headers
+- Rate limiting implementation
+- Authentication requirements
+
+### Version Control
+Tag important methods with version comments:
+csharp
+// v1.0 - Initial implementation
+// v1.1 - Added retry logic
+// v1.2 - Improved parsing for special trains
+private List<TrainInfo> ParseApiResponse(string response) { }
+
+
+---
+
+## License & Attribution
+
+This documentation is provided for educational purposes. Ensure compliance with:
+- erail.in terms of service for API usage
+- Microsoft WebView2 license terms
+- Railway data usage regulations
+
+---
+
+*Document Version*: 1.0  
+*Last Updated*: December 2025  
+*APU*: Technical Documentation Team

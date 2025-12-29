@@ -1,0 +1,1272 @@
+
+
+# API Documentation - 
+This document lists all APIs used in the OCEAN ADV extension with their request payloads in curl format.
+
+## Table of Contents
+1. [License & Authentication APIs](#license--authentication-apis)
+2. [IRCTC Booking APIs](#irctc-booking-apis)
+3. [Payment Gateway APIs](#payment-gateway-apis)
+4. [Paytm Payment APIs](#paytm-payment-apis)
+5. [Utility APIs](#utility-apis)
+
+---
+
+## License & Authentication APIs
+
+### 1. License Validation API
+
+*Endpoint:* https://verifytool.in/api/validate (or similar)
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json
+
+
+*Request Payload:*
+json
+{
+  "key": "LICENSE_KEY_HERE",
+  "Machine": "DEVICE_ID_HERE"
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://verifytool.in/api/validate" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "key": "LICENSE_KEY_HERE",
+    "Machine": "DEVICE_ID_HERE"
+  }'
+
+
+---
+
+### 2. Book Token API
+
+*Endpoint:* https://verifytool.in/api/bookToken (or similar)
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json
+X-Auth-Token: BOOK_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "licenseKey": "LICENSE_KEY_HERE",
+  "deviceId": "DEVICE_ID_HERE"
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://verifytool.in/api/bookToken" \
+  -H "Content-Type: application/json" \
+  -H "X-Auth-Token: BOOK_TOKEN_HERE" \
+  -d '{
+    "licenseKey": "LICENSE_KEY_HERE",
+    "deviceId": "DEVICE_ID_HERE"
+  }'
+
+
+---
+
+### 3. Captcha Solving API
+
+*Endpoint:* https://api.verifyotp.xyz/api/solve (or similar)
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json
+X-Auth-Token: BOOK_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "imageContent": "BASE64_ENCODED_CAPTCHA_IMAGE"
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://api.verifyotp.xyz/api/solve" \
+  -H "Content-Type: application/json" \
+  -H "X-Auth-Token: BOOK_TOKEN_HERE" \
+  -d '{
+    "imageContent": "BASE64_ENCODED_CAPTCHA_IMAGE"
+  }'
+
+
+---
+
+## IRCTC Booking APIs
+
+### 4. Validate User / Refresh Token
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/validateUser?source=3
+
+*Method:* GET
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+greq: GREQ_TOKEN_HERE
+bmirak: webbm
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE (optional)
+
+
+*cURL Command:*
+bash
+curl -X GET "https://www.irctc.co.in/eticketing/protected/mapps1/validateUser?source=3" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 5. Train List / Alternative Availability Enquiry
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/altAvlEnq/TC
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+greq: GREQ_TOKEN_HERE
+bmirak: webbm
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "concessionBooking": false,
+  "srcStn": "NDLS",
+  "destStn": "BCT",
+  "jrnyClass": "3A",
+  "jrnyDate": "20250115",
+  "quotaCode": "GN",
+  "ticketType": "E",
+  "currentBooking": "false",
+  "flexiFlag": false,
+  "ftBooking": false,
+  "handicapFlag": false,
+  "loyaltyRedemptionBooking": false
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/altAvlEnq/TC" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "concessionBooking": false,
+    "srcStn": "NDLS",
+    "destStn": "BCT",
+    "jrnyClass": "3A",
+    "jrnyDate": "20250115",
+    "quotaCode": "GN",
+    "ticketType": "E",
+    "currentBooking": "false",
+    "flexiFlag": false,
+    "ftBooking": false,
+    "handicapFlag": false,
+    "loyaltyRedemptionBooking": false
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 6. Availability & Fare Enquiry
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/avlFarenquiry/{trainNo}/{date}/{from}/{to}/{class}/{quota}/N
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+greq: GREQ_TOKEN_HERE
+bmirak: webbm
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "paymentFlag": "N",
+  "concessionBooking": false,
+  "ftBooking": false,
+  "loyaltyRedemptionBooking": false,
+  "ticketType": "E",
+  "classCode": "3A",
+  "fromStnCode": "NDLS",
+  "toStnCode": "BCT",
+  "quotaCode": "GN",
+  "trainNumber": "12951",
+  "journeyDate": "20250115",
+  "isLogedinReq": true,
+  "moreThanOneDay": true
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/avlFarenquiry/12951/20250115/NDLS/BCT/3A/GN/N" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "paymentFlag": "N",
+    "concessionBooking": false,
+    "ftBooking": false,
+    "loyaltyRedemptionBooking": false,
+    "ticketType": "E",
+    "classCode": "3A",
+    "fromStnCode": "NDLS",
+    "toStnCode": "BCT",
+    "quotaCode": "GN",
+    "trainNumber": "12951",
+    "journeyDate": "20250115",
+    "isLogedinReq": true,
+    "moreThanOneDay": true
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 7. Boarding Station Enquiry
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/boardingStationEnq
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+greq: GREQ_TOKEN_HERE
+bmirak: webbm
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "alternateAvlInputDTO": [
+    {
+      "trainNo": "12951",
+      "destStn": "BCT",
+      "srcStn": "NDLS",
+      "jrnyDate": "20250115",
+      "quotaCode": "GN",
+      "jrnyClass": "3A"
+    }
+  ],
+  "concessionPassengers": false,
+  "destStn": "BCT",
+  "jrnyClass": "3A",
+  "jrnyDate": "20250115",
+  "quotaCode": "GN",
+  "srcStn": "NDLS",
+  "trainNo": "12951",
+  "autoUpgradationSelected": false,
+  "captureAddress": 0,
+  "clusterFlag": "N",
+  "cod": "false",
+  "gnToCkOpted": false,
+  "journalistBooking": false,
+  "onwardFlag": "N",
+  "passBooking": false,
+  "paymentType": 1,
+  "reservationMode": "WS_TA_B2C",
+  "twoPhaseAuthRequired": false
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/boardingStationEnq" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "alternateAvlInputDTO": [
+      {
+        "trainNo": "12951",
+        "destStn": "BCT",
+        "srcStn": "NDLS",
+        "jrnyDate": "20250115",
+        "quotaCode": "GN",
+        "jrnyClass": "3A"
+      }
+    ],
+    "concessionPassengers": false,
+    "destStn": "BCT",
+    "jrnyClass": "3A",
+    "jrnyDate": "20250115",
+    "quotaCode": "GN",
+    "srcStn": "NDLS",
+    "trainNo": "12951",
+    "autoUpgradationSelected": false,
+    "captureAddress": 0,
+    "clusterFlag": "N",
+    "cod": "false",
+    "gnToCkOpted": false,
+    "journalistBooking": false,
+    "onwardFlag": "N",
+    "passBooking": false,
+    "paymentType": 1,
+    "reservationMode": "WS_TA_B2C",
+    "twoPhaseAuthRequired": false
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 8. Ultimate Booking / Passenger Input
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/allLapAvlFareEnq/Y
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+bmirak: webbm
+greq: GREQ_TOKEN_HERE
+referer: https://www.irctc.co.in/nget/booking/psgninput
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "autoUpgradationSelected": false,
+  "boardingStation": "NDLS",
+  "bookOnlyIfCnf": true,
+  "bookingChoice": 1,
+  "bookingConfirmChoice": 1,
+  "captcha": "",
+  "captureAddress": 0,
+  "clientTransactionId": "CLIENT_TXN_ID_HERE",
+  "clusterFlag": "N",
+  "cod": "false",
+  "connectingJourney": false,
+  "ftBooking": false,
+  "ftTnCAgree": false,
+  "generalistChildConfirm": false,
+  "gnToCkOpted": false,
+  "gstDetails": {
+    "error": null,
+    "gstIn": ""
+  },
+  "lapAvlRequestDTO": [
+    {
+      "addMealInput": null,
+      "autoUpgradation": false,
+      "bookOnlyIfCnf": true,
+      "coachId": null,
+      "coachPreferred": false,
+      "fromStation": "NDLS",
+      "ignoreChoiceIfWl": false,
+      "journeyClass": "3A",
+      "journeyDate": "20250115",
+      "passengerList": [
+        {
+          "passengerName": "JOHN DOE",
+          "passengerAge": 30,
+          "passengerGender": "M",
+          "passengerNationality": "IN",
+          "passengerSerialNumber": 1,
+          "passengerIcardFlag": false,
+          "passengerCardType": "NULL_IDCARD",
+          "passengerBerthChoice": "",
+          "childBerthFlag": false
+        }
+      ],
+      "quota": "GN",
+      "reservationChoice": 1,
+      "ssQuotaSplitCoach": "N",
+      "toStation": "BCT",
+      "trainNo": "12951",
+      "travelInsuranceOpted": "true",
+      "warrentType": 0
+    }
+  ],
+  "loyaltyBankId": null,
+  "loyaltyNumber": null,
+  "loyaltyRedemptionBooking": false,
+  "mainJourneyPnr": "",
+  "mainJourneyTxnId": null,
+  "mobileNumber": "9876543210",
+  "moreThanOneDay": false,
+  "nosbBooking": false,
+  "onwardFlag": "N",
+  "paymentType": 1,
+  "reservationMode": "WS_TA_B2C",
+  "reservationUptoStation": "BCT",
+  "returnJourney": null,
+  "ticketType": "E",
+  "twoPhaseAuthRequired": false,
+  "warrentType": 0,
+  "wsUserLogin": "IRCTC_USERNAME_HERE"
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/allLapAvlFareEnq/Y" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "referer: https://www.irctc.co.in/nget/booking/psgninput" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "autoUpgradationSelected": false,
+    "boardingStation": "NDLS",
+    "bookOnlyIfCnf": true,
+    "bookingChoice": 1,
+    "bookingConfirmChoice": 1,
+    "captcha": "",
+    "captureAddress": 0,
+    "clientTransactionId": "CLIENT_TXN_ID_HERE",
+    "clusterFlag": "N",
+    "cod": "false",
+    "connectingJourney": false,
+    "ftBooking": false,
+    "ftTnCAgree": false,
+    "generalistChildConfirm": false,
+    "gnToCkOpted": false,
+    "gstDetails": {
+      "error": null,
+      "gstIn": ""
+    },
+    "lapAvlRequestDTO": [
+      {
+        "addMealInput": null,
+        "autoUpgradation": false,
+        "bookOnlyIfCnf": true,
+        "coachId": null,
+        "coachPreferred": false,
+        "fromStation": "NDLS",
+        "ignoreChoiceIfWl": false,
+        "journeyClass": "3A",
+        "journeyDate": "20250115",
+        "passengerList": [
+          {
+            "passengerName": "JOHN DOE",
+            "passengerAge": 30,
+            "passengerGender": "M",
+            "passengerNationality": "IN",
+            "passengerSerialNumber": 1,
+            "passengerIcardFlag": false,
+            "passengerCardType": "NULL_IDCARD",
+            "passengerBerthChoice": "",
+            "childBerthFlag": false
+          }
+        ],
+        "quota": "GN",
+        "reservationChoice": 1,
+        "ssQuotaSplitCoach": "N",
+        "toStation": "BCT",
+        "trainNo": "12951",
+        "travelInsuranceOpted": "true",
+        "warrentType": 0
+      }
+    ],
+    "loyaltyBankId": null,
+    "loyaltyNumber": null,
+    "loyaltyRedemptionBooking": false,
+    "mainJourneyPnr": "",
+    "mainJourneyTxnId": null,
+    "mobileNumber": "9876543210",
+    "moreThanOneDay": false,
+    "nosbBooking": false,
+    "onwardFlag": "N",
+    "paymentType": 1,
+    "reservationMode": "WS_TA_B2C",
+    "reservationUptoStation": "BCT",
+    "returnJourney": null,
+    "ticketType": "E",
+    "twoPhaseAuthRequired": false,
+    "warrentType": 0,
+    "wsUserLogin": "IRCTC_USERNAME_HERE"
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 9. Addon Services (Submit Captcha)
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/addonServices
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+bmirak: webbm
+greq: GREQ_TOKEN_HERE
+referer: https://www.irctc.co.in/nget/booking/psgninput
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "captchaAns": "CAPTCHA_ANSWER_HERE",
+  "captchaType": "BOOKINGWS",
+  "clientTxnId": "CLIENT_TXN_ID_HERE",
+  "paymentType": 1,
+  "addonLapServices": [
+    {
+      "travelInsuranceOpted": true
+    }
+  ]
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/addonServices" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "referer: https://www.irctc.co.in/nget/booking/psgninput" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "captchaAns": "CAPTCHA_ANSWER_HERE",
+    "captchaType": "BOOKINGWS",
+    "clientTxnId": "CLIENT_TXN_ID_HERE",
+    "paymentType": 1,
+    "addonLapServices": [
+      {
+        "travelInsuranceOpted": true
+      }
+    ]
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+## Payment Gateway APIs
+
+### 10. Booking Init Payment (eWallet)
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/bookingInitPayment/{clientTxnId}?insurenceApplicable=
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+bmirak: webbm
+greq: GREQ_TOKEN_HERE
+referer: https://www.irctc.co.in/nget/payment/bkgPaymentOptions
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "bankId": 1000,
+  "txnType": 7,
+  "paramList": [
+    {
+      "key": "TXN_PASSWORD",
+      "value": ""
+    }
+  ],
+  "amount": "500.00",
+  "transationId": 0,
+  "txnStatus": 1
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/bookingInitPayment/CLIENT_TXN_ID_HERE?insurenceApplicable=" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "referer: https://www.irctc.co.in/nget/payment/bkgPaymentOptions" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "bankId": 1000,
+    "txnType": 7,
+    "paramList": [
+      {
+        "key": "TXN_PASSWORD",
+        "value": ""
+      }
+    ],
+    "amount": "500.00",
+    "transationId": 0,
+    "txnStatus": 1
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 11. Booking Init Payment (Standard WPS)
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/bookingInitPayment/{clientTxnId}?insurenceApplicable=
+
+*Method:* POST
+
+*Headers:*
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+bmirak: webbm
+greq: GREQ_TOKEN_HERE
+referer: https://www.irctc.co.in/nget/booking/psgninput
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: CSRF_TOKEN_HERE
+
+
+*Request Payload:*
+json
+{
+  "clientTxnId": "CLIENT_TXN_ID_HERE",
+  "bankId": "78",
+  "paymentMode": "13",
+  "txnType": 1,
+  "txnStatus": 1,
+  "amount": "500.00",
+  "paramList": []
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.irctc.co.in/eticketing/protected/mapps1/bookingInitPayment/CLIENT_TXN_ID_HERE?insurenceApplicable=" \
+  -H "accept: application/json, text/plain, */*" \
+  -H "content-type: application/json; charset=UTF-8" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "referer: https://www.irctc.co.in/nget/booking/psgninput" \
+  -H "X-Requested-With: XMLHttpRequest" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -d '{
+    "clientTxnId": "CLIENT_TXN_ID_HERE",
+    "bankId": "78",
+    "paymentMode": "13",
+    "txnType": 1,
+    "txnStatus": 1,
+    "amount": "500.00",
+    "paramList": []
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 12. Payment Redirect (WPS Gateway)
+
+*Endpoint:* https://www.wps.irctc.co.in/eticketing/PaymentRedirect
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/x-www-form-urlencoded
+Referer: https://www.irctc.co.in/
+
+
+*Request Payload (Form Data):*
+
+token=ACCESS_TOKEN_HERE&txn=IRCTC_ID:CLIENT_TXN_ID&IRCTC_ID:CLIENT_TXN_ID=DD_VALUE_HERE
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.wps.irctc.co.in/eticketing/PaymentRedirect" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Referer: https://www.irctc.co.in/" \
+  -d "token=ACCESS_TOKEN_HERE&txn=IRCTC_ID:CLIENT_TXN_ID&IRCTC_ID:CLIENT_TXN_ID=DD_VALUE_HERE" \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 13. Verify Payment (eWallet)
+
+*Endpoint:* https://www.wps.irctc.co.in/eticketing/protected/mapps1/verifyPayment/{clientTxnId}
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json; charset=UTF-8
+spa-csrf-token: CSRF_TOKEN_HERE
+authorization: Bearer ACCESS_TOKEN_HERE
+bmiyek: REFRESH_TOKEN_HERE
+greq: GREQ_TOKEN_HERE
+bmirak: webbm
+Referer: https://www.irctc.co.in/
+
+
+*Request Payload:*
+json
+{
+  "transationId": "TRANSACTION_ID_HERE",
+  "bankId": "1000",
+  "txnType": "7",
+  "txnStatus": "12",
+  "txnDate": null,
+  "amount": "500.00",
+  "timeStamp": 1705324800000,
+  "upiModeOpted": "0",
+  "remainingBalance": "0.0",
+  "loyaltyNum": "0",
+  "withoutOTP": "true",
+  "paramList": [
+    {
+      "key": "OTP"
+    },
+    {
+      "key": "TXN_TYPE",
+      "value": "undefined"
+    }
+  ]
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://www.wps.irctc.co.in/eticketing/protected/mapps1/verifyPayment/CLIENT_TXN_ID_HERE" \
+  -H "Content-Type: application/json; charset=UTF-8" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "bmirak: webbm" \
+  -H "Referer: https://www.irctc.co.in/" \
+  -d '{
+    "transationId": "TRANSACTION_ID_HERE",
+    "bankId": "1000",
+    "txnType": "7",
+    "txnStatus": "12",
+    "txnDate": null,
+    "amount": "500.00",
+    "timeStamp": 1705324800000,
+    "upiModeOpted": "0",
+    "remainingBalance": "0.0",
+    "loyaltyNum": "0",
+    "withoutOTP": "true",
+    "paramList": [
+      {
+        "key": "OTP"
+      },
+      {
+        "key": "TXN_TYPE",
+        "value": "undefined"
+      }
+    ]
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+## Paytm Payment APIs
+
+### 14. Paytm Process Transaction (Form Submit)
+
+*Endpoint:* https://secure.paytmpayments.com/merchant-transaction/payment (or similar)
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/x-www-form-urlencoded
+Referer: https://www.wps.irctc.co.in/
+
+
+*Request Payload (Form Data):*
+
+MID=MERCHANT_ID_HERE&ENC_DATA=ENCRYPTED_DATA_HERE&CHECKSUMHASH=CHECKSUM_HASH_HERE
+
+
+*cURL Command:*
+bash
+curl -X POST "https://secure.paytmpayments.com/merchant-transaction/payment" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Referer: https://www.wps.irctc.co.in/" \
+  -d "MID=MERCHANT_ID_HERE&ENC_DATA=ENCRYPTED_DATA_HERE&CHECKSUMHASH=CHECKSUM_HASH_HERE" \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 15. Paytm PCF (Payment Channel Framework) - Get QR/UPI
+
+*Endpoint:* https://secure.paytmpayments.com/pg/v1/pay/{merchantId}/{orderId} or https://secure.paytmpayments.com/pg/v1/pay/{merchantId}/{orderId}/checkout
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json; charset=UTF-8
+Referer: https://secure.paytmpayments.com/
+
+
+*Request Payload:*
+json
+{
+  "head": {
+    "version": "v1",
+    "requestTimestamp": "2025-01-15T10:00:00.000Z",
+    "channelId": "WEB",
+    "token": "TXN_TOKEN_HERE",
+    "tokenType": "TXN_TOKEN",
+    "txnToken": "TXN_TOKEN_HERE",
+    "workFlow": "NATIVE",
+    "showLoader": true
+  },
+  "body": {
+    "mid": "MERCHANT_ID_HERE",
+    "orderId": "ORDER_ID_HERE",
+    "payMethods": [
+      {
+        "payMethod": "UPI",
+        "payOption": "UPI",
+        "upiModeSubTypes": [
+          "UPI_COLLECT",
+          "UPI_INTENT",
+          "UPI_QR"
+        ]
+      }
+    ]
+  }
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://secure.paytmpayments.com/pg/v1/pay/MERCHANT_ID_HERE/ORDER_ID_HERE" \
+  -H "Content-Type: application/json; charset=UTF-8" \
+  -H "Referer: https://secure.paytmpayments.com/" \
+  -d '{
+    "head": {
+      "version": "v1",
+      "requestTimestamp": "2025-01-15T10:00:00.000Z",
+      "channelId": "WEB",
+      "token": "TXN_TOKEN_HERE",
+      "tokenType": "TXN_TOKEN",
+      "txnToken": "TXN_TOKEN_HERE",
+      "workFlow": "NATIVE",
+      "showLoader": true
+    },
+    "body": {
+      "mid": "MERCHANT_ID_HERE",
+      "orderId": "ORDER_ID_HERE",
+      "payMethods": [
+        {
+          "payMethod": "UPI",
+          "payOption": "UPI",
+          "upiModeSubTypes": [
+            "UPI_COLLECT",
+            "UPI_INTENT",
+            "UPI_QR"
+          ]
+        }
+      ]
+    }
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 16. Paytm UPI Validate VPA
+
+*Endpoint:* https://secure.paytmpayments.com/pg/v1/pay/{merchantId}/{orderId}/validateVpa
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json; charset=UTF-8
+Referer: https://secure.paytmpayments.com/
+
+
+*Request Payload:*
+json
+{
+  "head": {
+    "version": "v1",
+    "requestTimestamp": "2025-01-15T10:00:00.000Z",
+    "channelId": "WEB",
+    "workFlow": "NATIVE",
+    "tokenType": "TXN_TOKEN",
+    "token": "TXN_TOKEN_HERE",
+    "txnToken": "TXN_TOKEN_HERE"
+  },
+  "body": {
+    "vpa": "user@paytm",
+    "mid": "MERCHANT_ID_HERE",
+    "orderId": "ORDER_ID_HERE"
+  }
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://secure.paytmpayments.com/pg/v1/pay/MERCHANT_ID_HERE/ORDER_ID_HERE/validateVpa" \
+  -H "Content-Type: application/json; charset=UTF-8" \
+  -H "Referer: https://secure.paytmpayments.com/" \
+  -d '{
+    "head": {
+      "version": "v1",
+      "requestTimestamp": "2025-01-15T10:00:00.000Z",
+      "channelId": "WEB",
+      "workFlow": "NATIVE",
+      "tokenType": "TXN_TOKEN",
+      "token": "TXN_TOKEN_HERE",
+      "txnToken": "TXN_TOKEN_HERE"
+    },
+    "body": {
+      "vpa": "user@paytm",
+      "mid": "MERCHANT_ID_HERE",
+      "orderId": "ORDER_ID_HERE"
+    }
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 17. Paytm UPI Process Transaction
+
+*Endpoint:* https://secure.paytmpayments.com/pg/v1/pay/{merchantId}/{orderId}/processTransaction
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/json; charset=UTF-8
+Referer: https://secure.paytmpayments.com/
+
+
+*Request Payload:*
+json
+{
+  "head": {
+    "version": "v1",
+    "channelId": "WEB",
+    "workFlow": "NATIVE",
+    "tokenType": "TXN_TOKEN",
+    "requestTimestamp": "2025-01-15T10:00:00.000Z",
+    "txnToken": "TXN_TOKEN_HERE",
+    "token": "TXN_TOKEN_HERE"
+  },
+  "body": {
+    "paymentMode": "UPI",
+    "requestType": "NATIVE",
+    "authMode": "3D",
+    "paymentFlow": "UPI_COLLECT",
+    "selectedPaymentModeId": 2,
+    "payerAccount": "user@paytm",
+    "mid": "MERCHANT_ID_HERE",
+    "orderId": "ORDER_ID_HERE",
+    "riskExtendInfo": "amount=500.00"
+  },
+  "showPostFetchLoader": false
+}
+
+
+*cURL Command:*
+bash
+curl -X POST "https://secure.paytmpayments.com/pg/v1/pay/MERCHANT_ID_HERE/ORDER_ID_HERE/processTransaction" \
+  -H "Content-Type: application/json; charset=UTF-8" \
+  -H "Referer: https://secure.paytmpayments.com/" \
+  -d '{
+    "head": {
+      "version": "v1",
+      "channelId": "WEB",
+      "workFlow": "NATIVE",
+      "tokenType": "TXN_TOKEN",
+      "requestTimestamp": "2025-01-15T10:00:00.000Z",
+      "txnToken": "TXN_TOKEN_HERE",
+      "token": "TXN_TOKEN_HERE"
+    },
+    "body": {
+      "paymentMode": "UPI",
+      "requestType": "NATIVE",
+      "authMode": "3D",
+      "paymentFlow": "UPI_COLLECT",
+      "selectedPaymentModeId": 2,
+      "payerAccount": "user@paytm",
+      "mid": "MERCHANT_ID_HERE",
+      "orderId": "ORDER_ID_HERE",
+      "riskExtendInfo": "amount=500.00"
+    },
+    "showPostFetchLoader": false
+  }' \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 18. Paytm UPI Poll Status
+
+*Endpoint:* https://secure.paytmpayments.com/pg/v1/status/{merchantId}/{orderId}
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/x-www-form-urlencoded
+Referer: https://secure.paytmpayments.com/
+
+
+*Request Payload (Form Data):*
+
+MID=MERCHANT_ID_HERE&ORDER_ID=ORDER_ID_HERE&merchantId=MERCHANT_ID_HERE&orderId=ORDER_ID_HERE&transId=TRANS_ID_HERE&cashierRequestId=CASHIER_REQUEST_ID_HERE&paymentMode=UPI&vpaID=user@paytm&isSelfPush=false&upiAccepted=true&upiStatusUrl=STATUS_URL_HERE&upiHandleInfo=&selfPush=false&STATUS_INTERVAL=3000&STATUS_TIMEOUT=300000&MERCHANT_VPA=
+
+
+*cURL Command:*
+bash
+curl -X POST "https://secure.paytmpayments.com/pg/v1/status/MERCHANT_ID_HERE/ORDER_ID_HERE" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Referer: https://secure.paytmpayments.com/" \
+  -d "MID=MERCHANT_ID_HERE&ORDER_ID=ORDER_ID_HERE&merchantId=MERCHANT_ID_HERE&orderId=ORDER_ID_HERE&transId=TRANS_ID_HERE&cashierRequestId=CASHIER_REQUEST_ID_HERE&paymentMode=UPI&vpaID=user@paytm&isSelfPush=false&upiAccepted=true&upiStatusUrl=STATUS_URL_HERE&upiHandleInfo=&selfPush=false&STATUS_INTERVAL=3000&STATUS_TIMEOUT=300000&MERCHANT_VPA=" \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+### 19. Paytm Transaction Status HTML
+
+*Endpoint:* https://secure.paytmpayments.com/pg/v1/status/{merchantId}/{orderId}
+
+*Method:* POST
+
+*Headers:*
+
+Content-Type: application/x-www-form-urlencoded
+Referer: https://secure.paytmpayments.com/merchant-transaction/status/ORDER_ID_HERE
+
+
+*Request Payload (Form Data):*
+
+MID=MERCHANT_ID_HERE&ORDER_ID=ORDER_ID_HERE
+
+
+*cURL Command:*
+bash
+curl -X POST "https://secure.paytmpayments.com/pg/v1/status/MERCHANT_ID_HERE/ORDER_ID_HERE" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Referer: https://secure.paytmpayments.com/merchant-transaction/status/ORDER_ID_HERE" \
+  -d "MID=MERCHANT_ID_HERE&ORDER_ID=ORDER_ID_HERE" \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+## Utility APIs
+
+### 20. PNR Status Check (Post Payment)
+
+*Endpoint:* https://www.irctc.co.in/eticketing/protected/mapps1/bookingHistory/{bookingDataPath}
+
+*Method:* GET
+
+*Headers:*
+
+accept: application/json
+bmirak: webbm
+authorization: Bearer ACCESS_TOKEN_HERE (if available)
+bmiyek: REFRESH_TOKEN_HERE (if available)
+greq: GREQ_TOKEN_HERE (if available)
+spa-csrf-token: CSRF_TOKEN_HERE (if available)
+Origin: https://www.irctc.co.in
+Referer: https://www.irctc.co.in/
+
+
+*cURL Command:*
+bash
+curl -X GET "https://www.irctc.co.in/eticketing/protected/mapps1/bookingHistory/BOOKING_DATA_PATH_HERE" \
+  -H "accept: application/json" \
+  -H "bmirak: webbm" \
+  -H "authorization: Bearer ACCESS_TOKEN_HERE" \
+  -H "bmiyek: REFRESH_TOKEN_HERE" \
+  -H "greq: GREQ_TOKEN_HERE" \
+  -H "spa-csrf-token: CSRF_TOKEN_HERE" \
+  -H "Origin: https://www.irctc.co.in" \
+  -H "Referer: https://www.irctc.co.in/" \
+  --cookie "SESSION_COOKIES_HERE"
+
+
+---
+
+## Notes
+
+### Authentication Tokens
+
+All IRCTC APIs require the following authentication tokens:
+- *ACCESS_TOKEN*: OAuth Bearer token from IRCTC login
+- *REFRESH_TOKEN*: Stored in bmiyek header
+- *GREQ_TOKEN*: Stored in greq header
+- *CSRF_TOKEN*: CSRF protection token, obtained from response headers
+- *SESSION_COOKIES*: Browser session cookies from IRCTC login
+
+### Common Headers
+
+Most IRCTC APIs use these common headers:
+
+accept: application/json, text/plain, */*
+content-type: application/json; charset=UTF-8
+authorization: Bearer {ACCESS_TOKEN}
+bmiyek: {REFRESH_TOKEN}
+greq: {GREQ_TOKEN}
+bmirak: webbm
+X-Requested-With: XMLHttpRequest
+spa-csrf-token: {CSRF_TOKEN}
+
+
+### Payment Flow
+
+1. *Booking Init Payment*: Initialize payment with bank/gateway selection
+2. *Payment Redirect*: Redirect to payment gateway (WPS)
+3. *Paytm Process*: Process payment through Paytm gateway
+4. *UPI Flow* (if applicable):
+   - Validate VPA
+   - Process Transaction
+   - Poll Status
+5. *Verify Payment*: Verify payment completion
+6. *PNR Status*: Check booking status and get PNR
+
+### Bank IDs
+
+Common bank IDs used:
+- *1000*: IRCTC eWallet
+- *78*: Paytm (Credit/Debit/NetBanking/UPI)
+- *98*: PayU
+- *105*: Razorpay
+- *116*: PhonePe
+- *113*: IRCTC iPay
+
+### Payment Modes
+
+- *1*: Netbanking
+- *2*: Cards
+- *7*: eWallet
+- *9*: IRCTC iPay
+- *13*: Gateway (Paytm/PayU/Razorpay/PhonePe)
+
+---
+
+## Important Security Notes
+
+⚠️ *WARNING*: 
+- Never expose authentication tokens in production
+- All tokens should be obtained through proper IRCTC login flow
+- CSRF tokens are session-specific and time-sensitive
+- Payment credentials should never be hardcoded
+- Always use HTTPS for all API calls
+- Validate all user inputs before sending to APIs
+
+---
+
+## Version Information
+
+- *Extension Version*: 2.0.0
+- *Documentation Version*: 1.0.0
+- *Last Updated*: 2025-01-15
+
+---
+
+## Support
+
+For issues or questions regarding these APIs, please refer to:
+- IRCTC Official Documentation
+- Paytm Payment Gateway Documentation
+- Extension Developer Documentation
