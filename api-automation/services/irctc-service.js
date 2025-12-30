@@ -93,53 +93,26 @@ class IRCTCService {
 
     async performLogin(captchaSolution = null) {
         try {
-            console.log('Starting IRCTC login flow...');
+            console.log('Starting IRCTC browser login flow...');
             
-            // Step 1: Get captcha
-            const captchaResult = await this.getCaptcha();
-            if (!captchaResult.success) {
-                return captchaResult;
+            // Step 1: Get tokens via browser automation
+            const browserResult = await this.getBrowserTokens(
+                CONFIG.irctc.username, 
+                CONFIG.irctc.password, 
+                captchaSolution
+            );
+            
+            if (!browserResult.success) {
+                return browserResult;
             }
-
-            // Step 2: Auto-solve captcha using OCR
-            let finalCaptchaSolution = captchaSolution;
             
-            // Always save captcha for debugging
-            const fs = require('fs');
-            fs.writeFileSync('captcha.png', Buffer.from(captchaResult.captchaImage, 'base64'));
-            console.log('Captcha saved as captcha.png');
-            
-            if (!finalCaptchaSolution) {
-                console.log('Attempting to solve captcha automatically...');
-                const CaptchaSolver = require('./captcha-solver');
-                const solver = new CaptchaSolver();
-                
-                const solveResult = await solver.solveCaptcha(captchaResult.captchaImage);
-                await solver.terminate();
-                
-                if (solveResult.success) {
-                    finalCaptchaSolution = solveResult.text;
-                    console.log('Captcha auto-solved successfully');
-                } else {
-                    console.log('Auto-solve failed, trying external API...');
-                    
-                    const apiResult = await this.solveWithExternalAPI(captchaResult.captchaImage);
-                    if (apiResult.success) {
-                        finalCaptchaSolution = apiResult.text;
-                        console.log('Captcha solved via external API!');
-                    } else {
-                        return {
-                            success: false,
-                            requiresCaptcha: true,
-                            captchaImage: captchaResult.captchaImage,
-                            message: 'Captcha solving failed. Manual solving required.'
-                        };
-                    }
-                }
-            }
-
-            // Step 3: Submit login with credentials and captcha
-            return await this.submitLogin(CONFIG.irctc.username, CONFIG.irctc.password, finalCaptchaSolution);
+            // Step 2: Authenticate with extracted tokens
+            return await this.authenticateWithTokens(
+                browserResult.tokens.bearer,
+                browserResult.tokens.bmiyek,
+                browserResult.tokens.greq,
+                browserResult.tokens.csrf
+            );
             
         } catch (error) {
             console.error('Login flow error:', error.message);
@@ -147,118 +120,214 @@ class IRCTCService {
         }
     }
 
-    async submitLogin(username, password, captcha) {
+    async getBrowserTokens(username, password, captchaSolution) {
+        const { Builder, By, until } = require('selenium-webdriver');
+        const chrome = require('selenium-webdriver/chrome');
+        
+        let driver;
         try {
-            console.log('Submitting login credentials...');
+            console.log('Starting browser to get IRCTC tokens...');
             
-            const loginPayload = {
-                userId: username,
-                password: password,
-                captcha: captcha
-            };
-
-            const headers = {
-                'Accept': 'application/json, text/plain, */*',
-                'bmirak': 'webbm',
-                'Content-Type': 'application/json',
-                'greq': Date.now().toString(),
-                'Origin': CONFIG.irctc.baseUrl,
-                'Referer': `${CONFIG.irctc.baseUrl}/nget/train-search`,
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
-                'X-Requested-With': 'XMLHttpRequest'
-            };
-
-            // Add cookies from captcha request
-            if (this.sessionData.cookies) {
-                headers['Cookie'] = this.sessionData.cookies.join('; ');
+            const options = new chrome.Options();
+            options.addArguments('--disable-blink-features=AutomationControlled');
+            options.addArguments('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');
+            options.addArguments('--incognito');
+            options.addArguments('--disable-web-security');
+            options.addArguments('--disable-features=VizDisplayCompositor');
+            
+            driver = await new Builder()
+                .forBrowser('chrome')
+                .setChromeOptions(options)
+                .build();
+            
+            // Navigate to IRCTC
+            await driver.get('https://www.irctc.co.in/nget/train-search');
+            await driver.sleep(3000);
+            
+            // Click OK button first (popup)
+            try {
+                const okBtn = await driver.findElement(By.xpath("//button[text()='OK']"));
+                await okBtn.click();
+                await driver.sleep(1000);
+            } catch {
+                console.log('No OK popup found');
             }
-
-            const response = await this.connection.client.post(
-                `${CONFIG.irctc.baseUrl}/eticketing/protected/mapps1/loginAction`,
-                loginPayload,
-                { headers }
-            );
-
-            // Check login response
-            if (response.data) {
-                if (response.data.success || response.status === 200) {
-                    console.log('Login successful!');
+            
+            // Click login dropdown
+            const loginDropdown = await driver.findElement(By.css(".h_menu_drop_button.hidden-xs"));
+            await loginDropdown.click();
+            await driver.sleep(1000);
+            
+            // Click LOGIN button
+            const loginBtn = await driver.findElement(By.xpath("//button[text()='LOGIN']"));
+            await loginBtn.click();
+            await driver.sleep(2000);
+            
+            // Fill credentials with JavaScript execution to bypass autofill
+            console.log(`Filling username: ${username}`);
+            await driver.executeScript(`
+                const usernameField = document.querySelector("[placeholder='User Name']");
+                usernameField.value = '';
+                usernameField.dispatchEvent(new Event('input', { bubbles: true }));
+                usernameField.value = '${username}';
+                usernameField.dispatchEvent(new Event('input', { bubbles: true }));
+            `);
+            await driver.sleep(1000);
+            
+            console.log(`Filling password: ${password}`);
+            await driver.executeScript(`
+                const passwordField = document.querySelector("[placeholder='Password']");
+                passwordField.value = '';
+                passwordField.dispatchEvent(new Event('input', { bubbles: true }));
+                passwordField.value = '${password}';
+                passwordField.dispatchEvent(new Event('input', { bubbles: true }));
+            `);
+            await driver.sleep(1000);
+            
+            // Auto-solve captcha with retry mechanism
+            let captchaAttempts = 0;
+            let loginSuccess = false;
+            
+            while (!loginSuccess && captchaAttempts < 3) {
+                captchaAttempts++;
+                console.log(`\nLogin attempt ${captchaAttempts}/3`);
+                
+                // Get captcha image
+                const captchaImg = await driver.findElement(By.css('.captcha-img'));
+                const captchaBase64 = await captchaImg.getAttribute('src');
+                
+                // Solve captcha with retry mechanism
+                const captchaResult = await this.solveCaptchaWithRetry(captchaBase64.split(',')[1]);
+                
+                if (captchaResult.success) {
+                    // Fill captcha
+                    await driver.executeScript(`
+                        const captchaField = document.querySelector("[name='captcha']");
+                        captchaField.value = '';
+                        captchaField.value = '${captchaResult.text}';
+                        captchaField.dispatchEvent(new Event('input', { bubbles: true }));
+                    `);
                     
-                    // Extract and store authentication tokens
-                    await this.extractTokens(response);
+                    // Wait until captcha field is filled
+                    await driver.wait(async () => {
+                        const captchaValue = await driver.executeScript(`
+                            return document.querySelector("[name='captcha']").value;
+                        `);
+                        return captchaValue && captchaValue.length > 0;
+                    }, 5000);
                     
-                    return {
-                        success: true,
-                        message: 'Login successful',
-                        tokens: this.sessionData.tokens,
-                        userData: response.data
-                    };
+                    console.log('Captcha filled, clicking SIGN IN...');
+                    
+                    // Click SIGN IN button
+                    const signInBtn = await driver.findElement(By.xpath("//button[normalize-space()='SIGN IN']"));
+                    await signInBtn.click();
+                    await driver.sleep(3000);
+                    
+                    // Check if login was successful
+                    try {
+                        await driver.findElement(By.css('.profile-name'), 5000);
+                        loginSuccess = true;
+                        console.log('✅ Login successful!');
+                    } catch {
+                        console.log('❌ Login failed, trying again...');
+                        // Refresh captcha for next attempt
+                        try {
+                            const refreshBtn = await driver.findElement(By.css('.glyphicon-repeat'));
+                            await refreshBtn.click();
+                            await driver.sleep(2000);
+                        } catch {}
+                    }
                 } else {
-                    console.log('Login failed:', response.data.message || 'Invalid credentials');
-                    return {
-                        success: false,
-                        error: response.data.message || 'Login failed - check credentials or captcha'
-                    };
+                    console.log('❌ Captcha solving failed, trying again...');
+                    // Refresh captcha
+                    try {
+                        const refreshBtn = await driver.findElement(By.css('.glyphicon-repeat'));
+                        await refreshBtn.click();
+                        await driver.sleep(2000);
+                    } catch {}
                 }
             }
-
-            return { success: false, error: 'No response data received' };
+            
+            if (!loginSuccess) {
+                throw new Error('Login failed after 3 attempts');
+            }
+            
+            // Extract tokens from browser
+            await driver.sleep(2000);
+            const tokens = await driver.executeScript(`
+                return {
+                    bearer: localStorage.getItem('authToken') || sessionStorage.getItem('authToken'),
+                    bmiyek: localStorage.getItem('refreshToken') || sessionStorage.getItem('refreshToken'),
+                    greq: localStorage.getItem('greqToken') || sessionStorage.getItem('greqToken'),
+                    csrf: document.querySelector('meta[name="csrf-token"]')?.content
+                };
+            `);
+            
+            // Get cookies
+            const cookies = await driver.manage().getCookies();
+            
+            console.log('✅ Tokens extracted from browser!');
+            return {
+                success: true,
+                tokens,
+                cookies: cookies.map(c => `${c.name}=${c.value}`)
+            };
             
         } catch (error) {
-            console.error('Login submission error:', error.message);
-            
-            // Handle specific error cases
-            if (error.response) {
-                const status = error.response.status;
-                const data = error.response.data;
-                
-                if (status === 400) {
-                    return { success: false, error: 'Invalid captcha or credentials' };
-                } else if (status === 401) {
-                    return { success: false, error: 'Authentication failed' };
-                } else if (status === 429) {
-                    return { success: false, error: 'Too many requests - please wait' };
-                }
-                
-                return { success: false, error: data?.message || `HTTP ${status} error` };
-            }
-            
+            console.error('Browser token extraction failed:', error.message);
             return { success: false, error: error.message };
+        } finally {
+            if (driver) await driver.quit();
         }
     }
 
-    async extractTokens(response) {
+    async authenticateWithTokens(accessToken, refreshToken, greqToken, csrfToken) {
         try {
-            // Extract tokens from response headers and body
-            const headers = response.headers;
+            console.log('Authenticating with IRCTC tokens...');
             
-            // Bearer token (usually in response body)
-            if (response.data && response.data.token) {
-                this.sessionData.tokens.bearer = response.data.token;
+            // Store tokens
+            this.sessionData.tokens.bearer = accessToken;
+            this.sessionData.tokens.bmiyek = refreshToken;
+            this.sessionData.tokens.greq = greqToken;
+            this.sessionData.tokens.csrf = csrfToken;
+            
+            const headers = {
+                'accept': 'application/json, text/plain, */*',
+                'content-type': 'application/json; charset=UTF-8',
+                'authorization': `Bearer ${accessToken}`,
+                'bmiyek': refreshToken,
+                'greq': greqToken,
+                'bmirak': 'webbm',
+                'X-Requested-With': 'XMLHttpRequest'
+            };
+            
+            if (csrfToken) {
+                headers['spa-csrf-token'] = csrfToken;
             }
             
-            // Extract other tokens from headers
-            if (headers['bmiyek']) {
-                this.sessionData.tokens.bmiyek = headers['bmiyek'];
+            if (this.sessionData.cookies) {
+                headers['Cookie'] = this.sessionData.cookies.map(cookie => cookie.split(';')[0]).join('; ');
+            }
+
+            const response = await this.connection.client.get(
+                `${CONFIG.irctc.baseUrl}/eticketing/protected/mapps1/validateUser?source=3`,
+                { headers }
+            );
+
+            if (response.status === 200) {
+                console.log('✅ Authentication successful!');
+                return {
+                    success: true,
+                    message: 'Authentication successful',
+                    userData: response.data
+                };
             }
             
-            if (headers['greq']) {
-                this.sessionData.tokens.greq = headers['greq'];
-            }
-            
-            if (headers['spa-csrf-token']) {
-                this.sessionData.tokens.csrf = headers['spa-csrf-token'];
-            }
-            
-            // Update cookies
-            if (headers['set-cookie']) {
-                this.sessionData.cookies = [...(this.sessionData.cookies || []), ...headers['set-cookie']];
-            }
-            
-            console.log('Authentication tokens extracted');
+            return { success: false, error: 'Authentication failed' };
             
         } catch (error) {
-            console.error('Token extraction error:', error.message);
+            console.error('Authentication error:', error.message);
+            return { success: false, error: error.message };
         }
     }
 
@@ -331,30 +400,49 @@ class IRCTCService {
         console.log('Session data cleared');
     }
 
-    async solveWithExternalAPI(base64Image) {
-        try {
-            console.log('Using external captcha API...');
+    // Unified captcha solving with retry mechanism
+    async solveCaptchaWithRetry(captchaImageBase64, maxRetries = 3) {
+        console.log('Starting captcha solving with retry mechanism...');
+        
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            console.log(`Captcha attempt ${attempt}/${maxRetries}`);
             
-            const response = await this.connection.client.post(
-                'https://api.verifyotp.xyz/api/solve',
-                { imageContent: base64Image },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Auth-Token': 'BOOK_TOKEN_HERE'
-                    }
+            try {
+                const CaptchaSolver = require('./captcha-solver');
+                const solver = new CaptchaSolver();
+                const solveResult = await solver.solveCaptcha(captchaImageBase64);
+                await solver.terminate();
+                
+                if (solveResult.success && solveResult.text) {
+                    console.log(`✅ Captcha auto-solved: ${solveResult.text}`);
+                    return { success: true, text: solveResult.text, isManual: false };
                 }
-            );
-            
-            if (response.data && response.data.text) {
-                return { success: true, text: response.data.text };
+            } catch (error) {
+                console.log(`❌ Auto-solve attempt ${attempt} failed:`, error.message);
             }
-            
-            return { success: false, error: 'No text in API response' };
-        } catch (error) {
-            console.error('External API error:', error.message);
-            return { success: false, error: error.message };
         }
+        
+        // All auto-solve attempts failed, ask user
+        console.log('\n⚠️ Auto-solve failed after 3 attempts.');
+        console.log('You have 15 seconds to enter captcha manually...');
+        
+        return new Promise((resolve) => {
+            const timeout = setTimeout(() => {
+                console.log('\n⏰ Timeout! No captcha entered.');
+                resolve({ success: false, error: 'Captcha timeout' });
+            }, 15000);
+            
+            process.stdin.once('data', (data) => {
+                clearTimeout(timeout);
+                const manualCaptcha = data.toString().trim();
+                if (manualCaptcha) {
+                    console.log(`✅ Manual captcha entered: ${manualCaptcha}`);
+                    resolve({ success: true, text: manualCaptcha, isManual: true });
+                } else {
+                    resolve({ success: false, error: 'Empty captcha' });
+                }
+            });
+        });
     }
 
     async searchTrains(searchParams) {

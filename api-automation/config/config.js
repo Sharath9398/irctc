@@ -14,8 +14,8 @@ const CONFIG = {
     // IRCTC website settings
     irctc: {
         baseUrl: 'https://www.irctc.co.in',  // IRCTC website base URL
-        username: 'rs9083954',               // IRCTC login username
-        password: 'Gs2001920@@@'             // IRCTC login password
+        username: 'DileepGedela',               // IRCTC login username
+        password: 'Dileep@19##'             // IRCTC login password
     },
     
     // HTTP client settings
