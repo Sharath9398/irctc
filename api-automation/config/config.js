@@ -4,10 +4,10 @@ const CONFIG = {
     proxies: [
         {
             name: 'Primary Proxy',
-            host: '203.174.22.89',    // Proxy server IP address
+            host: '203.174.22.86',   // Proxy server IP address
             port: 3128,               // Proxy server port
-            username: 'proxy2',       // Proxy authentication username
-            password: 'Tatkal@1234'   // Proxy authentication password
+            username: 'proxy3',       // Proxy authentication username
+            password: 'tatkal@1234'   // Proxy authentication password
         },
     ],
     

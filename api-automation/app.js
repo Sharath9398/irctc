@@ -20,29 +20,27 @@ class IRCTCAutomation {
     }
 
     async login(username = CONFIG.irctc.username, password = CONFIG.irctc.password, captcha) {
-        return await this.irctcService.login(username, password, captcha);
+        return await this.irctcService.submitLogin(username, password, captcha);
     }
 
-    async fullLoginFlow() {
-        try {
-            console.log('Starting full login flow...');
-            
-            const captchaResult = await this.getCaptcha();
-            if (!captchaResult.success) {
-                return captchaResult;
-            }
-            
-            const dummyCaptcha = 'ABCD';
-            console.log('Using dummy captcha:', dummyCaptcha);
-            
-            const loginResult = await this.login(CONFIG.irctc.username, CONFIG.irctc.password, dummyCaptcha);
-            
-            return loginResult;
-            
-        } catch (error) {
-            console.log('Full login flow failed:', error.message);
-            return { success: false, error: error.message };
-        }
+    async performLogin() {
+        return await this.irctcService.performLogin();
+    }
+
+    getSessionInfo() {
+        return this.irctcService.getSessionInfo();
+    }
+
+    clearSession() {
+        this.irctcService.clearSession();
+    }
+
+    async searchTrains(searchParams) {
+        return await this.irctcService.searchTrains(searchParams);
+    }
+
+    async validateSession() {
+        return await this.irctcService.validateSession();
     }
 }
 
@@ -53,11 +51,22 @@ async function main() {
         const handshakeResult = await automation.testHandshake();
         
         if (handshakeResult.success) {
-            console.log('Handshake successful! Ready for login flow.');
+            console.log('✅ Handshake successful! Ready for login flow.');
+            
+            const loginResult = await automation.performLogin();
+            
+            if (loginResult.success) {
+                console.log('✅ Login completed successfully!');
+                console.log('Session tokens:', loginResult.tokens);
+            } else {
+                console.log('❌ Login failed:', loginResult.error);
+            }
+            
+            console.log('\n📊 Session Info:', automation.getSessionInfo());
         }
         
     } catch (error) {
-        console.log('Application error:', error.message);
+        console.log('❌ Application error:', error.message);
     }
 }
 
