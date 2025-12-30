@@ -4,18 +4,18 @@ const CONFIG = {
     proxies: [
         {
             name: 'Primary Proxy',
-            host: '203.174.22.89',    // Proxy server IP address
+            host: '203.174.22.86',   // Proxy server IP address
             port: 3128,               // Proxy server port
-            username: 'proxy2',       // Proxy authentication username
-            password: 'Tatkal@1234'   // Proxy authentication password
+            username: 'proxy3',       // Proxy authentication username
+            password: 'tatkal@1234'   // Proxy authentication password
         },
     ],
     
     // IRCTC website settings
     irctc: {
         baseUrl: 'https://www.irctc.co.in',  // IRCTC website base URL
-        username: 'rs9083954',               // IRCTC login username
-        password: 'Gs2001920@@@'             // IRCTC login password
+        username: 'DileepGedela',               // IRCTC login username
+        password: 'Dileep@19##'             // IRCTC login password
     },
     
     // HTTP client settings
