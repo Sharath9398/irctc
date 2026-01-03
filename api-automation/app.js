@@ -49,21 +49,68 @@ class IRCTCAutomation {
     }
 
     // Individual booking steps
-    async getAvailabilityAndFare(trainNumber, journeyDate, fromStation, toStation, classCode, quotaCode) {
-        return await this.irctcService.getAvailabilityAndFare(trainNumber, journeyDate, fromStation, toStation, classCode, quotaCode);
+    async getAvailabilityAndFare(trainNo, date, from, to, cls, quota) {
+    try {
+        const url = `${CONFIG.irctc.baseUrl}/eticketing/protected/mapps1/avlFarenquiry/${trainNo}/${date}/${from}/${to}/${cls}/${quota}/N`;
+        const payload = {
+            paymentFlag: "N", concessionBooking: false, ftBooking: false,
+            loyaltyRedemptionBooking: false, ticketType: "E", classCode: cls,
+            fromStnCode: from, toStnCode: to, quotaCode: quota,
+            trainNumber: trainNo, journeyDate: date, isLogedinReq: true,
+            moreThanOneDay: true
+        };
+
+        const response = await this.connection.client.post(url, payload, { 
+            headers: this.getStandardHeaders(true) 
+        });
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.message };
     }
+}
 
     async getBoardingStations(trainNumber, fromStation, toStation, journeyClass, journeyDate, quotaCode) {
         return await this.irctcService.getBoardingStations(trainNumber, fromStation, toStation, journeyClass, journeyDate, quotaCode);
     }
 
     async submitPassengerDetails(bookingRequest) {
-        return await this.irctcService.submitPassengerDetails(bookingRequest);
+    try {
+        const clientTxnId = this.generateClientTransactionId();
+        bookingRequest.clientTransactionId = clientTxnId;
+
+        const response = await this.connection.client.post(
+            `${CONFIG.irctc.baseUrl}/eticketing/protected/mapps1/allLapAvlFareEnq/Y`,
+            bookingRequest,
+            { headers: this.getStandardHeaders(true, 'https://www.irctc.co.in/nget/booking/psgninput') }
+        );
+
+        // This returns the Captcha required for the Review Page
+        return { success: true, data: response.data, clientTransactionId: clientTxnId };
+    } catch (error) {
+        return { success: false, error: error.message };
     }
+}
 
     async submitCaptcha(clientTxnId, captchaAnswer) {
-        return await this.irctcService.submitCaptcha(clientTxnId, captchaAnswer);
+    try {
+        const payload = {
+            captchaAns: captchaAnswer,
+            captchaType: "BOOKINGWS",
+            clientTxnId: clientTxnId,
+            paymentType: 1,
+            addonLapServices: [{ travelInsuranceOpted: true }]
+        };
+
+        const response = await this.connection.client.post(
+            `${CONFIG.irctc.baseUrl}/eticketing/protected/mapps1/addonServices`,
+            payload,
+            { headers: this.getStandardHeaders(true, 'https://www.irctc.co.in/nget/booking/psgninput') }
+        );
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.message };
     }
+}
 
     async initializePayment(clientTxnId, amount, paymentMethod, bankId) {
         return await this.irctcService.initializePayment(clientTxnId, amount, paymentMethod, bankId);
@@ -92,38 +139,31 @@ async function main() {
             console.log('✅ Handshake successful! Ready for booking flow.');
             
             // Example booking parameters - modify as needed
-            const bookingParams = {
-                // Journey details
-                fromStation: 'SC',        // New Delhi
-                toStation: 'WL',           // Mumbai Central
-                journeyClass: '3A',         // 3rd AC
-                journeyDate: '20260320',    // YYYYMMDD format
-                trainNumber: '12951',       // Mumbai Rajdhani
-                quotaCode: 'GN',           // General quota
-                boardingStation: 'NDLS',    // Same as from station
-                
-                // Passenger details
-                passengers: [{
-                    passengerName: 'JOHN DOE',
-                    passengerAge: 30,
-                    passengerGender: 'M',
-                    passengerNationality: 'IN',
-                    passengerSerialNumber: 1,
-                    passengerIcardFlag: false,
-                    passengerCardType: 'NULL_IDCARD',
-                    passengerBerthChoice: 'LB',  // Lower berth
-                    childBerthFlag: false
-                }],
-                
-                // Contact details
-                mobileNumber: '9876543210',
-                irctcUsername: CONFIG.irctc.username,
-                
-                // Payment details
-                paymentMethod: 'EWALLET',   // eWallet payment
-                bankId: '1000',             // eWallet bank ID
-                amount: 500                 // Amount in rupees
-            };
+           const bookingParams = {
+    fromStation: 'SC',        // Secunderabad
+    toStation: 'EE',          // Warangal
+    journeyClass: '3A',       // 3rd AC
+    journeyDate: '20260202',  // Ensure this is within 120 days of today
+    trainNumber: '12740',     // CHANGED: Use Telengana Express (runs SC to WL)
+    quotaCode: 'GN',
+    boardingStation: 'SC',
+    passengers: [{
+        passengerName: 'JOHN DOE',
+        passengerAge: 30,
+        passengerGender: 'M',
+        passengerNationality: 'IN',
+        passengerSerialNumber: 1,
+        passengerIcardFlag: false,
+        passengerCardType: 'NULL_IDCARD',
+        passengerBerthChoice: 'LB',
+        childBerthFlag: false
+    }],
+    mobileNumber: '9876543210',
+    irctcUsername: CONFIG.irctc.username,
+    paymentMethod: 'EWALLET',
+    bankId: '1000',
+    amount: 500
+};
             
             console.log('\n📝 Booking Parameters:');
             console.log(`Route: ${bookingParams.fromStation} → ${bookingParams.toStation}`);
@@ -161,6 +201,10 @@ async function main() {
             
             console.log('\n📊 Session Info:', automation.getSessionInfo());
             
+            // Close the persistent session when done
+            await automation.irctcService.closeSession();
+            console.log('🔒 Session closed.');
+            
         } else {
             console.log('❌ Handshake failed:', handshakeResult.error);
         }
@@ -168,8 +212,24 @@ async function main() {
     } catch (error) {
         console.log('❌ Application error:', error.message);
         console.error('Stack trace:', error.stack);
+    } finally {
+        // Ensure cleanup happens even if there's an error
+        process.exit(0);
     }
 }
+
+// Graceful shutdown handler
+process.on('SIGINT', async () => {
+    console.log('\n🛡️ Received SIGINT, closing sessions...');
+    // Note: In a real implementation, you'd want to track active automation instances
+    // and close their sessions here
+    process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+    console.log('\n🛡️ Received SIGTERM, closing sessions...');
+    process.exit(0);
+});
 
 // Example function to test individual booking steps
 async function testIndividualSteps() {
@@ -192,28 +252,32 @@ async function testIndividualSteps() {
         // Step 2: Search trains
         console.log('\n2. Testing train search...');
         const searchResult = await automation.searchTrains({
-            fromStation: 'NDLS',
-            toStation: 'BCT',
+            fromStation: 'SC',
+            toStation: 'EE',
             travelClass: '3A',
-            journeyDate: '20250120'
+            journeyDate: '20260202'
         });
         console.log('Train search result:', searchResult.success ? '✅' : '❌');
         
         // Step 3: Check availability
         console.log('\n3. Testing availability check...');
         const availabilityResult = await automation.getAvailabilityAndFare(
-            '12951', '20250120', 'NDLS', 'BCT', '3A', 'GN'
+            '12740', '20260202', 'SC', 'EE', '3A', 'GN'
         );
         console.log('Availability check result:', availabilityResult.success ? '✅' : '❌');
         
         // Step 4: Get boarding stations
         console.log('\n4. Testing boarding stations...');
         const boardingResult = await automation.getBoardingStations(
-            '12951', 'NDLS', 'BCT', '3A', '20250120', 'GN'
+            '12740', '20260202', 'SC', '3A', '20260202', 'GN'
         );
         console.log('Boarding stations result:', boardingResult.success ? '✅' : '❌');
         
         console.log('\n✅ Individual steps testing completed!');
+        
+        // Close the persistent session when done
+        await automation.irctcService.closeSession();
+        console.log('🔒 Session closed.');
         
     } catch (error) {
         console.log('❌ Individual steps test error:', error.message);

@@ -1,21 +1,13 @@
 // Configuration object - stores all settings for IRCTC automation
 const CONFIG = {
-    // Proxy server configurations
-    proxies: [
-        {
-            name: 'Primary Proxy',
-            host: '203.174.22.232',   // Proxy server IP address
-            port: 3128,               // Proxy server port
-            username: 'proxy',       // Proxy authentication username
-            password: 'tatkal@1234'   // Proxy authentication password
-        },
-    ],
+    // Proxy server configurations (disabled)
+    proxies: [],
     
     // IRCTC website settings
     irctc: {
         baseUrl: 'https://www.irctc.co.in',  // IRCTC website base URL
-        username: 'rammandal1998k',               // IRCTC login username
-        password: 'Blue@008'             // IRCTC login password
+        username: 'rs9083954',               // IRCTC login username
+        password: 'Gs2001920@@@'             // IRCTC login password
     },
     
     // HTTP client settings

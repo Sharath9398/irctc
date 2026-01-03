@@ -12,11 +12,12 @@ class ProxyManager {
 
     // Returns the currently active proxy configuration
     getCurrent() {
-        return this.proxies[this.currentIndex];
+        return this.proxies.length > 0 ? this.proxies[this.currentIndex] : null;
     }
 
     // Switch to next proxy (for failover)
     switchToNext() {
+        if (this.proxies.length === 0) return null;
         this.currentIndex = (this.currentIndex + 1) % this.proxies.length;
         return this.getCurrent();
     }
@@ -24,7 +25,7 @@ class ProxyManager {
     // Get current proxy info for logging
     getCurrentInfo() {
         const proxy = this.getCurrent();
-        return `${proxy.name} (${proxy.host}:${proxy.port})`;
+        return proxy ? `${proxy.name} (${proxy.host}:${proxy.port})` : 'No Proxy (Direct Connection)';
     }
 }
 

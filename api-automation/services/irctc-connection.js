@@ -16,18 +16,26 @@ class IRCTCConnection {
     // Initialize axios HTTP client with proxy and cookie handling
     initClient() {
         const proxy = this.proxyManager.getCurrent();
-        const proxyUrl = this.proxyManager.getProxyUrl(proxy);
-
-        // Create axios instance with proxy agents
-        this.client = axios.create({
-            httpsAgent: new HttpsProxyAgent(proxyUrl),  // Handle HTTPS requests through proxy
-            httpAgent: new HttpProxyAgent(proxyUrl),    // Handle HTTP requests through proxy
+        
+        const clientConfig = {
             timeout: CONFIG.timeout,
             headers: {
-                // Mimic a real browser to avoid detection
                 'User-Agent': CONFIG.userAgent
+            },
+            // Add retry configuration
+            validateStatus: function (status) {
+                return status < 500; // Resolve only if status is less than 500
             }
-        });
+        };
+        
+        // Only add proxy if available
+        if (proxy) {
+            const proxyUrl = this.proxyManager.getProxyUrl(proxy);
+            clientConfig.httpsAgent = new HttpsProxyAgent(proxyUrl);
+            clientConfig.httpAgent = new HttpProxyAgent(proxyUrl);
+        }
+
+        this.client = axios.create(clientConfig);
 
         // Request interceptor - runs before every HTTP request
         this.client.interceptors.request.use((config) => {
