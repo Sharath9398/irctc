@@ -102,75 +102,26 @@ class TokenExtractor {
         this.tokenUpdateCallbacks.push(callback);
     }
 
-    getLatestTokens() {
+    async getCurrentTokens() {
+        if (!this.driver) return null;
+        
+        // Get fresh tokens from browser
+        let tokens = await this.driver.executeScript('return window.capturedTokens;');
+        
+        if (tokens) {
+            // Update bmiyek from cookies
+            const cookies = await this.driver.manage().getCookies();
+            const akamai = cookies.find(c => c.name === '_abck');
+            if (akamai) tokens.bmiyek = akamai.value;
+            
+            // Update current tokens
+            this.currentTokens = { ...this.currentTokens, ...tokens };
+        }
+        
         return this.currentTokens;
     }
 
-    async getFreshTokensForBooking() {
-        if (!this.driver || !this.isActive) return null;
-        console.log('🔄 Creating fresh session fork for booking...');
-        
-        try {
-            // Navigate to booking page to trigger fresh context
-            await this.driver.get('https://www.irctc.co.in/nget/booking/psgninput');
-            await new Promise(r => setTimeout(r, 2000));
-            
-            // Clear tokens and wait for fresh ones
-            await this.driver.executeScript(`window.capturedTokens = { bearer: null, greq: null, csrf: null };`);
-            
-            // Minimal UI interaction to trigger token refresh
-            await this.driver.executeScript(`
-                document.body.click();
-                window.scrollTo(0, 1);
-            `);
-            
-            // Wait for fresh tokens
-            await new Promise(r => setTimeout(r, 1500));
-            const tokens = await this.driver.executeScript('return window.capturedTokens;');
-            
-            if (tokens && tokens.bearer && tokens.greq && tokens.csrf) {
-                console.log('✅ Fresh booking tokens captured');
-                this.currentTokens = tokens;
-                return tokens;
-            }
-            
-            return null;
-        } catch (error) {
-            console.log('❌ Fresh token error:', error.message);
-            return null;
-        }
-    }
-
-    async refreshTokens() {
-        if (!this.driver || !this.isActive) return null;
-        console.log('🔄 JIT Sync: Capturing high-speed tokens for booking...');
-        try {
-            // 1. Clear used tokens
-            await this.driver.executeScript(`window.capturedTokens = { bearer: null, greq: null, csrf: null };`);
-
-            // 2. UI Nudge to trigger IRCTC's internal preparation
-            await this.driver.executeScript(`
-                window.scrollTo(0, 10); 
-                setTimeout(() => window.scrollTo(0, 0), 50);
-            `);
-
-            // 3. Brief wait for natural heartbeat
-            let tokens = await this.waitForTokens(5); 
-            if (tokens && tokens.bearer) {
-                console.log('✅ JIT Tokens captured naturally');
-                return tokens;
-            }
-
-            // 4. Fallback: Force a fresh context via fetch but wait for rotation
-            console.log('🔄 Triggering forced rotation...');
-            await this.driver.executeScript("fetch('https://www.irctc.co.in/eticketing/protected/mapps1/validateUser?source=3', { headers: {'bmirak': 'webbm'} }).catch(()=>{});");
-            
-            // Wait for the rotation that happens AFTER the fetch
-            await new Promise(r => setTimeout(r, 2000));
-            return await this.waitForTokens(5);
-        } catch (error) { return null; }
-    }
-
+    
     async waitForTokens(attempts) {
         for (let i = 0; i < attempts; i++) {
             await new Promise(r => setTimeout(r, 1000));

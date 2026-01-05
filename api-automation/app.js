@@ -181,7 +181,8 @@ async function main() {
                 console.log('\n✅ BOOKING SUCCESSFUL!');
                 console.log('===================');
                 console.log(`Client Transaction ID: ${bookingResult.clientTransactionId}`);
-                console.log('Booking completed successfully!');
+                console.log('Reached CAPTCHA review step successfully');
+
                 
                 // Display booking summary
                 if (bookingResult.bookingData) {
